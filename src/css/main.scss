@@ -1,0 +1,137 @@
+// TODO:
+// @import "webfonts";
+
+$grey: hsl(0,0%,28%);
+$blue: hsl(188,89%,44%);
+
+$tablet: 500px;
+$desktop: 800px;
+
+// TODO: Do we want to do this for everything?
+* {
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none
+}
+
+body {
+    // Unset
+    margin: 0;
+    font-family: "Georgia", sans-serif;
+}
+
+@mixin grid($unit) {
+    .l-#{$unit}-Grid {
+        display: flex;
+        flex-wrap: wrap;
+        // Account for first gutter
+        margin-left: -1em;
+    }
+
+    .l-#{$unit}-Grid--1of2 > .l-#{$unit}-GridCell {
+        flex-basis: 50%;
+    }
+
+    .l-#{$unit}-Grid--flexCells > .l-#{$unit}-GridCell {
+        display: flex;
+
+        & > * {
+            flex: 1;
+        }
+    }
+
+    .l-#{$unit}-GridCell {
+        flex: 1;
+        padding-left: 1em;
+    }
+
+    .l-#{$unit}-2of3 {
+        width: 66.666%;
+        flex: none;
+    }
+}
+
+@mixin breakpoint($size) {
+    @if (true) {
+    // @if (false) {
+        // FIXME: Arbitrary number
+        @media (min-width: $size) {
+            @content;
+        }
+    }
+}
+
+.test {
+    background-color: $blue;
+}
+
+.content {
+    background: hsl(0,0%, 85%);
+
+    .content {
+        background: hsl(0,0%, 75%);
+
+        .content {
+            background: hsl(0,0%, 65%);
+        }
+    }
+}
+
+.dotted-top {
+    border-top: 1px dotted $blue;
+}
+
+.dotted-top--white {
+    border-top-color: white;
+}
+
+.h3 {
+    @extend .dotted-top;
+}
+
+%white-text {
+    &,
+    a {
+        color: white;
+    }
+}
+
+.blue-widget {
+    @extend %white-text;
+    background-color: $blue;
+}
+
+header {
+    @extend %white-text;
+    border-top: 4px solid $blue;
+    background-color: $grey;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+nav {
+    text-transform: lowercase;
+
+    & > ul {
+        padding-left: 0;
+        list-style: none;
+
+        & > li > a {
+            display: block;
+        }
+    }
+}
+
+@include grid(default);
+
+@include breakpoint($tablet) {
+    @include grid(tablet);
+}
+
+@include breakpoint($desktop) {
+    @include grid(desktop);
+}
