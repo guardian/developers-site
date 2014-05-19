@@ -1,5 +1,5 @@
 // TODO:
-// @import "webfonts";
+@import "webfonts";
 
 $grey: hsl(0,0%,28%);
 $blue: hsl(188,89%,44%);
@@ -19,7 +19,25 @@ $desktop: 800px;
 body {
     // Unset
     margin: 0;
-    font-family: "Georgia", sans-serif;
+    font-family: "EgyptianText", serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.4;
+}
+
+h1 {
+    font-family: "EgyptianHeadline", serif;
+    font-weight: 700;
+}
+
+.sans-serif {
+    font-family: "AgateSans", sans-serif;
+}
+
+.cta-link {
+    @extend .sans-serif;
+    // TODO: Add bold sans-serif
+    // font-weight: bold;
 }
 
 @mixin grid($unit) {
@@ -107,10 +125,6 @@ header {
     @extend %white-text;
     border-top: 4px solid $blue;
     background-color: $grey;
-
-    a {
-        text-decoration: none;
-    }
 }
 
 nav {
