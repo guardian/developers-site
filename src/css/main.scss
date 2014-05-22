@@ -10,6 +10,19 @@ $desktop: 900px;
 $gutter-width: 1.25rem;
 $trailing-margin-height: 1.2rem;
 
+@mixin font-size($percent, $min-font-size, $max-font-size) {
+    // Min
+    font-size: $min-font-size;
+
+    @include breakpoint($min-font-size/$percent * 100) {
+        font-size: #{$percent}vw;
+    }
+
+    @include breakpoint($max-font-size/$percent * 100) {
+        font-size: $max-font-size;
+    }
+}
+
 @mixin grid($unit) {
     .l-#{$unit}-Grid {
         display: flex;
@@ -339,13 +352,7 @@ $x: 650px;
     }
 
     h1 {
-        @include breakpoint($tablet) {
-            font-size: 4vw;
-        }
-
-        // TODO: Auto compute
-        @include breakpoint(1300px) {
-            font-size: 3.25rem;
-        }
+        // TODO: Inherit minimum font size
+        @include font-size(4, 2rem, 3.25rem);
     }
 }
