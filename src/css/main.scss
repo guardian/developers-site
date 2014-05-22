@@ -167,7 +167,11 @@ p,
 .blue-widget {
     @extend %white-text;
     background-color: $blue;
+}
 
+.grey-widget {
+    @extend %white-text;
+    background-color: $grey;
 }
 
 h1,
@@ -184,9 +188,8 @@ img {
 }
 
 .header {
-    @extend %white-text;
+    @extend .grey-widget;
     border-top: 4px solid $blue;
-    background-color: $grey;
 }
 
 .header__inner {
