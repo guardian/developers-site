@@ -116,7 +116,26 @@ body {
 
 h1 {
     font-family: "EgyptianHeadline", serif;
-    font-weight: 700;
+    font-weight: normal;
+}
+
+.h2 {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+section {
+    h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    article,
+    section {
+        h1 {
+            @extend .h2;
+        }
+    }
 }
 
 h1, p {
@@ -316,14 +335,11 @@ $x: 650px;
     }
 
     h1 {
-        font-size: 2rem;
-        font-weight: normal;
-        line-height: 1.2;
-
         @include breakpoint($tablet) {
             font-size: 4vw;
         }
 
+        // TODO: Auto compute
         @include breakpoint(1300px) {
             font-size: 3.25rem;
         }
