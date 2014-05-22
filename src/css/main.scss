@@ -314,16 +314,13 @@ $x: 650px;
 .main-image {
     // TODO: Polyfill for FF, IE11, Safari
     object-fit: cover;
-    height: 193px;
-
-    @include breakpoint($tablet) {
-        // Reset
-        height: 295px;
-    }
+    height: 50vmin;
+    // Reset – by default the aspect ratio is maintained
+    width: 100%;
 
     @include breakpoint($desktop) {
-        // Unset
-        height: auto;
+        // Reset
+        height: 60vmin;
     }
 }
 
