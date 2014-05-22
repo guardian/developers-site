@@ -4,7 +4,7 @@
 $grey: hsl(0,0%,28%);
 $blue: hsl(188,89%,44%);
 
-$tablet: 500px;
+$tablet: 590px;
 $desktop: 900px;
 
 @mixin grid($unit) {
@@ -241,14 +241,6 @@ nav {
     }
 }
 
-.tablet-only {
-    display: none;
-
-    @include breakpoint($tablet) {
-        display: block;
-    }
-}
-
 .video {
     position: relative;
 }
@@ -283,4 +275,14 @@ nav {
 
 @include breakpoint($desktop) {
     @include grid(desktop);
+}
+
+.main-image {
+    // TODO: Polyfill for FF, IE11, Safari
+    object-fit: cover;
+    height: 193px;
+
+    @include breakpoint($tablet) {
+        height: auto;
+    }
 }
