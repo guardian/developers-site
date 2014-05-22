@@ -118,7 +118,8 @@ $trailing-margin-height: 1.2rem;
 @mixin inset() {
     @include breakpoint($desktop) {
         min-width: $desktop;
-        max-width: 1050px;
+        width: 95vw;
+        max-width: 1110px;
         margin-left: auto;
         margin-right: auto;
     }
