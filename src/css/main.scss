@@ -10,17 +10,33 @@ $desktop: 900px;
 $gutter-width: 1.25rem;
 $trailing-margin-height: 1.2rem;
 
-@mixin font-size($percent, $min-font-size, $max-font-size) {
+@function hundred-percent-from($value, $percent) {
+    @return $value / ($percent / 100);
+}
+
+@function percent-of($value, $percent) {
+    @return $value * ($percent / 100);
+}
+
+@mixin vw-range($property, $percent, $min, $max) {
     // Min
-    font-size: $min-font-size;
+    #{$property}: $min;
 
-    @include breakpoint($min-font-size/$percent * 100) {
-        font-size: #{$percent}vw;
+    @include breakpoint($min/$percent * 100) {
+        #{$property}: #{$percent}vw;
     }
 
-    @include breakpoint($max-font-size/$percent * 100) {
-        font-size: $max-font-size;
+    @include breakpoint($max/$percent * 100) {
+        #{$property}: $max;
     }
+}
+
+@mixin font-size($p, $min, $max) {
+    @include vw-range(font-size, $p, $min, $max);
+}
+
+@mixin width($p, $min, $max) {
+    @include vw-range(width, $p, $min, $max);
 }
 
 @mixin grid($unit) {
@@ -346,13 +362,23 @@ $x: 650px;
 }
 
 .main-image-overlay-inner {
+    // TODO: Inherit minimum font size
+    $min-heading-font-size: 2rem;
+    $max-heading-font-size: 3.25rem;
+    $heading-vw-width: 4;
+
+    $vw-width: 54;
+    $min-width: percent-of(hundred-percent-from($min-heading-font-size, $heading-vw-width), $vw-width);
+    $max-width: percent-of(hundred-percent-from($max-heading-font-size, $heading-vw-width), $vw-width);
     @include breakpoint($x) {
-        // Geeky: line up with gutters
-        width: calc(50% - 0.5rem);
+        @include width($vw-width, $min-width, $max-width);
     }
 
     h1 {
-        // TODO: Inherit minimum font size
-        @include font-size(4, 2rem, 3.25rem);
+        @include font-size($heading-vw-width, $min-heading-font-size, $max-heading-font-size);
+    }
+
+    p {
+        @include font-size(2, 1rem, 1.3rem);
     }
 }
