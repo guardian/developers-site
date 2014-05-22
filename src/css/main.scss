@@ -383,3 +383,16 @@ $x: 650px;
         @include font-size(2, 1rem, 1.3rem);
     }
 }
+
+.foo {
+    $x: 50;
+    $y: hundred-percent-from(2rem, 4);
+    // max-width: percent-of($y, $x);
+
+    @include breakpoint($desktop) {
+        @include font-size(3, 2rem, 2.25rem);
+        @include width($x,
+            percent-of($y, $x),
+            percent-of(hundred-percent-from(2.25rem, 4), $x))
+    }
+}
