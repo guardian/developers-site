@@ -296,10 +296,15 @@ nav {
     @include grid(desktop);
 }
 
+$x: 650px;
+
 .main-image-container {
-    position: relative;
-    padding-bottom: 1rem;
     margin-bottom: 1rem;
+
+    @include breakpoint($x) {
+        position: relative;
+        padding-bottom: 1rem;
+    }
 }
 
 .main-image {
@@ -317,8 +322,6 @@ nav {
         height: auto;
     }
 }
-
-$x: 650px;
 
 .main-image-overlay {
     @include breakpoint($x) {
