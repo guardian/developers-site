@@ -179,14 +179,37 @@ header {
 }
 
 nav {
+    @extend .dotted-top;
     text-transform: lowercase;
+    font-size: 18px;
 
     & > ul {
+        // Unset
         padding-left: 0;
+        margin-top: 0;
+        margin-left: 0;
+        margin-bottom: 0;
         list-style: none;
 
         & > li > a {
             display: block;
+            text-decoration: none;
+            @include breakpoint($desktop) {
+                padding-top: 1px;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &.active {
+                border-top: 2px solid $blue;
+                @include breakpoint($desktop) {
+                    margin-top: -1px;
+                    // Unset
+                    padding-top: 0;
+                }
+            }
         }
     }
 }
