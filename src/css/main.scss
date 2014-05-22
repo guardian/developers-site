@@ -30,6 +30,19 @@ h1 {
     font-weight: 700;
 }
 
+h1, p {
+    // Unset
+    margin-top: 0;
+}
+
+h1,
+p,
+iframe,
+.l-Grid,
+.trailing-margin {
+    margin-bottom: 1rem;
+}
+
 .sans-serif {
     font-family: "AgateSans", sans-serif;
 }
@@ -50,6 +63,12 @@ h1 {
 
     .l-#{$unit}-Grid--1of2 > .l-#{$unit}-GridCell {
         flex-basis: 50%;
+        margin-bottom: 1rem;
+
+        &:last-child,
+        &:nth-last-child(2) {
+            margin-bottom: 0;
+        }
     }
 
     .l-#{$unit}-Grid--flexCells > .l-#{$unit}-GridCell {
@@ -63,11 +82,28 @@ h1 {
     .l-#{$unit}-GridCell {
         flex: 1;
         padding-left: 1em;
+        // Unset
+        margin-bottom: 0;
     }
 
     .l-#{$unit}-2of3 {
         width: 66.666%;
         flex: none;
+    }
+}
+
+// When collapsed, we apply trailing margins to the cells (except the last).
+.l-GridCell {
+    margin-bottom: 1rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.l-Grid--collapse {
+    & > .l-GridCell {
+        margin-bottom: 0;
     }
 }
 
@@ -79,10 +115,6 @@ h1 {
             @content;
         }
     }
-}
-
-.test {
-    background-color: $blue;
 }
 
 .content {
@@ -116,9 +148,28 @@ h1 {
     }
 }
 
+.island {
+    padding: 1rem;
+}
+
 .blue-widget {
     @extend %white-text;
+    @extend .island;
     background-color: $blue;
+
+}
+
+h1,
+p,
+.l-Grid {
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+iframe,
+img {
+    max-width: 100%;
 }
 
 header {
