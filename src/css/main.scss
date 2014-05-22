@@ -5,53 +5,7 @@ $grey: hsl(0,0%,28%);
 $blue: hsl(188,89%,44%);
 
 $tablet: 500px;
-$desktop: 800px;
-
-// TODO: Do we want to do this for everything?
-* {
-    box-sizing: border-box;
-}
-
-.hidden {
-    display: none
-}
-
-body {
-    // Unset
-    margin: 0;
-    font-family: "EgyptianText", serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    line-height: 1.4;
-}
-
-h1 {
-    font-family: "EgyptianHeadline", serif;
-    font-weight: 700;
-}
-
-h1, p {
-    // Unset
-    margin-top: 0;
-}
-
-h1,
-p,
-iframe,
-.l-Grid,
-.trailing-margin {
-    margin-bottom: 1rem;
-}
-
-.sans-serif {
-    font-family: "AgateSans", sans-serif;
-}
-
-.cta-link {
-    @extend .sans-serif;
-    // TODO: Add bold sans-serif
-    // font-weight: bold;
-}
+$desktop: 900px;
 
 @mixin grid($unit) {
     .l-#{$unit}-Grid {
@@ -117,16 +71,75 @@ iframe,
     }
 }
 
-.content {
-    background: hsl(0,0%, 85%);
+// .content {
+//     background: hsl(0,0%, 85%);
 
-    .content {
-        background: hsl(0,0%, 75%);
+//     .content {
+//         background: hsl(0,0%, 75%);
 
-        .content {
-            background: hsl(0,0%, 65%);
-        }
+//         .content {
+//             background: hsl(0,0%, 65%);
+//         }
+//     }
+// }
+
+@mixin inset() {
+    @include breakpoint($desktop) {
+        min-width: $desktop;
+        max-width: 1050px;
+        margin-left: auto;
+        margin-right: auto;
     }
+}
+
+// TODO: Do we want to do this for everything?
+* {
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none
+}
+
+.inset {
+    @include inset();
+}
+
+body {
+    // Unset
+    margin: 0;
+    font-family: "EgyptianText", serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.4;
+}
+
+h1 {
+    font-family: "EgyptianHeadline", serif;
+    font-weight: 700;
+}
+
+h1, p {
+    // Unset
+    margin-top: 0;
+}
+
+h1,
+p,
+iframe,
+.l-Grid,
+.trailing-margin {
+    margin-bottom: 1rem;
+}
+
+.sans-serif {
+    font-family: "AgateSans", sans-serif;
+}
+
+.cta-link {
+    @extend .sans-serif;
+    // TODO: Add bold sans-serif
+    // font-weight: bold;
 }
 
 .dotted-top {
@@ -172,10 +185,19 @@ img {
     max-width: 100%;
 }
 
-header {
+.header {
     @extend %white-text;
     border-top: 4px solid $blue;
     background-color: $grey;
+}
+
+.header__inner {
+    @extend .island;
+    @include inset();
+
+    @include breakpoint($desktop) {
+        padding: 2rem;
+    }
 }
 
 nav {
@@ -186,9 +208,13 @@ nav {
     & > ul {
         // Unset
         padding-left: 0;
+        // Unset
         margin-top: 0;
+        // Unset
         margin-left: 0;
+        // Unset
         margin-bottom: 0;
+        // Unset
         list-style: none;
 
         & > li > a {
@@ -211,6 +237,14 @@ nav {
                 }
             }
         }
+    }
+}
+
+.tablet-only {
+    display: none;
+
+    @include breakpoint($tablet) {
+        display: block;
     }
 }
 
