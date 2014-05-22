@@ -7,17 +7,20 @@ $blue: hsl(188,89%,44%);
 $tablet: 590px;
 $desktop: 900px;
 
+$gutter-width: 1.25rem;
+$trailing-margin-height: 1.2rem;
+
 @mixin grid($unit) {
     .l-#{$unit}-Grid {
         display: flex;
         flex-wrap: wrap;
         // Account for first gutter
-        margin-left: -1em;
+        margin-left: -$gutter-width;
     }
 
     .l-#{$unit}-Grid--1of2 > .l-#{$unit}-GridCell {
         flex-basis: 50%;
-        margin-bottom: 1rem;
+        margin-bottom: $gutter-width;
 
         &:last-child,
         &:nth-last-child(2) {
@@ -35,7 +38,7 @@ $desktop: 900px;
 
     .l-#{$unit}-GridCell {
         flex: 1;
-        padding-left: 1em;
+        padding-left: $gutter-width;
         // Unset
         margin-bottom: 0;
     }
@@ -48,7 +51,7 @@ $desktop: 900px;
 
 // When collapsed, we apply trailing margins to the cells (except the last).
 .l-GridCell {
-    margin-bottom: 1rem;
+    margin-bottom: $trailing-margin-height;
 
     &:last-child {
         margin-bottom: 0;
@@ -147,7 +150,7 @@ h1,
 p,
 .l-Grid,
 .trailing-margin {
-    margin-bottom: 1rem;
+    margin-bottom: $trailing-margin-height;
 }
 
 .sans-serif {
@@ -180,7 +183,7 @@ p,
 }
 
 .island {
-    padding: 1rem;
+    padding: $gutter-width;
 }
 
 .blue-widget {
@@ -299,11 +302,11 @@ nav {
 $x: 650px;
 
 .main-image-container {
-    margin-bottom: 1rem;
+    @extend .trailing-margin;
 
     @include breakpoint($x) {
         position: relative;
-        padding-bottom: 1rem;
+        padding-bottom: $trailing-margin-height;
     }
 }
 
