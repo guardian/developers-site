@@ -246,6 +246,32 @@ nav {
     }
 }
 
+.video {
+    position: relative;
+}
+
+@mixin fix-aspect-ratio($width, $height, $startingWidth: 100%) {
+    // To get this working, position the child element
+    // to 'absolute' in the top left corner
+    $height: ($height / $width) * $startingWidth;
+    width: $startingWidth;
+    padding-bottom: $height;
+    position: relative;
+    overflow: hidden;
+}
+
+.video__placeholder {
+    // Temp
+    @include fix-aspect-ratio(500px, 281px);
+}
+
+.video__iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
 @include grid(default);
 
 @include breakpoint($tablet) {
