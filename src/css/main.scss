@@ -277,12 +277,55 @@ nav {
     @include grid(desktop);
 }
 
+.main-image-container {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
 .main-image {
     // TODO: Polyfill for FF, IE11, Safari
     object-fit: cover;
     height: 193px;
 
     @include breakpoint($tablet) {
+        // Reset
+        height: 295px;
+    }
+
+    @include breakpoint($desktop) {
+        // Unset
         height: auto;
+    }
+}
+
+$x: 650px;
+
+.main-image-overlay {
+    @include breakpoint($x) {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+.main-image-overlay-inner {
+    @include breakpoint($x) {
+        // Geeky: line up with gutters
+        width: calc(50% - 0.5rem);
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: normal;
+        line-height: 1.2;
+
+        @include breakpoint($tablet) {
+            font-size: 4vw;
+        }
+
+        @include breakpoint(1300px) {
+            font-size: 3.25rem;
+        }
     }
 }
