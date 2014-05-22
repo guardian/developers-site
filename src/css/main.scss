@@ -126,7 +126,6 @@ h1, p {
 
 h1,
 p,
-iframe,
 .l-Grid,
 .trailing-margin {
     margin-bottom: 1rem;
@@ -167,7 +166,6 @@ iframe,
 
 .blue-widget {
     @extend %white-text;
-    @extend .island;
     background-color: $blue;
 
 }
