@@ -421,3 +421,7 @@ $x: 650px;
             percent-of(hundred-percent-from(2.25rem, 4), $x))
     }
 }
+
+.large-text {
+    font-size: 1.5rem;
+}
