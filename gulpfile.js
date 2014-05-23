@@ -10,6 +10,11 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./target/css'));
 });
 
+gulp.task('copy', function () {
+    gulp.src('./src/images/**')
+        .pipe(gulp.dest('./target/images'));
+});
+
 gulp.task('watch', function () {
     var server = livereload();
     gulp.watch('./src/css/**/*.scss', ['sass']);
