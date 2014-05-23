@@ -15,7 +15,10 @@
             <h1 class="hidden">Navigation</h1>
             <ul class="l-grid l-grid--collapse l-desktop-grid">
                 <% pages.forEach(function (page) { %>
-                    <li class="l-desktop-grid-cell l-grid-cell"><a href="<%= page.filename %>" class="active"><%= page.title %></a></li>
+                    <li class="l-desktop-grid-cell l-grid-cell">
+                        <a href="<%= page.filename %>"
+                           <% if (page.filename === fileBasename.replace('.ejs', '.html')) { %> class="active" <% } %>><%= page.title %></a>
+                   </li>
                 <% }); %>
             </ul>
         </nav>

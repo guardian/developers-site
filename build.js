@@ -6,8 +6,10 @@ var filenames = ['./src/views/index.ejs', './src/views/open-source.ejs'];
 
 filenames.forEach(function (filename) {
     var file = fs.readFileSync(filename, { encoding: 'utf8' });
+    var fileBasename = path.basename(filename);
     var output = ejs.render(file, {
         filename: filename,
+        fileBasename: fileBasename,
         pages: [
             {
                 title: 'Home',
