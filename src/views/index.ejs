@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<head>
-    <title>The Guardian – Developers</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../target/css/main.css">
-    <meta name="viewport" content="width=device-width">
-</head>
-<header class="header">
-    <div class="header__inner">
-        <!-- <h1>The Guardian – Developers</h1> -->
-        <h1>
-            <a href="/"><img src="./images/logo-guardiandevelopers.svg" alt="The Guardian – Developers"></a>
-        </h1>
-        <nav>
-            <h1 class="hidden">Navigation</h1>
-            <ul class="l-grid l-grid--collapse l-desktop-grid">
-                <li class="l-desktop-grid-cell l-grid-cell"><a href="index.html" class="active">Home</a></li>
-                <li class="l-desktop-grid-cell l-grid-cell"><a href="#">About Us</a></li>
-                <li class="l-desktop-grid-cell l-grid-cell"><a href="#">Open Platform</a></li>
-                <li class="l-desktop-grid-cell l-grid-cell"><a href="#">Open Source</a></li>
-                <li class="l-desktop-grid-cell l-grid-cell"><a href="#">Events & Talks</a></li>
-                <li class="l-desktop-grid-cell l-grid-cell"><a href="#">Join the Team</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<% include head %>
 <main class="trailing-margin">
     <section>
         <h1 class="hidden">Home</h1>
@@ -37,7 +12,7 @@
                     </section>
                 </div>
             </div>
-            <img class="main-image" src="./images/IMG_5509.jpg" alt="Developers at the Guardian Hack Day">
+            <img class="main-image" src="/images/IMG_5509.jpg" alt="Developers at the Guardian Hack Day">
         </div>
         <div class="inset">
             <div class="island">
@@ -122,15 +97,4 @@
         </div>
     </section>
 </main>
-<footer>
-    <div class="blue-widget">
-        <div class="inset island">
-            foo
-        </div>
-    </div>
-    <div class="grey-widget">
-        <div class="inset island">
-            foo
-        </div>
-    </div>
-</footer>
+<% include footer %>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <title>The Guardian – Developers</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/main.css">
+    <meta name="viewport" content="width=device-width">
+</head>
+<header class="header">
+    <div class="header__inner">
+        <!-- <h1>The Guardian – Developers</h1> -->
+        <h1>
+            <a href="/"><img src="/images/logo-guardiandevelopers.svg" alt="The Guardian – Developers"></a>
+        </h1>
+        <nav>
+            <h1 class="hidden">Navigation</h1>
+            <ul class="l-grid l-grid--collapse l-desktop-grid">
+                <% pages.forEach(function (page) { %>
+                    <li class="l-desktop-grid-cell l-grid-cell"><a href="<%= page.filename %>" class="active"><%= page.title %></a></li>
+                <% }); %>
+            </ul>
+        </nav>
+    </div>
+</header>
