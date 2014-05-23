@@ -76,6 +76,11 @@ $trailing-margin-height: 1.2rem;
         width: 66.666%;
         flex: none;
     }
+
+    .l-#{$unit}-1of3 {
+        width: 33.333%;
+        flex: none;
+    }
 }
 
 // When collapsed, we apply trailing margins to the cells (except the last).
