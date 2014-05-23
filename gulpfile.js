@@ -68,6 +68,11 @@ gulp.task('watch', function () {
     gulp.watch('./target/css/**').on('change', function (file) {
         server.changed(file.path);
     });
+
+    gulp.watch('./src/views/**/*.ejs', ['ejs']);
+    gulp.watch('./target/**/*.html').on('change', function (file) {
+        server.changed(file.path);
+    });
 });
 
 gulp.task('default', ['sass', 'copy', 'ejs']);
