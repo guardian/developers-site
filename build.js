@@ -1,9 +1,3 @@
-/**
- * TODO:
- * - Copy images
- * - Compile Sass (merge with Gulp?)
- */
-
 var ejs = require('ejs');
 var fs = require('fs');
 var path = require('path');
