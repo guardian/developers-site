@@ -345,7 +345,10 @@ $x: 650px;
     // TODO: Polyfill for FF, IE11, Safari
     object-fit: cover;
     height: 50vmin;
-    min-height: 37vmax;
+    min-height: 40vmax;
+    @include breakpoint($desktop) {
+        min-height: 30vmax;
+    }
     // Reset – by default the aspect ratio is maintained
     width: 100%;
 
