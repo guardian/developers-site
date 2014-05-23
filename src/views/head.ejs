@@ -17,7 +17,7 @@
                 <% pages.forEach(function (page) { %>
                     <li class="l-desktop-grid-cell l-grid-cell">
                         <a href="<%= page.filename %>"
-                           <% if (page.filename === fileBasename.replace('.ejs', '.html')) { %> class="active" <% } %>><%= page.title %></a>
+                           <% if (page.filename === fileBasename.replace(/\.ejs$/, '.html')) { %> class="active" <% } %>><%= page.title %></a>
                    </li>
                 <% }); %>
             </ul>

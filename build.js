@@ -34,6 +34,6 @@ filenames.forEach(function (filename) {
         ]
     });
 
-    fs.writeFileSync('./target/' + path.basename(filename, '.ejs') + '.html', output, { encoding: 'utf8' });
+    fs.writeFileSync('./target/' + fileBasename.replace(/\.ejs$/, '.html'), output, { encoding: 'utf8' });
 });
 
