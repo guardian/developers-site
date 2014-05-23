@@ -40,14 +40,14 @@ $trailing-margin-height: 1.2rem;
 }
 
 @mixin grid($unit) {
-    .l-#{$unit}-Grid {
+    .l-#{$unit}-grid {
         display: flex;
         flex-wrap: wrap;
         // Account for first gutter
         margin-left: -$gutter-width;
     }
 
-    .l-#{$unit}-Grid--1of2 > .l-#{$unit}-GridCell {
+    .l-#{$unit}-grid--1of2 > .l-#{$unit}-grid-cell {
         flex-basis: 50%;
         margin-bottom: $gutter-width;
 
@@ -57,7 +57,7 @@ $trailing-margin-height: 1.2rem;
         }
     }
 
-    .l-#{$unit}-Grid--flexCells > .l-#{$unit}-GridCell {
+    .l-#{$unit}-grid--flex-cells > .l-#{$unit}-grid-cell {
         display: flex;
 
         & > * {
@@ -65,7 +65,7 @@ $trailing-margin-height: 1.2rem;
         }
     }
 
-    .l-#{$unit}-GridCell {
+    .l-#{$unit}-grid-cell {
         flex: 1;
         padding-left: $gutter-width;
         // Unset
@@ -79,7 +79,7 @@ $trailing-margin-height: 1.2rem;
 }
 
 // When collapsed, we apply trailing margins to the cells (except the last).
-.l-GridCell {
+.l-grid-cell {
     margin-bottom: $trailing-margin-height;
 
     &:last-child {
@@ -87,8 +87,8 @@ $trailing-margin-height: 1.2rem;
     }
 }
 
-.l-Grid--collapse {
-    & > .l-GridCell {
+.l-grid--collapse {
+    & > .l-grid-cell {
         margin-bottom: 0;
     }
 }
@@ -179,7 +179,7 @@ h1, p {
 
 h1,
 p,
-.l-Grid,
+.l-grid,
 .trailing-margin {
     margin-bottom: $trailing-margin-height;
 }
@@ -229,7 +229,7 @@ p,
 
 h1,
 p,
-.l-Grid {
+.l-grid {
     &:last-child {
         margin-bottom: 0;
     }
