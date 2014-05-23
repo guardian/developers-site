@@ -261,7 +261,8 @@ img {
     @include inset();
 
     @include breakpoint($desktop) {
-        padding: 2rem;
+        padding-top: 2rem;
+        padding-botom: 2rem;
     }
 }
 
