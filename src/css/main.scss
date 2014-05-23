@@ -200,6 +200,10 @@ p,
     margin-bottom: $trailing-margin-height;
 }
 
+.leading-margin {
+    margin-top: $trailing-margin-height;
+}
+
 .sans-serif {
     font-family: "AgateSans", sans-serif;
 }
