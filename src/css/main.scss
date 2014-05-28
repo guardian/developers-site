@@ -421,3 +421,11 @@ $x: 650px;
 .large-text {
     font-size: 1.5rem;
 }
+
+.page-intro {
+    @extend .header__inner;
+    @extend .large-text;
+    // Hack: make this look like it's part of the header
+    // Could this be done better?
+    padding-top: 0;
+}
