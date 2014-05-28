@@ -156,6 +156,10 @@ body {
 // TODO: Mimic NGW
 a {
     color: darken($blue, 10%);
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 h1 {
@@ -167,6 +171,12 @@ h1 {
     @extend .dotted-top;
     font-size: 1.3rem;
     font-weight: bold;
+}
+
+.alt-h3 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    margin-bottom: 0;
 }
 
 section {
@@ -196,9 +206,22 @@ h1, p {
 
 h1,
 p,
+ul,
+dl,
 .l-grid,
 .trailing-margin {
     margin-bottom: $trailing-margin-height;
+}
+
+// TODO: Tidy up
+h1,
+p,
+ul,
+dl,
+.l-grid {
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 .sans-serif {
@@ -238,14 +261,6 @@ p,
 .grey-widget {
     @extend %white-text;
     background-color: $grey;
-}
-
-h1,
-p,
-.l-grid {
-    &:last-child {
-        margin-bottom: 0;
-    }
 }
 
 iframe,
@@ -425,4 +440,44 @@ $x: 650px;
     // Hack: make this look like it's part of the header
     // Could this be done better?
     padding-top: 0;
+}
+
+dl {
+    // Unset
+    margin-top: 0;
+    // Unset
+    margin-bottom: 0;
+}
+
+// TODO: Abstract these exceptions
+dt {
+    clear: left;
+
+    .bubble {
+        float: left;
+        margin-right: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+dd {
+    margin-left: 0;
+    margin-bottom: 1rem;
+}
+
+.bubble {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    color: hsl(0, 100%, 100%);
+    background-color: #ccc;
+    // Take into account font size, line height, to calculate vertical padding
+    // TODO: Use variables
+    // (((16*3.5)-(16*1.5))/2)/16
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
 }
