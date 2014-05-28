@@ -4,6 +4,15 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/main.css">
     <meta name="viewport" content="width=device-width">
+
+    <!-- TODO: Concatenate -->
+    <script src="/jspm_packages/traceur-runtime@0.0.43.js"></script>
+    <script src="/jspm_packages/es6-module-loader@0.6.1.js"></script>
+    <script src="/jspm_packages/system@0.6.js"></script>
+    <script src="/config.js"></script>
+    <script>
+        System.import('js/app');
+    </script>
 </head>
 <header class="header">
     <div class="header__inner">

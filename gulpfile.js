@@ -13,6 +13,16 @@ gulp.task('sass', function () {
 gulp.task('copy', function () {
     gulp.src('./src/images/**')
         .pipe(gulp.dest('./target/images'));
+    // TODO: jspm bundle
+    // https://github.com/jspm/jspm-cli/issues/43
+    // TODO: Concatenate with polyfills
+    gulp.src('./src/jspm_packages/**')
+        .pipe(gulp.dest('./target/jspm_packages'));
+    // SystemJS config
+    gulp.src('./src/config.js')
+        .pipe(gulp.dest('./target'));
+    gulp.src('./src/js/**.js')
+        .pipe(gulp.dest('./target/js'));
 });
 
 gulp.task('ejs', function () {

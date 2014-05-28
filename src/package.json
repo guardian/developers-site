@@ -1,0 +1,8 @@
+{
+  "name": null,
+  "registry": "jspm",
+  "main": "js/app",
+  "dependencies": {
+    "github:ded/reqwest": "^1.1.0"
+  }
+}
