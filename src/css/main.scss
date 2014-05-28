@@ -303,7 +303,11 @@ nav {
         & > li > a {
             display: block;
             text-decoration: none;
+            // Account for active border
+            padding-top: 2px;
+
             @include breakpoint($desktop) {
+                // Account for active border
                 padding-top: 1px;
             }
 
@@ -313,7 +317,11 @@ nav {
 
             &.active {
                 border-top: 2px solid $blue;
+                // Account for active border
+                margin-top: -2px;
+
                 @include breakpoint($desktop) {
+                    // Account for active border
                     margin-top: -1px;
                     // Unset
                     padding-top: 0;
