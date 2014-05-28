@@ -164,6 +164,7 @@ h1 {
 }
 
 .h3 {
+    @extend .dotted-top;
     font-size: 1.3rem;
     font-weight: bold;
 }
@@ -216,10 +217,6 @@ p,
 
 .dotted-top--white {
     border-top-color: white;
-}
-
-.h3 {
-    @extend .dotted-top;
 }
 
 %white-text {
