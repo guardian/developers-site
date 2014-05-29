@@ -32,7 +32,7 @@ gulp.task('ejs', function () {
     var fs = require('fs');
     var path = require('path');
 
-    var basePath = './src/views';
+    var basePath = './src';
     var filenames = ['index.ejs', 'open-source.ejs'].map(function (f) {
         return [basePath, f].join('/');
     });
@@ -77,7 +77,7 @@ gulp.task('ejs', function () {
 gulp.task('watch', function () {
     var server = livereload();
     gulp.watch('./src/css/**/*.scss', ['sass']);
-    gulp.watch('./src/views/**/*.ejs', ['ejs']);
+    gulp.watch('./src/**/*.ejs', ['ejs']);
     gulp.watch('./src/js/**/*.js', ['copy']);
     gulp.watch('./src/enhanced-views/**/*.ejs', ['copy']);
 
