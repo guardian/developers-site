@@ -21,7 +21,7 @@ gulp.task('copy', function () {
     // SystemJS config
     gulp.src('./src/config.js')
         .pipe(gulp.dest('./target'));
-    gulp.src('./src/js/**.js')
+    gulp.src('./src/js/**')
         .pipe(gulp.dest('./target/js'));
 });
 

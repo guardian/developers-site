@@ -1,0 +1,14 @@
+<section class="island">
+    <h1>Developer Blog</h1>
+    <div class="l-grid l-desktop-grid">
+        <% articles.forEach(function (article) { %>
+            <div class="l-desktop-grid-cell l-grid-cell">
+                <article class="content">
+                    <h1 class="h3"><a href="<%= article.webUrl %>"><%= article.webTitle %></a></h1>
+                    <time><%= article.webPublicationDate %></time>
+                    <p><%= article.fields.trailText %></p>
+                </article>
+            </div>
+        <% }); %>
+    </div>
+</section>
