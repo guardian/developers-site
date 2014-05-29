@@ -52,7 +52,7 @@ $trailing-margin-height: 1.2rem;
         margin-bottom: $gutter-width;
 
         &:last-child,
-        &:nth-last-child(2) {
+        &:nth-last-child(2):nth-child(odd) {
             margin-bottom: 0;
         }
     }
