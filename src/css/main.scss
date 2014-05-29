@@ -214,7 +214,6 @@ section {
 
 h1,
 p,
-dl,
 ul {
     // Unset
     margin-top: 0;
@@ -223,7 +222,6 @@ ul {
 h1,
 p,
 ul,
-dl,
 .l-grid,
 .trailing-margin {
     margin-bottom: $trailing-margin-height;
@@ -457,34 +455,6 @@ $x: 650px;
     padding-top: 0;
 }
 
-dl {
-    // Unset
-    margin-bottom: 0;
-}
-
-// TODO: Abstract these exceptions
-dt {
-    clear: left;
-
-    .bubble {
-        float: left;
-        margin-right: 1rem;
-    }
-
-    a {
-        text-decoration: none;
-    }
-}
-
-dd {
-    margin-left: 0;
-    margin-bottom: 1rem;
-
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
-
 .bubble {
     width: 3.5rem;
     height: 3.5rem;
@@ -521,4 +491,17 @@ dd {
             color: hsl(0, 0%, 50%);
         }
     }
+}
+
+.media {
+    overflow: hidden;
+}
+
+.media__img {
+    float: left;
+    margin-right: 1rem;
+}
+
+.media__body {
+    overflow: hidden;
 }
