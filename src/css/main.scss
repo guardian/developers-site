@@ -225,13 +225,7 @@ ul,
 .l-grid,
 .trailing-margin {
     margin-bottom: $trailing-margin-height;
-}
 
-// TODO: Tidy up
-h1,
-p,
-ul,
-.l-grid {
     &:last-child {
         margin-bottom: 0;
     }
