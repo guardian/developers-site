@@ -503,3 +503,17 @@ dd {
     font-size: 0.875rem;
     color: hsl(0, 0%, 50%);
 }
+
+.developer-blog-section {
+    article {
+        h1 {
+            margin-bottom: 0;
+        }
+
+        time {
+            display: block;
+            margin-bottom: 1rem;
+            color: hsl(0, 0%, 50%);
+        }
+    }
+}
