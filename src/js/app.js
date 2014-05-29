@@ -2,7 +2,14 @@ import reqwest from 'github:ded/reqwest';
 import ejs from 'npm:ejs';
 import template from './template.ejs!github:systemjs/plugin-text';
 
-var renderTemplate = ejs.compile(template);
+function renderTemplate(template, options) {
+    var renderedString = ejs.render(template, options);
+    // EJS has a client-side mode (which I assume outputs a DOM element), but
+    // it’s provided in a different file…
+    var bin = document.createElement('div');
+    bin.innerHTML = renderedString;
+    return bin.childNodes[0];
+}
 
 reqwest({
     // TODO: Construct URL
@@ -12,11 +19,7 @@ reqwest({
     type: 'jsonp'
 }).then(function (response) {
     console.log(1, response.response.results);
-    var renderedString = renderTemplate({ articles: response.response.results });
-    // EJS has a client-side mode (which I assume outputs a DOM element), but
-    // it’s provided in a different file…
-    var bin = document.createElement('div');
-    bin.innerHTML = renderedString;
+    var renderedElement = renderTemplate(template, { articles: response.response.results });
 
-    document.querySelector('#main-content-container').appendChild(bin.childNodes[0]);
+    document.querySelector('#main-content-container').appendChild(renderedElement);
 });
