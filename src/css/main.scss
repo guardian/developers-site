@@ -207,7 +207,9 @@ section {
     }
 }
 
-h1, p {
+h1,
+p,
+dl {
     // Unset
     margin-top: 0;
 }
@@ -459,8 +461,6 @@ $x: 650px;
 }
 
 dl {
-    // Unset
-    margin-top: 0;
     // Unset
     margin-bottom: 0;
 }
