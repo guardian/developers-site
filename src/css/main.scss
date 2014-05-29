@@ -48,7 +48,10 @@ $trailing-margin-height: 1.2rem;
     }
 
     .l-#{$unit}-grid--1of2 > .l-#{$unit}-grid-cell {
-        flex-basis: 50%;
+        // We have to use `width` instead of `flex-basis` because we don't want
+        // rows that don't wrap to have their children flex grow.
+        width: 50%;
+        flex: none;
         margin-bottom: $gutter-width;
 
         &:last-child,
