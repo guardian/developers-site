@@ -139,6 +139,11 @@ $trailing-margin-height: 1.2rem;
     box-sizing: border-box;
 }
 
+.base-list {
+    list-style: none;
+    padding-left: 0;
+}
+
 .hidden {
     display: none
 }
@@ -209,7 +214,8 @@ section {
 
 h1,
 p,
-dl {
+dl,
+ul {
     // Unset
     margin-top: 0;
 }
@@ -299,16 +305,7 @@ nav {
     font-size: 18px;
 
     & > ul {
-        // Unset
-        padding-left: 0;
-        // Unset
-        margin-top: 0;
-        // Unset
-        margin-left: 0;
-        // Unset
-        margin-bottom: 0;
-        // Unset
-        list-style: none;
+        @extend .base-list;
 
         & > li > a {
             display: block;
