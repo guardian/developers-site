@@ -478,6 +478,10 @@ dt {
 dd {
     margin-left: 0;
     margin-bottom: 1rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 .bubble {
