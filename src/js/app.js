@@ -13,11 +13,24 @@ function renderTemplate(template, options) {
     return bin.childNodes[0];
 }
 
+function constructURLQueryParameters(map) {
+    return Object.keys(map).map(function (key) {
+        var value = map[key];
+        return key + '=' + value;
+    }).join('&');
+}
+
+var urlParameters = constructURLQueryParameters({
+    'tag': 'info/developer-blog',
+    'page-size': 3,
+    'show-fields': 'trailText',
+    'callback': '?'
+});
+var url = 'http://content.guardianapis.com/search?' + urlParameters;
+
 reqwest({
-    // TODO: Construct URL
     // TODO: API key
-    url: 'http://content.guardianapis.com/search' +
-        '?tag=info/developer-blog&page-size=3&show-fields=trailText&callback=?',
+    url: url,
     type: 'jsonp'
 }).then(function (response) {
     console.log(1, response.response.results);
