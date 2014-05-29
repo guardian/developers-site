@@ -2,7 +2,7 @@ import moment from 'moment';
 import reqwest from 'github:ded/reqwest';
 import ejs from 'npm:ejs';
 // FIXME: Must be last. Why?
-import template from './template.ejs!github:systemjs/plugin-text';
+import template from '../enhanced-views/developer-blog-section.ejs!github:systemjs/plugin-text';
 
 function renderTemplate(template, options) {
     var renderedString = ejs.render(template, options);

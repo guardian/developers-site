@@ -21,8 +21,10 @@ gulp.task('copy', function () {
     // SystemJS config
     gulp.src('./src/config.js')
         .pipe(gulp.dest('./target'));
-    gulp.src('./src/js/**')
+    gulp.src('./src/js/**/*.js')
         .pipe(gulp.dest('./target/js'));
+    gulp.src('./src/enhanced-views/**/*.ejs')
+        .pipe(gulp.dest('./target/enhanced-views'));
 });
 
 gulp.task('ejs', function () {
@@ -75,12 +77,11 @@ gulp.task('ejs', function () {
 gulp.task('watch', function () {
     var server = livereload();
     gulp.watch('./src/css/**/*.scss', ['sass']);
-    gulp.watch('./target/css/**').on('change', function (file) {
-        server.changed(file.path);
-    });
-
     gulp.watch('./src/views/**/*.ejs', ['ejs']);
-    gulp.watch('./target/**/*.html').on('change', function (file) {
+    gulp.watch('./src/js/**/*.js', ['copy']);
+    gulp.watch('./src/enhanced-views/**/*.ejs', ['copy']);
+
+    gulp.watch('./target/**').on('change', function (file) {
         server.changed(file.path);
     });
 });
