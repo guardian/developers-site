@@ -5,7 +5,7 @@
             <div class="l-desktop-grid-cell l-grid-cell">
                 <article class="content">
                     <h1 class="h3"><a href="<%= article.webUrl %>"><%= article.webTitle %></a></h1>
-                    <time><%= article.webPublicationDate %></time>
+                    <time><%= formatDate(article.webPublicationDate) %></time>
                     <p><%= article.fields.trailText %></p>
                 </article>
             </div>

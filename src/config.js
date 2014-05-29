@@ -22,7 +22,8 @@ System.config({
     "npm:ieee754@1.1.3": {},
     "npm:base64-js@0.0.4": {},
     "npm:Base64@0.2.1": {},
-    "github:systemjs/plugin-text": "github:systemjs/plugin-text@master"
+    "github:systemjs/plugin-text": "github:systemjs/plugin-text@master",
+    "moment": "github:moment/moment@^2.6.0"
   }
 });
 
@@ -36,7 +37,8 @@ System.config({
     "npm:base64-js": "0.0.4",
     "npm:Base64": "0.2.1",
     "github:systemjs/plugin-json": "master",
-    "github:systemjs/plugin-text": "master"
+    "github:systemjs/plugin-text": "master",
+    "github:moment/moment": "2.6.0"
   }
 });
 

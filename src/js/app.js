@@ -1,3 +1,5 @@
+// FIXME: Can't be last. Why?
+import moment from 'moment';
 import reqwest from 'github:ded/reqwest';
 import ejs from 'npm:ejs';
 import template from './template.ejs!github:systemjs/plugin-text';
@@ -19,7 +21,12 @@ reqwest({
     type: 'jsonp'
 }).then(function (response) {
     console.log(1, response.response.results);
-    var renderedElement = renderTemplate(template, { articles: response.response.results });
+    var renderedElement = renderTemplate(template, {
+        articles: response.response.results,
+        formatDate: function (dateString) {
+            return moment(dateString).format('D MMM YYYY');
+        }
+    });
 
     document.querySelector('#main-content-container').appendChild(renderedElement);
 });

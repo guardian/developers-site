@@ -5,6 +5,7 @@
   "dependencies": {
     "github:ded/reqwest": "^1.1.0",
     "npm:ejs": "^1.0.0",
-    "github:systemjs/plugin-text": "master"
+    "github:systemjs/plugin-text": "master",
+    "moment": "^2.6.0"
   }
 }
