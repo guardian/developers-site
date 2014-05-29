@@ -479,22 +479,19 @@ $x: 650px;
         }
 
         time {
+            @extend .trailing-margin;
             display: block;
-            margin-bottom: 1rem;
             color: hsl(0, 0%, 50%);
         }
     }
 }
 
 .media {
-    overflow: hidden;
+    @extend .trailing-margin;
+    display: flex;
 }
 
 .media__img {
-    float: left;
-    margin-right: 1rem;
-}
-
-.media__body {
-    overflow: hidden;
+    flex-shrink: 0;
+    margin-right: $gutter-width;
 }
