@@ -1,7 +1,7 @@
-// FIXME: Can't be last. Why?
 import moment from 'moment';
 import reqwest from 'github:ded/reqwest';
 import ejs from 'npm:ejs';
+// FIXME: Must be last. Why?
 import template from './template.ejs!github:systemjs/plugin-text';
 
 function renderTemplate(template, options) {
