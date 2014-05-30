@@ -41,5 +41,7 @@ reqwest({
         }
     });
 
-    document.querySelector('#main-content-container').appendChild(renderedElement);
+    var developerBlogSectionDropZone = document.querySelector('.developer-blog-section .drop-zone');
+    developerBlogSectionDropZone.appendChild(renderedElement);
+    developerBlogSectionDropZone.hidden = false;
 });
