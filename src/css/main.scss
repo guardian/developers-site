@@ -509,24 +509,12 @@ img {
     vertical-align: middle;
 }
 
-.links-nav {
-    display: flex;
-
-    @include breakpoint($tablet) {
-        align-self: flex-end;
-        // OR:
-        // text-align: right;
-    }
-
-    > a:not(:first-of-type) {
-        margin-left: 0.5rem;
-    }
-
-}
-
 .header-row {
     @extend .l-grid;
     @extend .l-tablet-grid;
+    @include breakpoint($tablet) {
+        align-items: center;
+    }
 }
 
 // Polyfill for `unset` keyword:
@@ -543,14 +531,15 @@ img {
 .header-column {
     @extend .l-grid-cell;
     @extend .l-tablet-grid-cell;
-    // Align the contents vertically
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 
-    @at-root &--links-nav-parent {
+    @at-root &--links-nav {
         @extend .header-column;
         @include unset(flex-grow);
         @include unset(flex-basis);
+        display: flex;
+
+        > a:not(:first-of-type) {
+            margin-left: 0.5rem;
+        }
     }
 }
