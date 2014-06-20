@@ -290,7 +290,7 @@ img {
     }
 }
 
-nav {
+.main-nav {
     @extend .dotted-top;
     text-transform: lowercase;
     font-size: 18px;
@@ -494,4 +494,63 @@ $x: 650px;
 .media__img {
     flex-shrink: 0;
     margin-right: $gutter-width;
+}
+
+/*h1*/.title {
+    // The `h1` `line-height` effects the height, but as we are displaying an
+    // image, we let this control the dimensions.
+    // Alternatively, we could set `img` `display: block`, but this effects
+    // the click area of the hyperlink which is not what we want.
+    line-height: 0;
+}
+
+// TODO: Is this a sensible default?
+img {
+    vertical-align: middle;
+}
+
+.links-nav {
+    display: flex;
+
+    @include breakpoint($tablet) {
+        align-self: flex-end;
+        // OR:
+        // text-align: right;
+    }
+
+    > a:not(:first-of-type) {
+        margin-left: 0.5rem;
+    }
+
+}
+
+.header-row {
+    @extend .l-grid;
+    @extend .l-tablet-grid;
+}
+
+// Polyfill for `unset` keyword:
+// https://developer.mozilla.org/en-US/docs/Web/CSS/unset
+@mixin unset($property) {
+    @if $property == flex-grow {
+        flex-grow: initial;
+    } @else if $property == flex-basis {
+        flex-basis: initial;
+    }
+}
+
+.header-column--links-nav-parent {
+    @extend .header-column;
+    @include unset(flex-grow);
+    @include unset(flex-basis);
+}
+
+
+.header-column {
+    @extend .l-grid-cell;
+    @extend .l-tablet-grid-cell;
+    // Align the contents vertically
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

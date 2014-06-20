@@ -17,15 +17,25 @@
 <header class="header">
     <div class="header__inner">
         <!-- <h1>The Guardian – Developers</h1> -->
-        <h1>
-            <a href="/">
-                <img src="/images/logo-guardian-developers.svg" alt="The Guardian – Developers" class="block">
-            </a>
-        </h1>
-        <!-- <img src="/images/icon-github.svg" alt="Our GitHub">
-        <img src="/images/icon-rss.svg" alt="Our GitHub">
-        <img src="/images/icon-twitter.svg" alt="Our GitHub"> -->
-        <nav>
+        <div class="header-row">
+            <div class="header-column title-parent">
+                <h1 class="title">
+                    <a href="/">
+                        <img src="/images/logo-guardian-developers.svg"
+                             alt="The Guardian – Developers">
+                    </a>
+                </h1>
+            </div>
+            <div class="header-column--links-nav-parent">
+                <nav class="links-nav">
+                    <h1 class="hidden">Links</h1>
+                    <a href="#"><img src="/images/icon-github.svg" alt="Our GitHub"></a>
+                    <a href="#"><img src="/images/icon-rss.svg" alt="Our GitHub"></a>
+                    <a href="#"><img src="/images/icon-twitter.svg" alt="Our GitHub"></a>
+                </nav>
+            </div>
+        </div>
+        <nav class="main-nav">
             <h1 class="hidden">Navigation</h1>
             <ul class="l-grid l-grid--collapse l-desktop-grid">
                 <% pages.forEach(function (page) { %>
