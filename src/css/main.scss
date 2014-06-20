@@ -539,12 +539,6 @@ img {
     }
 }
 
-.header-column--links-nav-parent {
-    @extend .header-column;
-    @include unset(flex-grow);
-    @include unset(flex-basis);
-}
-
 
 .header-column {
     @extend .l-grid-cell;
@@ -553,4 +547,10 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @at-root &--links-nav-parent {
+        @extend .header-column;
+        @include unset(flex-grow);
+        @include unset(flex-basis);
+    }
 }
