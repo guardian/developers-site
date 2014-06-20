@@ -79,6 +79,7 @@ gulp.task('watch', function () {
     gulp.watch('./src/css/**/*.scss', ['sass']);
     gulp.watch('./src/**/*.ejs', ['ejs']);
     gulp.watch('./src/js/**/*.js', ['copy']);
+    gulp.watch('./src/images/**', ['copy']);
     gulp.watch('./src/enhanced-views/**/*.ejs', ['copy']);
 
     gulp.watch('./target/**').on('change', function (file) {
