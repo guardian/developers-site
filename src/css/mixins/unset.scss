@@ -1,0 +1,12 @@
+// Polyfill for `unset` keyword:
+// https://developer.mozilla.org/en-US/docs/Web/CSS/unset
+// TODO: http://stackoverflow.com/questions/5612302/which-css-styles-are-inherited
+@mixin unset($property) {
+    @if $property == flex-grow {
+        flex-grow: initial;
+    } @else if $property == flex-basis {
+        flex-basis: initial;
+    } @else if $property == border-top {
+        border-top: initial;
+    }
+}
