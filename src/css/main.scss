@@ -1,3 +1,15 @@
+// Polyfill for `unset` keyword:
+// https://developer.mozilla.org/en-US/docs/Web/CSS/unset
+@mixin unset($property) {
+    @if $property == flex-grow {
+        flex-grow: initial;
+    } @else if $property == flex-basis {
+        flex-basis: initial;
+    } @else if $property == border-top {
+        border-top: initial;
+    }
+}
+
 // TODO:
 @import "webfonts";
 $gutter-width: 1.25rem;
@@ -148,7 +160,7 @@ h3 {
 .alt-h3 {
     @extend .h3;
     // Unset (`h3`)
-    border-top: initial;
+    @include unset(border-top);
     font-weight: normal;
     margin-bottom: 0;
 }
