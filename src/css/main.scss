@@ -528,14 +528,21 @@ img {
     @extend .l-grid-cell;
     @extend .l-tablet-grid-cell;
 
-    @at-root &--links-nav {
+    @at-root .header-column--links-nav {
         @extend .header-column;
         @include unset(flex-grow);
         @include unset(flex-basis);
         display: flex;
+    }
+}
 
-        > a:not(:first-of-type) {
-            margin-left: 0.5rem;
+.links-nav {
+    @at-root .links-nav__item {
+        margin-left: 0.5rem;
+
+        // TODO: Brittle? What's the best practice? Use a class instead?
+        &:first-of-type {
+            margin-left: 0;
         }
     }
 }
