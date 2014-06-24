@@ -40,18 +40,6 @@ $blue: hsl(188,89%,44%);
     @include vw-range(width, $p, $min, $max);
 }
 
-// .content {
-//     background: hsl(0,0%, 85%);
-
-//     .content {
-//         background: hsl(0,0%, 75%);
-
-//         .content {
-//             background: hsl(0,0%, 65%);
-//         }
-//     }
-// }
-
 @mixin inset() {
     @include breakpoint($desktop) {
         min-width: $desktop;
