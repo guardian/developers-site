@@ -2,7 +2,7 @@
     <% articles.forEach(function (article) { %>
         <div class="l-desktop-grid-cell l-grid-cell">
             <article>
-                <h1 class="h3"><a href="<%= article.webUrl %>"><%= article.webTitle %></a></h1>
+                <h3><a href="<%= article.webUrl %>"><%= article.webTitle %></a></h3>
                 <time datetime="<%= article.webPublicationDate %>" title="<%= article.webPublicationDate %>"><%= formatDate(article.webPublicationDate) %></time>
                 <p><%- article.fields.trailText %></p>
             </article>
