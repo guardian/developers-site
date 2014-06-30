@@ -43,7 +43,8 @@ h6 {
     // Unset (`h3`)
     @include unset(border-top);
     font-weight: normal;
-    margin-bottom: 0;
+    // Unset (`h3`)
+    @include unset(margin-bottom);
 }
 
 h1 {

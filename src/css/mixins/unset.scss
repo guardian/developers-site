@@ -8,5 +8,7 @@
         flex-basis: initial;
     } @else if $property == border-top {
         border-top: initial;
+    } @else if $property == margin-bottom {
+        margin-bottom: initial;
     }
 }
