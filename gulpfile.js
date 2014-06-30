@@ -33,7 +33,7 @@ gulp.task('ejs', function () {
     var path = require('path');
 
     var basePath = './src';
-    var filenames = ['index.ejs', 'open-source.ejs'].map(function (f) {
+    var filenames = ['index.ejs', 'open-source.ejs', 'events-&-talks.ejs'].map(function (f) {
         return [basePath, f].join('/');
     });
 
