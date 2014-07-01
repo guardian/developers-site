@@ -50,18 +50,27 @@
                         </ul>
                     </section> -->
                     <ul class="l-grid l-desktop-grid l-desktop-grid--1of3 base-list">
-                        <li class="l-desktop-grid-cell">
-                            <img src="/images/content/talks/28-09-2013-css-and-the-critical-path.jpg" alt="Preview">
-                            <h3 class="alt-h3">CSS and the Critical Path</h3>
-                            <span class="speaker"><a href="#">Patrick Hamann</a></span>
-                            <br>
-                            <span class="location">Over the Air, <time>September 2013</time></span>
-                        </li>
+                        <% scope.talks.forEach(function (talk) { %>
+                            <li class="l-desktop-grid-cell">
+                                <a href="<%= talk.link %>" title="<%= {
+                                    'slides': 'View slides',
+                                    'video': 'View video',
+                                    'undefined': 'View'
+                                }[talk.type] %>">
+                                    <img src="/images/content/talks/<%= talk.imageFileBasename %>" alt="<%= talk.title %>">
+                                    <h3 class="alt-h3"><%= talk.title %></h3>
+                                </a>
+                                <span><a href="<%= scope.findAuthorByName(talk.authorName).link %>"><%= talk.authorName %></a></span>
+                                <br>
+                                <span><%= talk.location %></span>,
+                                <time><%= talk.date %></time>
+                            </li>
+                        <% }); %>
+                        <!-- <li class="l-desktop-grid-cell">foo</li>
                         <li class="l-desktop-grid-cell">foo</li>
                         <li class="l-desktop-grid-cell">foo</li>
                         <li class="l-desktop-grid-cell">foo</li>
-                        <li class="l-desktop-grid-cell">foo</li>
-                        <li class="l-desktop-grid-cell">foo</li>
+                        <li class="l-desktop-grid-cell">foo</li> -->
                     </ul>
                 </section>
             </div>

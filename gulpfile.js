@@ -8,6 +8,7 @@ var ejs = require('ejs');
 var fs = require('fs');
 var path = require('path');
 var assign = require('lodash-node/modern/objects/assign');
+var find = require('lodash-node/modern/collections/find');
 
 var basePath = __dirname + '/src';
 
@@ -36,30 +37,7 @@ gulp.task('copy', function () {
 
 
 gulp.task('generate', function () {
-    var pages = [
-        {
-            title: 'Home',
-            fileBasename: 'index.ejs'
-        },
-        {
-            title: 'Open Platform',
-            fileBasename: 'open-platform.ejs'
-        },
-        {
-            title: 'Open Source',
-            fileBasename: 'open-source.ejs'
-        },
-        {
-            title: 'Events & Talks',
-            fileBasename: 'events-&-talks.ejs'
-        },
-        {
-            title: 'Join the Team',
-            fileBasename: 'join-the-team.ejs'
-        }
-    ];
-
-    generatePages(pages);
+    generatePages();
 });
 
 gulp.task('watch', function () {
@@ -77,10 +55,56 @@ gulp.task('watch', function () {
 
 gulp.task('default', ['sass', 'copy', 'generate']);
 
-function generatePages(pages) {
+var pages = [
+    {
+        title: 'Home',
+        fileBasename: 'index.ejs'
+    },
+    {
+        title: 'Open Platform',
+        fileBasename: 'open-platform.ejs'
+    },
+    {
+        title: 'Open Source',
+        fileBasename: 'open-source.ejs'
+    },
+    {
+        title: 'Events & Talks',
+        fileBasename: 'events-&-talks.ejs',
+        // Dates should be in ISO 8601
+        // Recognised types: slides, video
+        talks: [
+            {
+                title: 'CSS and the Critical Path',
+                authorName: 'Patrick Hamann',
+                location: 'Over the Air',
+                date: '2013-09',
+                imageFileBasename: '2013-09-css-and-the-critical-path.jpg',
+                link: 'https://speakerdeck.com/patrickhamann/css-and-the-critical-path',
+                type: 'slides'
+            }
+        ]
+    },
+    {
+        title: 'Join the Team',
+        fileBasename: 'join-the-team.ejs'
+    }
+];
+
+var authors = [
+    {
+        name: 'Patrick Hamann',
+        link: 'https://twitter.com/patrickhamann'
+    }
+];
+
+function generatePages() {
     pages.forEach(function (page) {
         var rootScope = {
-            pages: pages
+            pages: pages,
+            findAuthorByName: function (authorName) {
+                return find(authors, { name: authorName });
+            }
         };
         var pageScope = Object.create(rootScope);
         assign(pageScope, page);
