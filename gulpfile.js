@@ -78,8 +78,8 @@ var pages = [
                 title: 'CSS and the Critical Path',
                 authorName: 'Patrick Hamann',
                 location: 'Over the Air',
-                date: '2013-09',
-                imageFileBasename: '2013-09-css-and-the-critical-path.jpg',
+                date: '2013-09-27',
+                imageFileBasename: '2013-09-27-css-and-the-critical-path.jpg',
                 link: 'https://speakerdeck.com/patrickhamann/css-and-the-critical-path',
                 type: 'slides'
             }
