@@ -412,3 +412,17 @@ img {
         }
     }
 }
+
+.talk__image-container {
+    position: relative;
+    padding-bottom: $trailing-margin-height;
+}
+
+.talk__author-gravatar {
+    // TODO: Vendor prefix
+    border-radius: 100%;
+    // Positioned relative to `.talk__image-container`
+    position: absolute;
+    bottom: 0;
+    right: $gutter-width;
+}
