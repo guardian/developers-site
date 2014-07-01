@@ -4,6 +4,13 @@ var watch = require('gulp-watch');
 var plumber = require('gulp-plumber');
 var livereload = require('gulp-livereload');
 
+var ejs = require('ejs');
+var fs = require('fs');
+var path = require('path');
+var assign = require('lodash-node/modern/objects/assign');
+
+var basePath = __dirname + '/src';
+
 gulp.task('sass', function () {
     gulp.src('./src/css/main.scss')
         .pipe(sass())
@@ -27,13 +34,8 @@ gulp.task('copy', function () {
         .pipe(gulp.dest('./target/enhanced-views'));
 });
 
-gulp.task('ejs', function () {
-    var ejs = require('ejs');
-    var fs = require('fs');
-    var path = require('path');
 
-    var basePath = __dirname + '/src';
-
+gulp.task('generate', function () {
     var pages = [
         {
             title: 'Home',
@@ -57,14 +59,31 @@ gulp.task('ejs', function () {
         }
     ];
 
+    generatePages(pages);
+});
 
+gulp.task('watch', function () {
+    var server = livereload();
+    gulp.watch('./src/css/**/*.scss', ['sass']);
+    gulp.watch('./src/**/*.ejs', ['generate']);
+    gulp.watch('./src/js/**/*.js', ['copy']);
+    gulp.watch('./src/images/**', ['copy']);
+    gulp.watch('./src/enhanced-views/**/*.ejs', ['copy']);
+
+    gulp.watch('./target/**').on('change', function (file) {
+        server.changed(file.path);
+    });
+});
+
+gulp.task('default', ['sass', 'copy', 'generate']);
+
+function generatePages(pages) {
     pages.forEach(function (page) {
         var rootScope = {
             pages: pages,
             page: page
         };
         var pageScope = Object.create(rootScope);
-        var assign = require('lodash-node/modern/objects/assign');
         assign(pageScope, page.scope);
         var filename = path.join(basePath, page.fileBasename);
         var file = fs.readFileSync(filename, { encoding: 'utf8' });
@@ -77,19 +96,4 @@ gulp.task('ejs', function () {
         fs.writeFileSync('./target/' + page.fileBasename.replace(/\.ejs$/, '.html'),
             output, { encoding: 'utf8' });
     });
-});
-
-gulp.task('watch', function () {
-    var server = livereload();
-    gulp.watch('./src/css/**/*.scss', ['sass']);
-    gulp.watch('./src/**/*.ejs', ['ejs']);
-    gulp.watch('./src/js/**/*.js', ['copy']);
-    gulp.watch('./src/images/**', ['copy']);
-    gulp.watch('./src/enhanced-views/**/*.ejs', ['copy']);
-
-    gulp.watch('./target/**').on('change', function (file) {
-        server.changed(file.path);
-    });
-});
-
-gulp.task('default', ['sass', 'copy', 'ejs']);
+}
