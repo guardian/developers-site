@@ -80,11 +80,10 @@ gulp.task('default', ['sass', 'copy', 'generate']);
 function generatePages(pages) {
     pages.forEach(function (page) {
         var rootScope = {
-            pages: pages,
-            page: page
+            pages: pages
         };
         var pageScope = Object.create(rootScope);
-        assign(pageScope, page.scope);
+        assign(pageScope, page);
         var filename = path.join(basePath, page.fileBasename);
         var file = fs.readFileSync(filename, { encoding: 'utf8' });
         var output = ejs.render(file, {

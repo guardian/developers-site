@@ -34,10 +34,10 @@
         <nav class="main-nav">
             <h1 class="hidden">Navigation</h1>
             <ul class="l-grid l-grid--collapse l-desktop-grid">
-                <% scope.pages.forEach(function (p) { %>
+                <% scope.pages.forEach(function (page) { %>
                     <li class="l-desktop-grid-cell l-grid-cell">
-                        <a href="<%= p.fileBasename %>"
-                           <% if (p.fileBasename === scope.page.fileBasename) { %> class="active" <% } %>><%= p.title %></a>
+                        <a href="<%= page.fileBasename %>"
+                           <% if (page.fileBasename === scope.fileBasename) { %> class="active" <% } %>><%= page.title %></a>
                    </li>
                 <% }); %>
             </ul>
