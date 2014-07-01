@@ -104,6 +104,10 @@ function generatePages() {
             pages: pages,
             findAuthorByName: function (authorName) {
                 return find(authors, { name: authorName });
+            },
+            momentFilter: function (dateString, formatString) {
+                var moment = require('moment');
+                return moment(dateString).format(formatString);
             }
         };
         var pageScope = Object.create(rootScope);

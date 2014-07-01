@@ -63,7 +63,7 @@
                                 <span><a href="<%= scope.findAuthorByName(talk.authorName).link %>"><%= talk.authorName %></a></span>
                                 <br>
                                 <span><%= talk.location %></span>,
-                                <time><%= talk.date %></time>
+                                <time><%= scope.momentFilter(talk.date, 'MMMM YYYY') %></time>
                             </li>
                         <% }); %>
                         <!-- <li class="l-desktop-grid-cell">foo</li>
