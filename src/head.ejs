@@ -36,7 +36,7 @@
             <ul class="l-grid l-grid--collapse l-desktop-grid">
                 <% scope.pages.forEach(function (page) { %>
                     <li class="l-desktop-grid-cell l-grid-cell">
-                        <a href="<%= page.fileBasename %>"
+                        <a href="<%= page.fileBasename.replace(/\.ejs$/, '.html') %>"
                            <% if (page.fileBasename === scope.fileBasename) { %> class="active" <% } %>><%= page.title %></a>
                    </li>
                 <% }); %>
