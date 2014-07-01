@@ -8,16 +8,14 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
+    "ejs": "^1.0.0",
     "gulp": "^3.6.2",
+    "gulp-livereload": "^1.5.0",
+    "gulp-plumber": "^0.6.1",
     "gulp-ruby-sass": "^0.5.0",
     "gulp-watch": "^0.6.4",
-    "gulp-plumber": "^0.6.1",
-    "gulp-livereload": "^1.5.0"
-  },
-  "dependencies": {
-    "ejs": "^1.0.0"
-    "lodash-node": "^2.4.1"
+    "lodash-node": "^2.4.1",
     "moment": "^2.7.0"
   }
 }
