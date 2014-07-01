@@ -32,44 +32,43 @@ gulp.task('ejs', function () {
     var fs = require('fs');
     var path = require('path');
 
-    var basePath = './src';
-    var filenames = ['index.ejs', 'open-source.ejs', 'events-&-talks.ejs'].map(function (f) {
-        return [basePath, f].join('/');
-    });
+    var basePath = __dirname + '/src';
 
     var pages = [
         {
             title: 'Home',
-            filename: 'index.html'
+            fileBasename: 'index.ejs'
         },
         {
             title: 'Open Platform',
-            filename: 'open-platform.html'
+            fileBasename: 'open-platform.ejs'
         },
         {
             title: 'Open Source',
-            filename: 'open-source.html'
+            fileBasename: 'open-source.ejs'
         },
         {
             title: 'Events & Talks',
-            filename: 'events-&-talks.html'
+            fileBasename: 'events-&-talks.ejs'
         },
         {
             title: 'Join the Team',
-            filename: 'join-the-team.html'
+            fileBasename: 'join-the-team.ejs'
         }
     ];
 
-    filenames.forEach(function (filename) {
+
+    pages.forEach(function (page) {
+        var filename = path.join(basePath, page.fileBasename);
         var file = fs.readFileSync(filename, { encoding: 'utf8' });
-        var fileBasename = path.basename(filename);
         var output = ejs.render(file, {
+            // Needed by EJS
             filename: filename,
-            fileBasename: fileBasename,
-            pages: pages
+            pages: pages,
+            page: page
         });
 
-        fs.writeFileSync('./target/' + fileBasename.replace(/\.ejs$/, '.html'),
+        fs.writeFileSync('./target/' + page.fileBasename.replace(/\.ejs$/, '.html'),
             output, { encoding: 'utf8' });
     });
 });
