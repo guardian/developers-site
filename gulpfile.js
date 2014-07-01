@@ -91,10 +91,16 @@ var pages = [
     }
 ];
 
+function createMd5Hash(emailAddress) {
+    var crypto = require('crypto');
+    return crypto.createHash('md5').update(emailAddress).digest('hex');
+}
+
 var authors = [
     {
         name: 'Patrick Hamann',
-        link: 'https://twitter.com/patrickhamann'
+        link: 'https://twitter.com/patrickhamann',
+        emailAddress: 'patrick.hamann@guardian.co.uk'
     }
 ];
 
@@ -108,6 +114,9 @@ function generatePages() {
             momentFilter: function (dateString, formatString) {
                 var moment = require('moment');
                 return moment(dateString).format(formatString);
+            },
+            getGravatarUrl: function (emailAddress) {
+                return 'http://www.gravatar.com/avatar/' + createMd5Hash(emailAddress);
             }
         };
         var pageScope = Object.create(rootScope);
