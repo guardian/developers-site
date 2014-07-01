@@ -59,13 +59,19 @@ gulp.task('ejs', function () {
 
 
     pages.forEach(function (page) {
+        var rootScope = {
+            pages: pages,
+            page: page
+        };
+        var pageScope = Object.create(rootScope);
+        var assign = require('lodash-node/modern/objects/assign');
+        assign(pageScope, page.scope);
         var filename = path.join(basePath, page.fileBasename);
         var file = fs.readFileSync(filename, { encoding: 'utf8' });
         var output = ejs.render(file, {
             // Needed by EJS
             filename: filename,
-            pages: pages,
-            page: page
+            scope: pageScope
         });
 
         fs.writeFileSync('./target/' + page.fileBasename.replace(/\.ejs$/, '.html'),
