@@ -51,7 +51,7 @@
                     </section> -->
                     <ul class="l-grid l-desktop-grid l-desktop-grid--1of3 base-list">
                         <% scope.talks.forEach(function (talk) {
-                            var author = scope.findAuthorByName(talk.authorName) %>
+                            var author = scope.findAuthorByName(talk.authorName); %>
                             <li class="l-desktop-grid-cell">
                                 <a href="<%= talk.link %>" title="<%= {
                                     'slides': 'View slides',
