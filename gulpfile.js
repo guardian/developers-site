@@ -14,7 +14,9 @@ var basePath = __dirname + '/src';
 
 gulp.task('sass', function () {
     gulp.src('./src/css/main.scss')
-        .pipe(sass())
+        .pipe(sass({
+            sourcemap: true
+        }))
         .pipe(gulp.dest('./target/css'));
 });
 
