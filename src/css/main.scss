@@ -9,48 +9,10 @@ $desktop: 900px;
 
 @import "mixins/breakpoint";
 @import "mixins/unset";
+@import "mixins/other";
 
 $grey: hsl(0,0%,28%);
 $blue: hsl(188,89%,44%);
-
-@function hundred-percent-from($value, $percent) {
-    @return $value / ($percent / 100);
-}
-
-@function percent-of($value, $percent) {
-    @return $value * ($percent / 100);
-}
-
-@mixin vw-range($property, $percent, $min, $max) {
-    // Min
-    #{$property}: $min;
-
-    @include breakpoint($min/$percent * 100) {
-        #{$property}: #{$percent}vw;
-    }
-
-    @include breakpoint($max/$percent * 100) {
-        #{$property}: $max;
-    }
-}
-
-@mixin font-size($p, $min, $max) {
-    @include vw-range(font-size, $p, $min, $max);
-}
-
-@mixin width($p, $min, $max) {
-    @include vw-range(width, $p, $min, $max);
-}
-
-@mixin inset() {
-    @include breakpoint($desktop) {
-        min-width: $desktop;
-        width: 95vw;
-        max-width: 1110px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
 
 // TODO: Do we want to do this for everything?
 * {
@@ -217,16 +179,6 @@ img {
 
 .video {
     position: relative;
-}
-
-@mixin fix-aspect-ratio($width, $height, $startingWidth: 100%) {
-    // To get this working, position the child element
-    // to 'absolute' in the top left corner
-    $height: ($height / $width) * $startingWidth;
-    width: $startingWidth;
-    padding-bottom: $height;
-    position: relative;
-    overflow: hidden;
 }
 
 .video__placeholder {
