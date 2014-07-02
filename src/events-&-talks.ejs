@@ -47,7 +47,7 @@
                             <li></li>
                         </ul>
                     </section> -->
-                    <ul class="l-grid l-desktop-grid l-desktop-grid--1of3 base-list">
+                    <ul class="l-grid l-tablet-grid l-tablet-grid--1of2 l-desktop-grid l-desktop-grid--1of3 base-list">
                         <% scope.talks.forEach(function (talk) {
                             var author = scope.findAuthorByName(talk.authorName);
                             var talkLinkTitle = {
@@ -55,7 +55,7 @@
                                 'video': 'View video',
                                 'undefined': 'View'
                             }[talk.type]; %>
-                            <li class="l-desktop-grid-cell">
+                            <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">
                                 <div class="talk__image-container">
                                     <a href="<%= talk.link %>" title="<%= talkLinkTitle %>">
                                         <img src="/images/content/talks/<%= talk.imageFileBasename %>" alt="<%= talk.title %>">
@@ -73,11 +73,11 @@
                                 <time><%= scope.momentFilter(talk.date, 'MMMM YYYY') %></time>
                             </li>
                         <% }); %>
-                        <!-- <li class="l-desktop-grid-cell">foo</li>
-                        <li class="l-desktop-grid-cell">foo</li>
-                        <li class="l-desktop-grid-cell">foo</li>
-                        <li class="l-desktop-grid-cell">foo</li>
-                        <li class="l-desktop-grid-cell">foo</li> -->
+                        <!-- <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">foo</li>
+                        <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">foo</li>
+                        <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">foo</li>
+                        <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">foo</li>
+                        <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">foo</li> -->
                     </ul>
                 </section>
             </div>
