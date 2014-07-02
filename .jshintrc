@@ -1,0 +1,8 @@
+{
+    "node": true,
+    "esnext": true,
+    "quotmark": "single",
+    "undef": true, // Prohibits the use of explicitly undeclared variables
+    "unused": true
+}
+
