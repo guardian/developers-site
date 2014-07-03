@@ -73,8 +73,6 @@ var pages = [
     {
         title: 'Events & Talks',
         fileBasename: 'events-&-talks.ejs',
-        // Dates should be in ISO 8601
-        // Recognised types: slides, video, article
         talks: talks
     },
     {
