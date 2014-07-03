@@ -1,75 +1,33 @@
 // TODO:
-@import "headings";
-@import "webfonts";
 $gutter-width: 1.25rem;
 $trailing-margin-height: 1.2rem;
-$tablet: 590px;
-$desktop: 900px;
-@import "grid";
+
+@import "vars/colors";
+@import "vars/breakpoints";
 
 @import "mixins/breakpoint";
+@import "mixins/grid";
 @import "mixins/unset";
 @import "mixins/other";
 
-$grey: hsl(0,0%,28%);
-$blue: hsl(188,89%,44%);
+@import "grid";
+@import "headings";
+@import "typography";
+@import "webfonts";
 
-// TODO: Do we want to do this for everything?
+@import "components/main-image";
+
+
 * {
+    // http://caniuse.com/#feat=css3-boxsizing
     box-sizing: border-box;
 }
+
+// "Objects"
 
 .base-list {
     list-style: none;
     padding-left: 0;
-}
-
-.hidden {
-    display: none
-}
-
-.inset {
-    @include inset();
-}
-
-body {
-    // Unset
-    margin: 0;
-    font-family: "EgyptianText", serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    color: hsl(0, 0%, 13%);
-    line-height: 1.5;
-}
-
-// TODO: Mimic NGW
-a {
-    color: darken($blue, 18%);
-
-    &:hover {
-        text-decoration: underline;
-    }
-}
-
-.dotted-top {
-    border-top: 1px dotted $blue;
-}
-
-.dotted-top--white {
-    border-top-color: white;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul {
-    @extend .trailing-margin;
-    // Unset
-    margin-top: 0;
 }
 
 .trailing-margin {
@@ -78,6 +36,31 @@ ul {
     &:last-child {
         margin-bottom: 0;
     }
+}
+
+// HTML helpers
+
+.hidden {
+    display: none;
+}
+
+.inset {
+    @include inset();
+}
+
+// Base
+
+body {
+    // Unset
+    margin: 0;
+}
+
+.dotted-top {
+    border-top: 1px dotted $blue;
+}
+
+.dotted-top--white {
+    border-top-color: white;
 }
 
 .sans-serif {
@@ -134,7 +117,7 @@ img {
 .main-nav {
     @extend .dotted-top;
     text-transform: lowercase;
-    font-size: 18px;
+    font-size: 1.2rem;
 
     & > ul {
         @extend .base-list;
@@ -186,64 +169,16 @@ img {
     top: 0;
 }
 
-$x: 650px;
+// Object
+.page-banner {
+    @include font-size(2, 1.2rem, 1.5rem);
 
-.main-image-container {
-    @extend .trailing-margin;
-
-    @include breakpoint($x) {
-        position: relative;
-        padding-bottom: $trailing-margin-height;
+    .h1 {
+        font-size: 2.2em;
     }
 }
 
-.main-image {
-    // TODO: Polyfill for FF, IE11, Safari
-    object-fit: cover;
-    height: 50vmin;
-    min-height: 40vmax;
-    @include breakpoint($desktop) {
-        min-height: 30vmax;
-    }
-    // Reset – by default the aspect ratio is maintained
-    width: 100%;
-
-    @include breakpoint($desktop) {
-        // Reset
-        height: 60vmin;
-    }
-}
-
-.main-image-overlay {
-    @include breakpoint($x) {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-    }
-}
-
-.main-image-overlay-inner {
-    // TODO: Inherit minimum font size
-    $min-heading-font-size: 2.25rem;
-    $max-heading-font-size: 3.25rem;
-    $heading-vw-width: 4;
-
-    $vw-width: 54;
-    $min-width: percent-of(hundred-percent-from($min-heading-font-size, $heading-vw-width), $vw-width);
-    $max-width: percent-of(hundred-percent-from($max-heading-font-size, $heading-vw-width), $vw-width);
-    @include breakpoint($x) {
-        @include width($vw-width, $min-width, $max-width);
-    }
-
-    h2 {
-        @include font-size($heading-vw-width, $min-heading-font-size, $max-heading-font-size);
-    }
-
-    p {
-        @include font-size(2, 1rem, 1.3rem);
-    }
-}
-
+// TODO:
 .foo {
     $x: 50;
     $y: hundred-percent-from(2rem, 4);
@@ -257,13 +192,9 @@ $x: 650px;
     }
 }
 
-.large-text {
-    font-size: 1.5rem;
-}
-
 .page-intro {
+    @extend .page-banner;
     @extend .header__inner;
-    @extend .large-text;
     // Hack: make this look like it's part of the header
     // Could this be done better?
     padding-top: 0;
@@ -303,6 +234,10 @@ $x: 650px;
     }
 }
 
+.u-normal-weight-text {
+    font-weight: 400;
+}
+
 .media {
     @extend .trailing-margin;
     display: flex;
@@ -312,6 +247,8 @@ $x: 650px;
     flex-shrink: 0;
     margin-right: $gutter-width;
 }
+
+.media__body {}
 
 /*h1*/.title {
     // The `h1` `line-height` effects the height, but as we are displaying an
@@ -326,6 +263,7 @@ img {
     vertical-align: middle;
 }
 
+// TODO: BEMify?
 .header-row {
     @extend .l-grid;
     @extend .l-tablet-grid;

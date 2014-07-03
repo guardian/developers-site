@@ -10,12 +10,14 @@
     // Min
     #{$property}: $min;
 
-    @include breakpoint($min/$percent * 100) {
+    // Middle range
+    @include breakpoint(($min / $percent) * 100) {
         // TODO: Why different?
         #{$property}: #{$percent}vw;
     }
 
-    @include breakpoint($max/$percent * 100) {
+    // Max
+    @include breakpoint(($max / $percent) * 100) {
         #{$property}: $max;
     }
 }
