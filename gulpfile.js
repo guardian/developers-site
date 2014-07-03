@@ -141,10 +141,6 @@ var pages = [
         fileBasename: 'index.ejs'
     },
     {
-        title: 'Open Platform',
-        fileBasename: 'open-platform.ejs'
-    },
-    {
         title: 'Open Source',
         fileBasename: 'open-source.ejs'
     },
