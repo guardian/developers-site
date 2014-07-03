@@ -31,21 +31,6 @@
             <div class="island">
                 <section class="dotted-top">
                     <h2>Recents talks by the Guardian</h2>
-                    <!-- <section class="trailing-margin">
-                        <h3>Videos</h3>
-                        <ul class="base-list">
-                            <li><iframe width="560" height="315" src="//www.youtube.com/embed/-W0FBNbMLs0" frameborder="0" allowfullscreen></iframe></li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Blogs</h3>
-                        <p>foo</p>
-                        <ul>
-                            <li>http://bytes.inso.cc/2014/05/09/reactive-programming-in-javascript-funjs-london/</li>
-                            <li>http://bytes.inso.cc/2014/05/09/the-symbiotic-web-frontend-london-nov-2013/</li>
-                            <li></li>
-                        </ul>
-                    </section> -->
                     <ul class="l-grid l-tablet-grid l-tablet-grid--1of2 l-desktop-grid l-desktop-grid--1of3 base-list">
                         <% scope.talks.forEach(function (talk) {
                             var author = scope.findAuthorByName(talk.authorName);
@@ -75,11 +60,6 @@
                                 <time><%= scope.momentFilter(talk.date, 'MMMM YYYY') %></time>
                             </li>
                         <% }); %>
-                        <!-- <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">foo</li>
-                        <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">foo</li>
-                        <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">foo</li>
-                        <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">foo</li>
-                        <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">foo</li> -->
                     </ul>
                 </section>
             </div>
