@@ -1,14 +1,17 @@
 [
     {
         "title": "Senior Software Developer",
+        "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00006Q",
         "description": "<p>Senior developers need to provide leadership, support and guidance to junior developers in their team while supporting and working effectively to deliver the technical vision of the lead developer. They show initiative, curiosity, and think in terms of potential solutions, not problems. They help others to develop their own ideas and solutions and are humble in their expertise.</p>"
     },
     {
         "title": "Software Developer",
+        "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002J",
         "description": "<p>We are seeking excellent and passionate Software Developers to work on projects across the business including the core, largely Java, guardian.co.uk website, which serves up to 1200 pages per second with close to 100% uptime and the Scala based Open Platform which makes our content available to many other partners and applications. We have many projects in progress simultaneously and currently we are using many innovative technologies such as Scala, MongoDB, Lift, Python, Amazon Web Services and Google AppEngine.</p>"
     },
     {
         "title": "Client-side Developer",
+        "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002D",
         "description": "<p>You’ll be an expert with CSS3 and modern JavaScript, comfortable writing OOCSS and using technologies such as AMD and CommonJS, and thinking and working in a responsive, progressively-enhanced manner. We’re looking for creative Client-side Developers with good knowledge of scalability and performance. Knowledge of HTML5 and CSS3 is a must, and an eye for design and/or UX would be a bonus. Knowledge and experience of automated or multi-platform testing is desirable, too.</p>"
     }
 ]
