@@ -2,33 +2,33 @@
 <head>
     <title><%= scope.title !== 'Home' ? scope.title + ' – ' : '' %>The Guardian – Developers</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="./css/main.css">
     <meta name="viewport" content="width=device-width">
 
     <!-- TODO: Concatenate -->
-    <script src="/jspm_packages/traceur-runtime@0.0.49.js"></script>
-    <script src="/jspm_packages/es6-module-loader@0.7.1.js"></script>
-    <script src="/jspm_packages/system@0.6.js"></script>
-    <script src="/config.js"></script>
+    <script src="./jspm_packages/traceur-runtime@0.0.49.js"></script>
+    <script src="./jspm_packages/es6-module-loader@0.7.1.js"></script>
+    <script src="./jspm_packages/system@0.6.js"></script>
+    <script src="./config.js"></script>
     <script>
+        /* global System */
         System.import('js/app');
     </script>
 </head>
 <header class="header">
     <div class="header__inner">
-        <!-- <h1>The Guardian – Developers</h1> -->
         <div class="header-row">
             <h1 class="title header-column">
-                <a href="/">
-                    <img src="/images/logo-guardian-developers.svg"
+                <a href="./">
+                    <img src="./images/logo-guardian-developers.svg"
                          alt="The Guardian – Developers">
                 </a>
             </h1>
             <nav class="links-nav header-column--links-nav">
                 <h1 class="hidden">Links</h1>
-                <a class="links-nav__item" href="#"><img src="/images/icon-github.svg" alt="Our GitHub"></a>
-                <a class="links-nav__item" href="#"><img src="/images/icon-rss.svg" alt="Our GitHub"></a>
-                <a class="links-nav__item" href="#"><img src="/images/icon-twitter.svg" alt="Our GitHub"></a>
+                <a class="links-nav__item" href="#"><img src="./images/icon-github.svg" alt="Our GitHub"></a>
+                <a class="links-nav__item" href="#"><img src="./images/icon-rss.svg" alt="Our GitHub"></a>
+                <a class="links-nav__item" href="#"><img src="./images/icon-twitter.svg" alt="Our GitHub"></a>
             </nav>
         </div>
         <nav class="main-nav">
