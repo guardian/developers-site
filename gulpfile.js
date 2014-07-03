@@ -74,7 +74,7 @@ var pages = [
         title: 'Events & Talks',
         fileBasename: 'events-&-talks.ejs',
         // Dates should be in ISO 8601
-        // Recognised types: slides, video
+        // Recognised types: slides, video, article
         talks: [
             {
                 title: 'CSS and the Critical Path',
@@ -84,6 +84,33 @@ var pages = [
                 imageFileBasename: '2013-09-27-css-and-the-critical-path.jpg',
                 link: 'https://speakerdeck.com/patrickhamann/css-and-the-critical-path',
                 type: 'slides'
+            },
+            {
+                title: 'Why APIs are Essential in Web Development',
+                authorName: 'Jenny Sivapalan',
+                location: 'Kings Place, London',
+                date: '2013-09-11',
+                imageFileBasename: '2013-09-11-why-apis-are-essential-in-web-development.jpg',
+                link: 'https://www.youtube.com/watch?v=JFG9I1tKNDk',
+                type: 'video'
+            },
+            {
+                title: 'Democratising Attention Data at guardian.co.uk',
+                authorName: 'Graham Tackley',
+                location: 'Aarhus International Software Development Conference',
+                date: '2013-10-01',
+                imageFileBasename: '2013-10-01-democratising-attention-data-at-guardian-co-uk.jpg',
+                link: 'http://gotocon.com/dl/goto-aar-2013/slides/GrahamTackley_DemocratisingAttentionDataAtGuardianCoUk.pdf',
+                type: 'slides'
+            },
+            {
+                title: 'Responsive Design at the Guardian',
+                authorName: 'Matt Andrews',
+                location: 'IET Austin Court, Birmingham',
+                date: '2013-10-10',
+                imageFileBasename: '2013-10-10-responsive-design-at-the-guardian.png',
+                link: 'http://mattandrews.info/talks/canvasconf-2013/',
+                type: 'article'
             }
         ]
     },
@@ -98,11 +125,27 @@ function createMd5Hash(emailAddress) {
     return crypto.createHash('md5').update(emailAddress).digest('hex');
 }
 
+// TODO: Generate Guardian email address from name
 var authors = [
     {
         name: 'Patrick Hamann',
         link: 'https://twitter.com/patrickhamann',
         emailAddress: 'patrick.hamann@guardian.co.uk'
+    },
+    {
+        name: 'Jenny Sivapalan',
+        link: 'https://twitter.com/jenny_sivapalan',
+        emailAddress: 'jenny.sivapalan@guardian.co.uk'
+    },
+    {
+        name: 'Graham Tackley',
+        link: 'https://twitter.com/tackers',
+        emailAddress: 'graham.tackley@guardian.co.uk'
+    },
+    {
+        name: 'Matt Andrews',
+        link: 'https://twitter.com/mattpointblank',
+        emailAddress: 'matt.andrews@guardian.co.uk'
     }
 ];
 

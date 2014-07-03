@@ -53,15 +53,18 @@
                             var talkLinkTitle = {
                                 'slides': 'View slides',
                                 'video': 'View video',
+                                'article': 'Read article',
                                 'undefined': 'View'
                             }[talk.type]; %>
                             <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">
                                 <div class="talk__image-container">
                                     <a href="<%= talk.link %>" title="<%= talkLinkTitle %>">
-                                        <img src="/images/content/talks/<%= talk.imageFileBasename %>" alt="<%= talk.title %>">
+                                        <img src="/images/content/talks/<%= talk.imageFileBasename %>"
+                                             alt="<%= talk.title %>"
+                                             class="talk__image-container__image">
                                     </a>
                                     <a href="<%= author.link %>">
-                                        <img src="<%= scope.getGravatarUrl(author.emailAddress) %>" alt="<%= author.name %>" class="talk__author-gravatar">
+                                        <img src="<%= scope.getGravatarUrl(author.emailAddress) %>" alt="<%= author.name %>" class="talk__image-container__author-gravatar">
                                     </a>
                                 </div>
                                 <a href="<%= talk.link %>" title="<%= talkLinkTitle %>">
