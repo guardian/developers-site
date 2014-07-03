@@ -1,0 +1,1 @@
+{"version":3,"file":"isBuffer.js","sources":["isBuffer.src.js"],"names":["module","exports","e","copy","fill","readUInt8"],"mappings":"AAAA,YACAA,QAAOC,QAAQ,SAASC,GAAG,MAAOA,IAAG,gBAAiBA,IAAG,kBAAmBA,GAAEC,MAAM,kBAAmBD,GAAEE,MAAM,kBAAmBF,GAAEG"}

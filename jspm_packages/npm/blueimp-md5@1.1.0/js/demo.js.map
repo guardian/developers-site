@@ -1,0 +1,1 @@
+{"version":3,"file":"demo.js","sources":["demo.src.js"],"names":["$","on","event","preventDefault","val","window","md5"],"mappings":"AAAA,YAcAA,GAAE,WACE,YAEAA,GAAE,cAAcC,GAAG,QAAS,SAAUC,GAClCA,EAAMC,iBACNH,EAAE,WAAWI,IAAIC,OAAOC,IAAIN,EAAE,UAAUI,UAE5CJ,EAAE,UAAUI,IAAI"}

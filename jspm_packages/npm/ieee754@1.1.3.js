@@ -1,0 +1,1 @@
+export * from "npm:ieee754@1.1.3/index";

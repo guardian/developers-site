@@ -1,0 +1,3 @@
+"format cjs";
+// Copyright Joyent, Inc. and other Node contributors.
+"use strict";var stringifyPrimitive=function(t){switch(typeof t){case"string":return t;case"boolean":return t?"true":"false";case"number":return isFinite(t)?t:"";default:return""}};module.exports=function(t,e,r,n){return e=e||"&",r=r||"=",null===t&&(t=void 0),"object"==typeof t?Object.keys(t).map(function(n){var o=encodeURIComponent(stringifyPrimitive(n))+r;return Array.isArray(t[n])?t[n].map(function(t){return o+encodeURIComponent(stringifyPrimitive(t))}).join(e):o+encodeURIComponent(stringifyPrimitive(t[n]))}).join(e):n?encodeURIComponent(stringifyPrimitive(n))+r+encodeURIComponent(stringifyPrimitive(t)):""};

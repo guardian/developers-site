@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<head>
+    <title>The Guardian – Developers</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/main.css">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- TODO: Concatenate -->
+    <script src="./jspm_packages/traceur-runtime@0.0.49.js"></script>
+    <script src="./jspm_packages/es6-module-loader@0.7.1.js"></script>
+    <script src="./jspm_packages/system@0.6.js"></script>
+    <script src="./config.js"></script>
+    <script>
+        /* global System */
+        System.import('js/app');
+    </script>
+</head>
+<header class="header">
+    <div class="header__inner">
+        <div class="header-row">
+            <h1 class="title header-column">
+                <a href="./">
+                    <img src="./images/logo-guardian-developers.svg"
+                         alt="The Guardian – Developers">
+                </a>
+            </h1>
+            <nav class="links-nav header-column--links-nav">
+                <h1 class="hidden">Links</h1>
+                <a class="links-nav__item" href="#"><img src="./images/icon-github.svg" alt="Our GitHub"></a>
+                <a class="links-nav__item" href="#"><img src="./images/icon-rss.svg" alt="Our GitHub"></a>
+                <a class="links-nav__item" href="#"><img src="./images/icon-twitter.svg" alt="Our GitHub"></a>
+            </nav>
+        </div>
+        <nav class="main-nav">
+            <h1 class="hidden">Navigation</h1>
+            <ul class="l-grid l-grid--collapse l-desktop-grid">
+                
+                    <li class="l-desktop-grid-cell l-grid-cell">
+                        <a href="index.html"
+                            class="active" >Home</a>
+                   </li>
+                
+                    <li class="l-desktop-grid-cell l-grid-cell">
+                        <a href="open-platform.html"
+                           >Open Platform</a>
+                   </li>
+                
+                    <li class="l-desktop-grid-cell l-grid-cell">
+                        <a href="open-source.html"
+                           >Open Source</a>
+                   </li>
+                
+                    <li class="l-desktop-grid-cell l-grid-cell">
+                        <a href="events-&amp;-talks.html"
+                           >Events &amp; Talks</a>
+                   </li>
+                
+                    <li class="l-desktop-grid-cell l-grid-cell">
+                        <a href="join-the-team.html"
+                           >Join the Team</a>
+                   </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="trailing-margin">
+    <section>
+        <h1 class="hidden">Home</h1>
+        <div class="main-image-container">
+            <div class="main-image-overlay">
+                <div class="inset">
+                    <section class="blue-widget island main-image-overlay-inner">
+                        <h2 class="h1">We’re shaping the future of digital journalism. Join us.</h2>
+                        <p class="dotted-top dotted-top--white">The innovation and energy of a start-up combined with the Guardian’s ground breaking journalism.</p>
+                        <p><a href="#" class="cta-link">Join our team</a></p>
+                    </section>
+                </div>
+            </div>
+            <img class="main-image" src="./images/IMG_5509.jpg" alt="Developers at the Guardian Hack Day">
+        </div>
+        <div class="inset">
+            <div class="island">
+                <div class="l-grid l-desktop-grid l-desktop-grid--flex-cells">
+                    <div class="l-desktop-grid-cell l-grid-cell l-desktop-2of3">
+                        <section>
+                            <h2 class="foo">We build in pursuit of a cause that&nbsp;is greater than ourselves.</h2>
+                            <div class="l-grid l-tablet-grid l-tablet-grid--1of2">
+                                <div class="l-tablet-grid-cell l-grid-cell">
+                                    <section>
+                                        <h3>Empowering journalists</h3>
+                                        <p>We build products that make it easier for journalists to publish informative and delightful stories.</p>
+                                    </section>
+                                </div>
+                                <div class="l-tablet-grid-cell l-grid-cell">
+                                    <section>
+                                        <h3>Coding in the open</h3>
+                                        <p>We do all our coding in public. Sadly, the same can be said of our karaoke.</p>
+                                    </section>
+                                </div>
+                                <div class="l-tablet-grid-cell l-grid-cell">
+                                    <section>
+                                        <h3>Moving fast</h3>
+                                        <p>We spend our energy on the right things, shipping code and then rapidly iterating on it. Move fast, break news.</p>
+                                    </section>
+                                </div>
+                                <div class="l-tablet-grid-cell l-grid-cell">
+                                    <section>
+                                        <h3>Using the best tool for the job</h3>
+                                        <p>We mostly program in Scala and JavaScript, but we use the best tool that solves the problem.</p>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="l-desktop-grid-cell l-grid-cell">
+                        <section class="content blue-widget">
+                            <div class="video">
+                                <div class="video__placeholder"></div>
+                                <iframe src="https://player.vimeo.com/video/84380461?title=0&amp;byline=0&amp;portrait=0"
+                                        frameborder="0"
+                                        webkitallowfullscreen
+                                        mozallowfullscreen
+                                        allowfullscreen
+                                        class="video__iframe"></iframe>
+                            </div>
+                            <div class="island">
+                                <h2 class="h3">What's it like to work at the Guardian?</h2>
+                                <p>Members of our team talk about what they enjoy about working at the Guardian.</p>
+                                <p><a href="#" class="cta-link">Join our team</a></p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <section class="island developer-blog-section">
+                <h2>Developer Blog</h2>
+                <div class="drop-zone trailing-margin" hidden></div>
+                <p><a href="http://www.theguardian.com/info/developer-blog" class="cta-link">See more</a></p>
+            </section>
+        </div>
+    </section>
+</main>
+<footer class="footer grey-widget">
+    <div class="blue-widget">
+        <div class="inset island">
+            <a href="http://gu.com/">
+                <img src="./images/logo-guardian-small.svg" alt="The Guardian">
+            </a>
+        </div>
+    </div>
+    <div class="inset island">
+        © Guardian News and Media Limited or its affiliated companies. All rights reserved.
+    </div>
+</footer>
+

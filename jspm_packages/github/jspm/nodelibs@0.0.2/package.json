@@ -1,0 +1,50 @@
+{
+  "name": "nodelibs",
+  "version": "0.0.2",
+  "description": "jspm Node builtin libraries",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/jspm/nodelibs"
+  },
+  "registry": "jspm",
+  "dependencies": {
+    "Base64": "npm:Base64@0.2",
+    "base64-js": "npm:base64-js@^0.0.4",
+    "ieee754": "npm:ieee754@^1.1.1",
+    "inherits": "npm:inherits@^2.0.1",
+    "json": "github:systemjs/plugin-json@master"
+  },
+  "map": {
+    "process/browser.js": "@@nodeProcess",
+    "process": "@@nodeProcess",
+    "assert": "./assert",
+    "buffer": "./buffer",
+    "console": "./console",
+    "constants": "./constants",
+    "domain": "./domain",
+    "events": "./events",
+    "http": "./http",
+    "https": "./https",
+    "os": "./os",
+    "path": "./path",
+    "punycode": "./punycode",
+    "querystring": "./querystring",
+    "stream": "./stream",
+    "string_decoder": "./string_decoder",
+    "timers": "./timers",
+    "tty": "./tty",
+    "url": "./url",
+    "util": "./util",
+    "vm": "./vm",
+    "zlib": "./zlib"
+  },
+  "buildConfig": {
+    "minify": true
+  },
+  "directories": {
+    "lib": "packaged",
+    "dist": "dist"
+  },
+  "license": "MIT",
+  "useJSExtensions": true
+}

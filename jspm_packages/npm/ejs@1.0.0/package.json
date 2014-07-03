@@ -1,0 +1,54 @@
+{
+  "name": "ejs",
+  "description": "Embedded JavaScript templates",
+  "version": "1.0.0",
+  "author": "TJ Holowaychuk <tj@vision-media.ca>",
+  "keywords": [
+    "template",
+    "engine",
+    "ejs"
+  ],
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "main": "./lib/ejs.js",
+  "repository": "git://github.com/visionmedia/ejs.git",
+  "scripts": {
+    "test": "mocha --require should --reporter spec"
+  },
+  "dependencies": {
+    "nodelibs": "github:jspm/nodelibs@0.0.2"
+  },
+  "registry": "jspm",
+  "map": {
+    "assert": "github:jspm/nodelibs@0.0.2/assert",
+    "buffer": "github:jspm/nodelibs@0.0.2/buffer",
+    "console": "github:jspm/nodelibs@0.0.2/console",
+    "constants": "github:jspm/nodelibs@0.0.2/constants",
+    "domain": "github:jspm/nodelibs@0.0.2/domain",
+    "events": "github:jspm/nodelibs@0.0.2/events",
+    "fs": "github:jspm/nodelibs@0.0.2/fs",
+    "http": "github:jspm/nodelibs@0.0.2/http",
+    "https": "github:jspm/nodelibs@0.0.2/https",
+    "os": "github:jspm/nodelibs@0.0.2/os",
+    "path": "github:jspm/nodelibs@0.0.2/path",
+    "punycode": "github:jspm/nodelibs@0.0.2/punycode",
+    "querystring": "github:jspm/nodelibs@0.0.2/querystring",
+    "string_decorder": "github:jspm/nodelibs@0.0.2/string_decorder",
+    "stream": "github:jspm/nodelibs@0.0.2/stream",
+    "timers": "github:jspm/nodelibs@0.0.2/timers",
+    "tls": "github:jspm/nodelibs@0.0.2/tls",
+    "tty": "github:jspm/nodelibs@0.0.2/tty",
+    "url": "github:jspm/nodelibs@0.0.2/url",
+    "util": "github:jspm/nodelibs@0.0.2/util",
+    "vm": "github:jspm/nodelibs@0.0.2/vm",
+    "zlib": "github:jspm/nodelibs@0.0.2/zlib",
+    "process": "@@nodeProcess"
+  },
+  "format": "cjs",
+  "buildConfig": {
+    "minify": true
+  },
+  "useJSExtensions": true
+}

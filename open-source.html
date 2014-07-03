@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<head>
+    <title>Open Source – The Guardian – Developers</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/main.css">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- TODO: Concatenate -->
+    <script src="./jspm_packages/traceur-runtime@0.0.49.js"></script>
+    <script src="./jspm_packages/es6-module-loader@0.7.1.js"></script>
+    <script src="./jspm_packages/system@0.6.js"></script>
+    <script src="./config.js"></script>
+    <script>
+        /* global System */
+        System.import('js/app');
+    </script>
+</head>
+<header class="header">
+    <div class="header__inner">
+        <div class="header-row">
+            <h1 class="title header-column">
+                <a href="./">
+                    <img src="./images/logo-guardian-developers.svg"
+                         alt="The Guardian – Developers">
+                </a>
+            </h1>
+            <nav class="links-nav header-column--links-nav">
+                <h1 class="hidden">Links</h1>
+                <a class="links-nav__item" href="#"><img src="./images/icon-github.svg" alt="Our GitHub"></a>
+                <a class="links-nav__item" href="#"><img src="./images/icon-rss.svg" alt="Our GitHub"></a>
+                <a class="links-nav__item" href="#"><img src="./images/icon-twitter.svg" alt="Our GitHub"></a>
+            </nav>
+        </div>
+        <nav class="main-nav">
+            <h1 class="hidden">Navigation</h1>
+            <ul class="l-grid l-grid--collapse l-desktop-grid">
+                
+                    <li class="l-desktop-grid-cell l-grid-cell">
+                        <a href="index.html"
+                           >Home</a>
+                   </li>
+                
+                    <li class="l-desktop-grid-cell l-grid-cell">
+                        <a href="open-platform.html"
+                           >Open Platform</a>
+                   </li>
+                
+                    <li class="l-desktop-grid-cell l-grid-cell">
+                        <a href="open-source.html"
+                            class="active" >Open Source</a>
+                   </li>
+                
+                    <li class="l-desktop-grid-cell l-grid-cell">
+                        <a href="events-&amp;-talks.html"
+                           >Events &amp; Talks</a>
+                   </li>
+                
+                    <li class="l-desktop-grid-cell l-grid-cell">
+                        <a href="join-the-team.html"
+                           >Join the Team</a>
+                   </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="trailing-margin">
+    <section>
+        <div class="grey-widget trailing-margin">
+            <div class="page-intro">
+                <h1>Open Source</h1>
+                <p>It’s not just our journalism that’s open. Many of our
+                projects are hosted on GitHub and we actively contribute to
+                the open source community.</p>
+            </div>
+        </div>
+        <div class="inset">
+            <div class="island">
+                <section class="dotted-top">
+                    <h2>Active projects</h2>
+                    <div class="l-grid l-desktop-grid">
+                        <div class="l-desktop-grid-cell l-grid-cell l-desktop-1of3">
+                            <p>Here are a few of our favourite open source projects.
+                            For a list of all publicly available repos, see <a
+                            href="https://github.com/guardian">the Guardian’s GitHub
+                            account.</a></p>
+                        </div>
+                        <div class="l-desktop-grid-cell l-grid-cell">
+                            <ul class="base-list">
+                                <li class="media">
+                                    <div class="media__img"><div class="bubble">.com</div></div>
+                                    <div class="media__body">
+                                        <h3 class="alt-h3"><a href="#">Frontend</a></h3>
+                                        <p>Source for the Guardian’s next-generation responsive website.</p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <div class="media__img"><div class="bubble">.com</div></div>
+                                    <div class="media__body">
+                                        <h3 class="alt-h3"><a href="#">Scribe</a></h3>
+                                        <p>A rich text editor framework for the web platform, with patches for browser inconsistencies and sensible defaults.</p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <div class="media__img"><div class="bubble">.com</div></div>
+                                    <div class="media__body">
+                                        <h3 class="alt-h3"><a href="#">Magenta</a></h3>
+                                        <p>The Guardian’s Scala-based deployment library designed to help automate deploys.</p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <div class="media__img"><div class="bubble">.com</div></div>
+                                    <div class="media__body">
+                                        <h3 class="alt-h3"><a href="#">sass-mq</a></h3>
+                                        <p>A Sass mix-in that helps manipulating media queries in an elegant way.</p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <div class="media__img"><div class="bubble">.com</div></div>
+                                    <div class="media__body">
+                                        <h3 class="alt-h3"><a href="#">guss</a></h3>
+                                        <p>A collection of CSS and Sass bower components re-usable across multiple Guardian web products.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footer grey-widget">
+    <div class="blue-widget">
+        <div class="inset island">
+            <a href="http://gu.com/">
+                <img src="./images/logo-guardian-small.svg" alt="The Guardian">
+            </a>
+        </div>
+    </div>
+    <div class="inset island">
+        © Guardian News and Media Limited or its affiliated companies. All rights reserved.
+    </div>
+</footer>
+
