@@ -22,6 +22,7 @@
 git checkout gh-pages
 git fetch
 git reset --hard origin/gh-pages
+yes | cp -r ./target/* .
 git add .
 git commit --message "Update"
 git push
