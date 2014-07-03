@@ -1,2 +1,0 @@
-"format cjs";$(function(){"use strict";$("#calculate").on("click",function(e){e.preventDefault(),$("#result").val(window.md5($("#input").val()))}),$("#input").val("\u65e5\u672c")});
-//# sourceMappingURL=demo.js.map

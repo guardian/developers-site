@@ -1,1 +1,0 @@
-{"version":3,"file":"tty.src.js","sources":["tty.src.src.js"],"names":["ReadStream","Error","WriteStream","exports","isatty"],"mappings":"AAAA,YAGA,SAASA,cACP,KAAM,IAAIC,OAAM,qCAIlB,QAASC,eACP,KAAM,IAAID,OAAM,qCARlBE,QAAQC,OAAS,WAAc,OAAO,GAKtCD,QAAQH,WAAaA,WAKrBG,QAAQD,YAAcA"}

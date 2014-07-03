@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sources":["index.src.js"],"names":["Stream","require","module","exports","Readable","Writable","Duplex","Transform","PassThrough"],"mappings":"AAAA,YAEA,IAAIA,QAAOC,QAAQ,WAAYC,QAAOC,QAAQH,OAAOA,OAAOI,SAASH,QAAQ,cAAcD,OAAOK,SAASJ,QAAQ,cAAcD,OAAOM,OAAOL,QAAQ,YAAYD,OAAOO,UAAUN,QAAQ,eAAeD,OAAOQ,YAAYP,QAAQ"}

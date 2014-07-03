@@ -1,1 +1,0 @@
-{"version":3,"file":"list.js","sources":["list.src.js"],"names":["ejs","require","fs","str","readFileSync","__dirname","ret","render","names","console","log"],"mappings":"AAAA,YAMA,IAAIA,KAAMC,QAAQ,OACdC,GAAKD,QAAQ,iCACbE,IAAMD,GAAGE,aAAaC,UAAY,YAAa,QAE/CC,IAAMN,IAAIO,OAAOJ,KACnBK,OAAQ,MAAO,MAAO,QAGxBC,SAAQC,IAAIJ"}

@@ -1,1 +1,0 @@
-export * from "npm:ejs@1.0.0/lib/ejs";
