@@ -1,1 +1,5 @@
-base64 images
+* base64 images
+* Use Plumber, not Gulp
+* jspm bundle
+* Authors: should Gravatar be standardised to Guardian email addresses?
+* Authors: generate Guardian email address from name?
