@@ -40,9 +40,10 @@
         <nav class="main-nav">
             <h1 class="hidden">Navigation</h1>
             <ul class="l-grid l-grid--collapse l-desktop-grid">
-                <% scope.pages.forEach(function (page) { %>
+                <% scope.pages.forEach(function (page) {
+                    var hrefUrl = page.fileBasename.replace(/\.ejs$/, '.html'); %>
                     <li class="l-desktop-grid-cell l-grid-cell">
-                        <a href="<%= page.fileBasename.replace(/\.ejs$/, '.html') %>"
+                        <a href="<%= hrefUrl === 'index.html' ? './' : hrefUrl %>"
                            <% if (page.fileBasename === scope.fileBasename) { %> class="active" <% } %>><%= page.title %></a>
                    </li>
                 <% }); %>
