@@ -1,3 +1,98 @@
 "format cjs";
 // Bare-bones stream object for circular reference bypassing
-function Stream(){EE.call(this)}var EE=require("../events").EventEmitter,inherits=require("npm:inherits@^2.0.1");inherits(Stream,EE),module.exports=Stream,Stream.Stream=Stream,Stream.prototype.pipe=function(e,t){function r(t){e.writable&&!1===e.write(t)&&u.pause&&u.pause()}function n(){u.readable&&u.resume&&u.resume()}function i(){f||(f=!0,e.end())}function o(){f||(f=!0,"function"==typeof e.destroy&&e.destroy())}function s(e){if(a(),0===EE.listenerCount(this,"error"))throw e}function a(){u.removeListener("data",r),e.removeListener("drain",n),u.removeListener("end",i),u.removeListener("close",o),u.removeListener("error",s),e.removeListener("error",s),u.removeListener("end",a),u.removeListener("close",a),e.removeListener("close",a)}var u=this;u.on("data",r),e.on("drain",n),e._isStdio||t&&t.end===!1||(u.on("end",i),u.on("close",o));var f=!1;return u.on("error",s),e.on("error",s),u.on("end",a),u.on("close",a),e.on("close",a),e.emit("pipe",u),e};
+var EE = require('../events').EventEmitter;
+var inherits = require('npm:inherits@^2.0.1');
+function Stream() {
+  EE.call(this);
+}
+inherits(Stream, EE);
+module.exports = Stream;
+
+// Backwards-compat with node 0.4.x
+Stream.Stream = Stream;
+
+// old-style streams.  Note that the pipe method (the only relevant
+// part of this class) is overridden in the Readable class.
+
+Stream.prototype.pipe = function(dest, options) {
+  var source = this;
+
+  function ondata(chunk) {
+    if (dest.writable) {
+      if (false === dest.write(chunk) && source.pause) {
+        source.pause();
+      }
+    }
+  }
+
+  source.on('data', ondata);
+
+  function ondrain() {
+    if (source.readable && source.resume) {
+      source.resume();
+    }
+  }
+
+  dest.on('drain', ondrain);
+
+  // If the 'end' option is not supplied, dest.end() will be called when
+  // source gets the 'end' or 'close' events.  Only dest.end() once.
+  if (!dest._isStdio && (!options || options.end !== false)) {
+    source.on('end', onend);
+    source.on('close', onclose);
+  }
+
+  var didOnEnd = false;
+  function onend() {
+    if (didOnEnd) return;
+    didOnEnd = true;
+
+    dest.end();
+  }
+
+
+  function onclose() {
+    if (didOnEnd) return;
+    didOnEnd = true;
+
+    if (typeof dest.destroy === 'function') dest.destroy();
+  }
+
+  // don't leave dangling pipes when there are errors.
+  function onerror(er) {
+    cleanup();
+    if (EE.listenerCount(this, 'error') === 0) {
+      throw er; // Unhandled stream error in pipe.
+    }
+  }
+
+  source.on('error', onerror);
+  dest.on('error', onerror);
+
+  // remove all the event listeners that were added.
+  function cleanup() {
+    source.removeListener('data', ondata);
+    dest.removeListener('drain', ondrain);
+
+    source.removeListener('end', onend);
+    source.removeListener('close', onclose);
+
+    source.removeListener('error', onerror);
+    dest.removeListener('error', onerror);
+
+    source.removeListener('end', cleanup);
+    source.removeListener('close', cleanup);
+
+    dest.removeListener('close', cleanup);
+  }
+
+  source.on('end', cleanup);
+  source.on('close', cleanup);
+
+  dest.on('close', cleanup);
+
+  dest.emit('pipe', source);
+
+  // Allow for unix-like usage: A.pipe(B).pipe(C)
+  return dest;
+};

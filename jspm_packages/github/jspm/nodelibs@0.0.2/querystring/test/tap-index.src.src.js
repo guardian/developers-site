@@ -1,2 +1,4 @@
 "format cjs";
-"use strict";require("retape")(require("./index"));
+"use strict";
+
+require("retape")(require("./index"))
