@@ -9,35 +9,44 @@
         </div>
         <div class="inset">
             <div class="island">
-                <section class="dotted-top">
+                <div class="dotted-top">
                     <h2>Jobs</h2>
-                    <div class="l-grid l-tablet-grid l-tablet-grid--1of2">
-                        <div class="l-grid-cell l-tablet-grid-cell">
-                            <h3>Client-side Developer</h3>
-                            <p>You’ll be an expert with CSS3 and modern JavaScript, comfortable using AMD patterns and OOCSS, and thinking and working in a responsive, progressively-enhanced manner.</p>
-                            <!-- https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002D -->
-                            <p><a href="https://gnm.taleo.net/careersection/ex/jobsearch.ftl?lang=en" class="cta-link">Read more</a></p>
-                        </div>
-                        <div class="l-grid-cell l-tablet-grid-cell">
-                            <h3>Client-side Developer</h3>
-                            <p>You’ll be an expert with CSS3 and modern JavaScript, comfortable using AMD patterns and OOCSS, and thinking and working in a responsive, progressively-enhanced manner.</p>
-                            <!-- https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002D -->
-                            <p><a href="https://gnm.taleo.net/careersection/ex/jobsearch.ftl?lang=en" class="cta-link">Read more</a></p>
-                        </div>
-                        <div class="l-grid-cell l-tablet-grid-cell">
-                            <h3>Client-side Developer</h3>
-                            <p>You’ll be an expert with CSS3 and modern JavaScript, comfortable using AMD patterns and OOCSS, and thinking and working in a responsive, progressively-enhanced manner.</p>
-                            <!-- https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002D -->
-                            <p><a href="https://gnm.taleo.net/careersection/ex/jobsearch.ftl?lang=en" class="cta-link">Read more</a></p>
-                        </div>
-                        <div class="l-grid-cell l-tablet-grid-cell">
-                            <h3>Client-side Developer</h3>
-                            <p>You’ll be an expert with CSS3 and modern JavaScript, comfortable using AMD patterns and OOCSS, and thinking and working in a responsive, progressively-enhanced manner.</p>
-                            <!-- https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002D -->
-                            <p><a href="https://gnm.taleo.net/careersection/ex/jobsearch.ftl?lang=en" class="cta-link">Read more</a></p>
-                        </div>
+                    <div class="trailing-margin" style="max-width: 50em;">
+                        <p>We need people who love a challenge and are
+                        willing to successfully take on difficult tasks, contribute
+                        to their team and learn on the job. Our engineers enjoy
+                        learning and sharing what they learn and they get to work on
+                        some unique challenges.</p>
+                        <p>We work in cross-functional
+                        agile teams that we trust to tackle the problems and
+                        objectives that they are given. All development is based in
+                        London in the same offices as our journalists and
+                        editors.</p>
                     </div>
-                </section>
+                </div>
+            </div>
+            <div class="island">
+                <div class="l-grid l-desktop-grid">
+                    <div class="l-desktop-grid-cell l-grid-cell l-desktop-1of3">
+                        <nav>
+                            <ul>
+                                <% scope.jobs.forEach(function (job) { %>
+                                    <li><a href="#<%= job.title %>" title="View job details"><%= job.title %></a></li>
+                                <% }); %>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="l-desktop-grid-cell l-grid-cell">
+                        <% scope.jobs.forEach(function (job) { %>
+                            <section>
+                                <h3><%= job.title %></h3>
+                                <p><%= job.description %></p>
+                                <p><a href="https://gnm.taleo.net/careersection/ex/jobsearch.ftl?lang=en"
+                                      class="cta-link">Read more</a></p>
+                            </sectiom>
+                        <% }); %>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -57,73 +57,44 @@ gulp.task('watch', function () {
 
 gulp.task('default', ['sass', 'copy', 'generate']);
 
-var pages = [
+var talks = [
     {
-        title: 'Home',
-        fileBasename: 'index.ejs'
+        title: 'CSS and the Critical Path',
+        authorName: 'Patrick Hamann',
+        location: 'Over the Air',
+        date: '2013-09-27',
+        imageFileBasename: '2013-09-27-css-and-the-critical-path.jpg',
+        link: 'https://speakerdeck.com/patrickhamann/css-and-the-critical-path',
+        type: 'slides'
     },
     {
-        title: 'Open Platform',
-        fileBasename: 'open-platform.ejs'
+        title: 'Why APIs are Essential in Web Development',
+        authorName: 'Jenny Sivapalan',
+        location: 'Kings Place, London',
+        date: '2013-09-11',
+        imageFileBasename: '2013-09-11-why-apis-are-essential-in-web-development.jpg',
+        link: 'https://www.youtube.com/watch?v=JFG9I1tKNDk',
+        type: 'video'
     },
     {
-        title: 'Open Source',
-        fileBasename: 'open-source.ejs'
+        title: 'Democratising Attention Data at guardian.co.uk',
+        authorName: 'Graham Tackley',
+        location: 'Aarhus International Software Development Conference',
+        date: '2013-10-01',
+        imageFileBasename: '2013-10-01-democratising-attention-data-at-guardian-co-uk.jpg',
+        link: 'http://gotocon.com/dl/goto-aar-2013/slides/GrahamTackley_DemocratisingAttentionDataAtGuardianCoUk.pdf',
+        type: 'slides'
     },
     {
-        title: 'Events & Talks',
-        fileBasename: 'events-&-talks.ejs',
-        // Dates should be in ISO 8601
-        // Recognised types: slides, video, article
-        talks: [
-            {
-                title: 'CSS and the Critical Path',
-                authorName: 'Patrick Hamann',
-                location: 'Over the Air',
-                date: '2013-09-27',
-                imageFileBasename: '2013-09-27-css-and-the-critical-path.jpg',
-                link: 'https://speakerdeck.com/patrickhamann/css-and-the-critical-path',
-                type: 'slides'
-            },
-            {
-                title: 'Why APIs are Essential in Web Development',
-                authorName: 'Jenny Sivapalan',
-                location: 'Kings Place, London',
-                date: '2013-09-11',
-                imageFileBasename: '2013-09-11-why-apis-are-essential-in-web-development.jpg',
-                link: 'https://www.youtube.com/watch?v=JFG9I1tKNDk',
-                type: 'video'
-            },
-            {
-                title: 'Democratising Attention Data at guardian.co.uk',
-                authorName: 'Graham Tackley',
-                location: 'Aarhus International Software Development Conference',
-                date: '2013-10-01',
-                imageFileBasename: '2013-10-01-democratising-attention-data-at-guardian-co-uk.jpg',
-                link: 'http://gotocon.com/dl/goto-aar-2013/slides/GrahamTackley_DemocratisingAttentionDataAtGuardianCoUk.pdf',
-                type: 'slides'
-            },
-            {
-                title: 'Responsive Design at the Guardian',
-                authorName: 'Matt Andrews',
-                location: 'IET Austin Court, Birmingham',
-                date: '2013-10-10',
-                imageFileBasename: '2013-10-10-responsive-design-at-the-guardian.png',
-                link: 'http://mattandrews.info/talks/canvasconf-2013/',
-                type: 'article'
-            }
-        ]
-    },
-    {
-        title: 'Join the Team',
-        fileBasename: 'join-the-team.ejs'
+        title: 'Responsive Design at the Guardian',
+        authorName: 'Matt Andrews',
+        location: 'IET Austin Court, Birmingham',
+        date: '2013-10-10',
+        imageFileBasename: '2013-10-10-responsive-design-at-the-guardian.png',
+        link: 'http://mattandrews.info/talks/canvasconf-2013/',
+        type: 'article'
     }
 ];
-
-function createMd5Hash(emailAddress) {
-    var crypto = require('crypto');
-    return crypto.createHash('md5').update(emailAddress).digest('hex');
-}
 
 // TODO: Generate Guardian email address from name
 var authors = [
@@ -148,6 +119,45 @@ var authors = [
         emailAddress: 'matt.andrews@guardian.co.uk'
     }
 ];
+
+var jobs = [
+    {
+        title: 'Senior Software Developer',
+        description: 'Senior developers need to provide leadership, support and guidance to junior developers in their team while supporting and working effectively to deliver the technical vision of the lead developer. They show initiative, curiosity and think in terms of potential solutions, not problems. They help others to develop their own ideas and solutions and are humble in their expertise.'
+    }
+];
+
+var pages = [
+    {
+        title: 'Home',
+        fileBasename: 'index.ejs'
+    },
+    {
+        title: 'Open Platform',
+        fileBasename: 'open-platform.ejs'
+    },
+    {
+        title: 'Open Source',
+        fileBasename: 'open-source.ejs'
+    },
+    {
+        title: 'Events & Talks',
+        fileBasename: 'events-&-talks.ejs',
+        // Dates should be in ISO 8601
+        // Recognised types: slides, video, article
+        talks: talks
+    },
+    {
+        title: 'Join the Team',
+        fileBasename: 'join-the-team.ejs',
+        jobs: jobs
+    }
+];
+
+function createMd5Hash(emailAddress) {
+    var crypto = require('crypto');
+    return crypto.createHash('md5').update(emailAddress).digest('hex');
+}
 
 function generatePages() {
     pages.forEach(function (page) {
