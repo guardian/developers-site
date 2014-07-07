@@ -59,4 +59,4 @@ objectFit.polyfill({
 });
 
 // Show the image now that we've polyfilled `object-fit`
-window.document.querySelector('.main-image').style.display = 'initial';
+window.document.querySelector('.main-image-container').classList.remove('with-no-image');

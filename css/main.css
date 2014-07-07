@@ -220,6 +220,8 @@ h6 {
   .main-image-container {
     position: relative;
     padding-bottom: 1.2rem; } }
+.main-image-container.with-no-image {
+  padding-bottom: initial; }
 
 .main-image {
   object-fit: cover;
@@ -230,12 +232,16 @@ h6 {
     .main-image {
       height: 60vmin;
       min-height: 30vmax; } }
+  .main-image-container.with-no-image .main-image {
+    display: none; }
 
 @media (min-width: 650px) {
   .main-image-overlay {
     position: absolute;
     bottom: 0;
     width: 100%; } }
+.main-image-container.with-no-image .main-image-overlay {
+  position: initial; }
 
 @media (min-width: 650px) {
   .main-image-overlay-inner {
