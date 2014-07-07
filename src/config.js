@@ -24,7 +24,8 @@ System.config({
     "npm:Base64@0.2.1": {},
     "github:systemjs/plugin-text": "github:systemjs/plugin-text@master",
     "moment": "github:moment/moment@^2.7.0",
-    "github:anselmh/object-fit": "github:anselmh/object-fit@^0.3.3"
+    "github:anselmh/object-fit": "github:anselmh/object-fit@^0.3.3",
+    "github:systemjs/plugin-css": "github:systemjs/plugin-css@^0.1.0"
   }
 });
 
@@ -40,7 +41,8 @@ System.config({
     "github:systemjs/plugin-json": "master",
     "github:systemjs/plugin-text": "master",
     "github:moment/moment": "2.7.0",
-    "github:anselmh/object-fit": "0.3.3"
+    "github:anselmh/object-fit": "0.3.3",
+    "github:systemjs/plugin-css": "0.1.0"
   }
 });
 

@@ -1,4 +1,5 @@
 import objectFit from 'github:anselmh/object-fit/dist/polyfill.object-fit';
+import objectFitCss from 'github:anselmh/object-fit/dist/polyfill.object-fit.css!github:systemjs/plugin-css';
 import moment from 'moment';
 import reqwest from 'github:ded/reqwest';
 import ejs from 'npm:ejs';

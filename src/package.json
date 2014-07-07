@@ -7,6 +7,7 @@
     "github:ded/reqwest": "^1.1.0",
     "github:systemjs/plugin-text": "master",
     "moment": "^2.7.0",
-    "github:anselmh/object-fit": "^0.3.3"
+    "github:anselmh/object-fit": "^0.3.3",
+    "github:systemjs/plugin-css": "^0.1.0"
   }
 }
