@@ -17,9 +17,6 @@
 
 ## Releasing
 
-The `master` branch only contains sources. `gh-pages` only contains the compiled
-code.
-
 ```
 ./release.sh
 ```
