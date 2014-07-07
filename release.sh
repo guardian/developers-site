@@ -10,3 +10,4 @@ yes | cp -r $BASE_DIR/target/* $BASE_DIR
 git add $BASE_DIR
 git commit --message "Update"
 git push
+git checkout master
