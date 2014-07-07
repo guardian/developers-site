@@ -3,20 +3,15 @@ $x: 650px;
 
 .main-image {
     @extend .trailing-margin;
+    padding-bottom: $trailing-margin-height;
 
     @include breakpoint($x) {
         // Position `.main-image-overlay` relative to this
         position: relative;
-        padding-bottom: $trailing-margin-height;
     }
 
     // If there is no `object-fit`, hide the image.
     .no-object-fit & {
-        .main-image__img {
-            @include unset(height);
-            @include unset(min-height);
-        }
-
         // Because the image is no longer as tall, we must stack the overlay
         // above the image instead of on top.
         @media (max-width: $desktop) {
@@ -34,16 +29,19 @@ $x: 650px;
 }
 
 .main-image__img {
-    object-fit: cover;
-    height: 50vmin;
-    min-height: 40vmax;
-    // Reset from UA – by default the aspect ratio is maintained
-    width: 100%;
+    .object-fit & {
+        object-fit: cover;
+        height: 50vmin;
+        min-height: 40vmax;
+        // Reset from UA – by default the aspect ratio is maintained. We don't
+        // want this because we are using `object-fit`.
+        width: 100%;
 
-    @include breakpoint($desktop) {
-        // Reset
-        height: 60vmin;
-        min-height: 30vmax;
+        @include breakpoint($desktop) {
+            // Reset
+            height: 60vmin;
+            min-height: 30vmax;
+        }
     }
 }
 
