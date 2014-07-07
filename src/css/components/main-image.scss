@@ -5,8 +5,13 @@ $x: 650px;
     @extend .trailing-margin;
 
     @include breakpoint($x) {
+        // Position `.main-image-overlay` relative to this
         position: relative;
         padding-bottom: $trailing-margin-height;
+    }
+
+    &.with-no-image {
+        @include unset(padding-bottom);
     }
 }
 
@@ -23,6 +28,10 @@ $x: 650px;
         height: 60vmin;
         min-height: 30vmax;
     }
+
+    .main-image-container.with-no-image & {
+        display: none;
+    }
 }
 
 .main-image-overlay {
@@ -30,6 +39,10 @@ $x: 650px;
         position: absolute;
         bottom: 0;
         width: 100%;
+    }
+
+    .main-image-container.with-no-image & {
+        @include unset(position);
     }
 }
 

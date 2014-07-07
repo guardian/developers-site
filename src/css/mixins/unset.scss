@@ -10,5 +10,9 @@
         border-top: initial;
     } @else if $property == margin-bottom {
         margin-bottom: initial;
+    } @else if $property == position {
+        position: initial;
+    } @else if $property == padding-bottom {
+        padding-bottom: initial;
     }
 }
