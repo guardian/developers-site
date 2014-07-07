@@ -59,4 +59,5 @@ objectFit.polyfill({
 });
 
 // Show the image now that we've polyfilled `object-fit`
-window.document.querySelector('.main-image-container').classList.remove('with-no-image');
+// FIXME: I don't like how the JS has knowledge of the CSS
+window.document.querySelector('.main-image').classList.remove('main-image--with-no-img');
