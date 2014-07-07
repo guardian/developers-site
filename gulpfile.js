@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-ruby-sass');
 var livereload = require('gulp-livereload');
+var autoprefixCss = require('gulp-autoprefixer');
 
 var ejs = require('ejs');
 var fs = require('fs');
@@ -10,13 +11,16 @@ var find = require('lodash-node/modern/collections/find');
 
 var basePath = __dirname + '/src';
 
-gulp.task('sass', function () {
+gulp.task('css', function () {
     gulp.src('./src/css/main.scss')
         .pipe(sass({
             // FIXME:
             // https://github.com/sindresorhus/gulp-ruby-sass/pull/68
             // sourcemap: true
         }))
+        // TODO: Not exhaustive? What is our support?
+        // https://github.com/ai/autoprefixer#browsers
+        .pipe(autoprefixCss('Safari 7'))
         .pipe(gulp.dest('./target/css'));
 });
 
@@ -44,7 +48,7 @@ gulp.task('generate', function () {
 
 gulp.task('watch', function () {
     var server = livereload();
-    gulp.watch('./src/css/**/*.scss', ['sass']);
+    gulp.watch('./src/css/**/*.scss', ['css']);
     gulp.watch('./src/**/*.ejs', ['generate']);
     gulp.watch('./src/js/**/*.js', ['copy']);
     gulp.watch('./src/images/**', ['copy']);
@@ -55,7 +59,7 @@ gulp.task('watch', function () {
     });
 });
 
-gulp.task('default', ['sass', 'copy', 'generate']);
+gulp.task('default', ['css', 'copy', 'generate']);
 
 var talks = require('./src/content/talks.json');
 var authors = require('./src/content/authors.json');
