@@ -21,15 +21,7 @@ The `master` branch only contains sources. `gh-pages` only contains the compiled
 code.
 
 ```
-git checkout master
-./node_modules/.bin/gulp
-git checkout gh-pages
-git fetch
-git reset --hard origin/gh-pages
-yes | cp -r ./target/* .
-git add .
-git commit --message "Update"
-git push
+./release.sh
 ```
 
 Note: Our web fonts only work under hosts matching `*.theguardian.com`.
