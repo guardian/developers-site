@@ -247,9 +247,12 @@ h6 {
   .main-image {
     position: relative;
     padding-bottom: 1.2rem; } }
-
-.main-image__with-no-img {
+.no-object-fit .main-image {
   padding-bottom: initial; }
+  .no-object-fit .main-image .main-image__img {
+    display: none; }
+  .no-object-fit .main-image .main-image__overlay {
+    position: initial; }
 
 .main-image__img {
   object-fit: cover;
@@ -260,16 +263,12 @@ h6 {
     .main-image__img {
       height: 60vmin;
       min-height: 30vmax; } }
-  .main-image--with-no-img .main-image__img {
-    display: none; }
 
 @media (min-width: 650px) {
   .main-image__overlay {
     position: absolute;
     bottom: 0;
     width: 100%; } }
-.main-image--with-no-img .main-image__overlay {
-  position: initial; }
 
 @media (min-width: 650px) {
   .main-image__overlay__inner {

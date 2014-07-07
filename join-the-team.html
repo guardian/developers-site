@@ -9,6 +9,11 @@
         <!-- TODO: Concatenate -->
         <script src="./jspm_packages/system@0.6.js"></script>
         <script src="./config.js"></script>
+        <script>
+            /* global System */
+            // Must be loaded before the body is parsed?
+            System.import('js/modernizr');
+        </script>
     </head>
     <body>
         <header class="header">

@@ -9,6 +9,11 @@
         <!-- TODO: Concatenate -->
         <script src="./jspm_packages/system@0.6.js"></script>
         <script src="./config.js"></script>
+        <script>
+            /* global System */
+            // Must be loaded before the body is parsed?
+            System.import('js/modernizr');
+        </script>
     </head>
     <body>
         <header class="header">
@@ -65,7 +70,7 @@
 <main class="trailing-margin">
     <section>
         <h1 class="hidden">Home</h1>
-        <div class="main-image main-image--with-no-img">
+        <div class="main-image">
             <div class="main-image__overlay">
                 <div class="inset">
                     <section class="blue-widget island main-image__overlay__inner">
