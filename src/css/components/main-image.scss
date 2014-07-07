@@ -1,7 +1,7 @@
 // TODO: Bemify?
 $x: 650px;
 
-.main-image-container {
+.main-image {
     @extend .trailing-margin;
 
     @include breakpoint($x) {
@@ -9,13 +9,13 @@ $x: 650px;
         position: relative;
         padding-bottom: $trailing-margin-height;
     }
-
-    &.with-no-image {
-        @include unset(padding-bottom);
-    }
 }
 
-.main-image {
+.main-image__with-no-img {
+    @include unset(padding-bottom);
+}
+
+.main-image__img {
     // TODO: Polyfill for FF, IE11, Safari
     object-fit: cover;
     height: 50vmin;
@@ -29,24 +29,24 @@ $x: 650px;
         min-height: 30vmax;
     }
 
-    .main-image-container.with-no-image & {
+    .main-image--with-no-img & {
         display: none;
     }
 }
 
-.main-image-overlay {
+.main-image__overlay {
     @include breakpoint($x) {
         position: absolute;
         bottom: 0;
         width: 100%;
     }
 
-    .main-image-container.with-no-image & {
+    .main-image--with-no-img & {
         @include unset(position);
     }
 }
 
-.main-image-overlay-inner {
+.main-image__overlay__inner {
     @extend .page-banner;
     @include breakpoint($x) {
         width: 28em;
