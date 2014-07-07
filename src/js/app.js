@@ -57,6 +57,3 @@ objectFit.polyfill({
     // TODO: Why can't this be read from the CSS?
     fittype: 'cover'
 });
-
-// Show the image now that we've polyfilled `object-fit`
-window.document.querySelector('.main-image').style.display = 'initial';
