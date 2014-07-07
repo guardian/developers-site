@@ -1,70 +1,66 @@
 <!DOCTYPE html>
-<head>
-    <title>Events &amp; Talks – The Guardian – Developers</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/main.css">
-    <meta name="viewport" content="width=device-width">
+<html>
+    <head>
+        <title>Events &amp; Talks – The Guardian – Developers</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./css/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- TODO: Concatenate -->
-    <script src="./jspm_packages/traceur-runtime@0.0.49.js"></script>
-    <script src="./jspm_packages/es6-module-loader@0.7.1.js"></script>
-    <script src="./jspm_packages/system@0.6.js"></script>
-    <script src="./config.js"></script>
-    <script>
-        /* global System */
-        System.import('js/app');
-    </script>
-</head>
-<header class="header">
-    <div class="header__inner">
-        <div class="header-row">
-            <h1 class="title header-column">
-                <a href="./">
-                    <img src="./images/logo-guardian-developers.svg"
-                         alt="The Guardian – Developers">
-                </a>
-            </h1>
-            <nav class="links-nav header-column--links-nav">
-                <h1 class="hidden">Links</h1>
-                <a class="links-nav__item"
-                   href="https://github.com/guardian"
-                   title="View our GitHub"><img src="./images/icon-github.svg" alt="GitHub logo"></a>
-                <a class="links-nav__item"
-                   href="http://theguardian.com/info/developer-blog/rss"
-                   title="View the Guardian Developer Blog feed"><img src="./images/icon-feed.svg" alt="Feed symbol"></a>
-                <a class="links-nav__item"
-                   href="https://twitter.com/gdndevelopers"
-                   title="View Guardian Developers on Twitter"><img src="./images/icon-twitter.svg" alt="Twitter logo"></a>
-            </nav>
-        </div>
-        <nav class="main-nav">
-            <h1 class="hidden">Navigation</h1>
-            <ul class="l-grid l-grid--collapse l-desktop-grid">
-                
-                    <li class="l-desktop-grid-cell l-grid-cell">
-                        <a href="./"
-                           >Home</a>
-                   </li>
-                
-                    <li class="l-desktop-grid-cell l-grid-cell">
-                        <a href="open-source.html"
-                           >Open Source</a>
-                   </li>
-                
-                    <li class="l-desktop-grid-cell l-grid-cell">
-                        <a href="events-&amp;-talks.html"
-                            class="active" >Events &amp; Talks</a>
-                   </li>
-                
-                    <li class="l-desktop-grid-cell l-grid-cell">
-                        <a href="join-the-team.html"
-                           >Join the Team</a>
-                   </li>
-                
-            </ul>
-        </nav>
-    </div>
-</header>
+        <!-- TODO: Concatenate -->
+        <script src="./jspm_packages/system@0.6.js"></script>
+        <script src="./config.js"></script>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__inner">
+                <div class="header-row">
+                    <h1 class="title header-column">
+                        <a href="./">
+                            <img src="./images/logo-guardian-developers.svg"
+                                 alt="The Guardian – Developers">
+                        </a>
+                    </h1>
+                    <nav class="links-nav header-column--links-nav">
+                        <h1 class="hidden">Links</h1>
+                        <a class="links-nav__item"
+                           href="https://github.com/guardian"
+                           title="View our GitHub"><img src="./images/icon-github.svg" alt="GitHub logo"></a>
+                        <a class="links-nav__item"
+                           href="http://theguardian.com/info/developer-blog/rss"
+                           title="View the Guardian Developer Blog feed"><img src="./images/icon-feed.svg" alt="Feed symbol"></a>
+                        <a class="links-nav__item"
+                           href="https://twitter.com/gdndevelopers"
+                           title="View Guardian Developers on Twitter"><img src="./images/icon-twitter.svg" alt="Twitter logo"></a>
+                    </nav>
+                </div>
+                <nav class="main-nav">
+                    <h1 class="hidden">Navigation</h1>
+                    <ul class="l-grid l-grid--collapse l-desktop-grid">
+                        
+                            <li class="l-desktop-grid-cell l-grid-cell">
+                                <a href="./"
+                                   >Home</a>
+                           </li>
+                        
+                            <li class="l-desktop-grid-cell l-grid-cell">
+                                <a href="open-source.html"
+                                   >Open Source</a>
+                           </li>
+                        
+                            <li class="l-desktop-grid-cell l-grid-cell">
+                                <a href="events-&amp;-talks.html"
+                                    class="active" >Events &amp; Talks</a>
+                           </li>
+                        
+                            <li class="l-desktop-grid-cell l-grid-cell">
+                                <a href="join-the-team.html"
+                                   >Join the Team</a>
+                           </li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
 <main class="trailing-margin">
     <section>
@@ -186,16 +182,22 @@
         </div>
     </section>
 </main>
-<footer class="footer grey-widget">
-    <div class="blue-widget">
-        <div class="inset island">
-            <a href="http://gu.com/">
-                <img src="./images/logo-guardian-small.svg" alt="The Guardian">
-            </a>
-        </div>
-    </div>
-    <div class="inset island">
-        © Guardian News and Media Limited or its affiliated companies. All rights reserved.
-    </div>
-</footer>
+        <footer class="footer grey-widget">
+            <div class="blue-widget">
+                <div class="inset island">
+                    <a href="http://gu.com/">
+                        <img src="./images/logo-guardian-small.svg" alt="The Guardian">
+                    </a>
+                </div>
+            </div>
+            <div class="inset island">
+                © Guardian News and Media Limited or its affiliated companies. All rights reserved.
+            </div>
+        </footer>
+        <script>
+            /* global System */
+            System.import('js/app');
+        </script>
+    </body>
+</html>
 
