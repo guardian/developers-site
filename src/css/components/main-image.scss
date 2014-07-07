@@ -11,10 +11,6 @@ $x: 650px;
     }
 }
 
-.main-image__with-no-img {
-    @include unset(padding-bottom);
-}
-
 .main-image__img {
     // TODO: Polyfill for FF, IE11, Safari
     object-fit: cover;
@@ -28,10 +24,6 @@ $x: 650px;
         height: 60vmin;
         min-height: 30vmax;
     }
-
-    .main-image--with-no-img & {
-        display: none;
-    }
 }
 
 .main-image__overlay {
@@ -39,10 +31,6 @@ $x: 650px;
         position: absolute;
         bottom: 0;
         width: 100%;
-    }
-
-    .main-image--with-no-img & {
-        @include unset(position);
     }
 }
 

@@ -1,5 +1,3 @@
-import objectFit from 'github:anselmh/object-fit/dist/polyfill.object-fit';
-import objectFitCss from 'github:anselmh/object-fit/dist/polyfill.object-fit.css!github:systemjs/plugin-css';
 import moment from 'moment';
 import reqwest from 'github:ded/reqwest';
 import ejs from 'npm:ejs';
@@ -49,15 +47,3 @@ reqwest({
     developerBlogSectionDropZone.appendChild(renderedElement);
     developerBlogSectionDropZone.hidden = false;
 });
-
-// Polyfill CSS `object-fit` property
-
-objectFit.polyfill({
-    selector: '.main-image__img',
-    // TODO: Why can't this be read from the CSS?
-    fittype: 'cover'
-});
-
-// Show the image now that we've polyfilled `object-fit`
-// FIXME: I don't like how the JS has knowledge of the CSS
-window.document.querySelector('.main-image').classList.remove('main-image--with-no-img');
