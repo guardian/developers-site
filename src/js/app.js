@@ -1,8 +1,11 @@
+import objectFit from 'github:anselmh/object-fit/dist/polyfill.object-fit';
 import moment from 'moment';
 import reqwest from 'github:ded/reqwest';
 import ejs from 'npm:ejs';
 // FIXME: Must be last. Why?
 import template from '../enhanced-views/developer-blog-section.ejs!github:systemjs/plugin-text';
+
+// Render the Developer Blog
 
 function renderTemplate(template, options) {
     var renderedString = ejs.render(template, options);
@@ -45,3 +48,14 @@ reqwest({
     developerBlogSectionDropZone.appendChild(renderedElement);
     developerBlogSectionDropZone.hidden = false;
 });
+
+// Polyfill CSS `object-fit` property
+
+objectFit.polyfill({
+    selector: '.main-image',
+    // TODO: Why can't this be read from the CSS?
+    fittype: 'cover'
+});
+
+// Show the image now that we've polyfilled `object-fit`
+window.document.querySelector('.main-image').style.display = 'initial';

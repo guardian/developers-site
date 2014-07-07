@@ -23,7 +23,8 @@ System.config({
     "npm:base64-js@0.0.4": {},
     "npm:Base64@0.2.1": {},
     "github:systemjs/plugin-text": "github:systemjs/plugin-text@master",
-    "moment": "github:moment/moment@^2.7.0"
+    "moment": "github:moment/moment@^2.7.0",
+    "github:anselmh/object-fit": "github:anselmh/object-fit@^0.3.3"
   }
 });
 
@@ -38,7 +39,8 @@ System.config({
     "npm:Base64": "0.2.1",
     "github:systemjs/plugin-json": "master",
     "github:systemjs/plugin-text": "master",
-    "github:moment/moment": "2.7.0"
+    "github:moment/moment": "2.7.0",
+    "github:anselmh/object-fit": "0.3.3"
   }
 });
 
