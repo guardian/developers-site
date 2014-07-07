@@ -1,6 +1,6 @@
 // TODO:
 $gutter-width: 1.25rem;
-$trailing-margin-height: 1.2rem;
+$trailing-margin-height: 1.5rem;
 
 @import "vars/colors";
 @import "vars/breakpoints";
@@ -57,6 +57,7 @@ body {
 
 .dotted-top {
     border-top: 1px dotted $blue;
+    padding-top: $gutter-width/4;
 }
 
 .dotted-top--white {
@@ -81,7 +82,7 @@ body {
 }
 
 .island {
-    padding: $gutter-width;
+    padding: $gutter-width/2 $gutter-width $gutter-width*1.5 $gutter-width;
 }
 
 .blue-widget {
@@ -116,6 +117,7 @@ img {
 
 .main-nav {
     @extend .dotted-top;
+    padding-top: 0;
     text-transform: lowercase;
     font-size: 1.2rem;
 
@@ -174,7 +176,8 @@ img {
     @include font-size(2, 1.2rem, 1.5rem);
 
     .h1 {
-        font-size: 2.2em;
+        font-size: 2.25em; // 36px
+        line-height: 1; // 36px
     }
 }
 
@@ -197,7 +200,6 @@ img {
     @extend .header__inner;
     // Hack: make this look like it's part of the header
     // Could this be done better?
-    padding-top: 0;
 }
 
 .bubble {
@@ -311,5 +313,5 @@ img {
     // Positioned relative to `.talk__image-container`
     position: absolute;
     bottom: 0;
-    right: $gutter-width;
+    right: -$gutter-width/2;
 }
