@@ -9,3 +9,8 @@
 
 ### Author
 * `emailAddress` is used for the Gravatar
+
+## Git process
+* Create a branch off of ``master``
+* Commit only your changes to ``src``
+* Open a Pull Request
