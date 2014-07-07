@@ -12,14 +12,23 @@ $x: 650px;
 
     // If there is no `object-fit`, hide the image.
     .no-object-fit & {
-        @include unset(padding-bottom);
-
         .main-image__img {
-            display: none;
+            @include unset(height);
+            @include unset(min-height);
         }
 
-        .main-image__overlay {
+        // Because the image is no longer as tall, we must stack the overlay
+        // above the image instead of on top.
+        @media (max-width: $desktop) {
             @include unset(position);
+
+            .main-image__overlay {
+                @include unset(position);
+            }
+
+            .main-image__overlay__inner {
+                @include unset(width);
+            }
         }
     }
 }
