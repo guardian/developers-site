@@ -34,5 +34,14 @@
         "imageFileBasename": "2013-10-10-responsive-design-at-the-guardian.png",
         "link": "http://mattandrews.info/talks/canvasconf-2013/",
         "type": "article"
+    },
+    {
+        "title": "Introducing Wraith-Donk",
+        "authorName": "Gideon Goldberg",
+        "location": "London Developers in Test Meetup",
+        "date": "2014-05-01",
+        "imageFileBasename": "2014-05-01-introducing-wraith-donk.jpg",
+        "link": "https://speakerdeck.com/gidsg/introducing-wraith-donk",
+        "type": "slides"
     }
 ]
