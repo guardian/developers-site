@@ -17,7 +17,11 @@
 
 ## Releasing
 
+The `master` branch only contains sources. `gh-pages` only contains the compiled
+code.
+
 ```
+git checkout master
 ./node_modules/.bin/gulp
 git checkout gh-pages
 git fetch
