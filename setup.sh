@@ -9,7 +9,7 @@ bundle install --gemfile $BASE/Gemfile-sass
 npm install
 
 cd ./src
-jspm install
+jspm dl-loader
 cd ..
 
 # Initial build
