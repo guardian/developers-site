@@ -53,7 +53,7 @@ reqwest({
 // Polyfill CSS `object-fit` property
 
 objectFit.polyfill({
-    selector: '.main-image',
+    selector: '.main-image__img',
     // TODO: Why can't this be read from the CSS?
     fittype: 'cover'
 });
