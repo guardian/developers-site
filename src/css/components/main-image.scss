@@ -9,10 +9,22 @@ $x: 650px;
         position: relative;
         padding-bottom: $trailing-margin-height;
     }
+
+    // If there is no `object-fit`, hide the image.
+    .no-object-fit & {
+        @include unset(padding-bottom);
+
+        .main-image__img {
+            display: none;
+        }
+
+        .main-image__overlay {
+            @include unset(position);
+        }
+    }
 }
 
 .main-image__img {
-    // TODO: Polyfill for FF, IE11, Safari
     object-fit: cover;
     height: 50vmin;
     min-height: 40vmax;
