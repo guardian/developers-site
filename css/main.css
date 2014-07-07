@@ -244,12 +244,9 @@ h6 {
   font-style: normal;
   font-stretch: normal; }
 @media (min-width: 650px) {
-  .main-image {
+  .object-fit .main-image {
     position: relative;
     padding-bottom: 1.2rem; } }
-.no-object-fit .main-image .main-image__img {
-  height: initial;
-  min-height: initial; }
 @media (max-width: 900px) {
   .no-object-fit .main-image {
     position: initial; }
@@ -258,18 +255,18 @@ h6 {
     .no-object-fit .main-image .main-image__overlay__inner {
       width: initial; } }
 
-.main-image__img {
+.object-fit .main-image__img {
   object-fit: cover;
   height: 50vmin;
   min-height: 40vmax;
   width: 100%; }
   @media (min-width: 900px) {
-    .main-image__img {
+    .object-fit .main-image__img {
       height: 60vmin;
       min-height: 30vmax; } }
 
 @media (min-width: 650px) {
-  .main-image__overlay {
+  .object-fit .main-image__overlay {
     position: absolute;
     bottom: 0;
     width: 100%; } }
