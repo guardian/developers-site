@@ -1,5 +1,5 @@
 @function hundred-percent-from($value, $percent) {
-    @return $value / ($percent / 100);
+    @return ($value / $percent) * 100;
 }
 
 @function percent-of($value, $percent) {
