@@ -6,7 +6,7 @@ if [ $? != "0" ]; then
     exit 1
 fi
 
-test $(which jspm2)
+test $(which jspm)
 if [ $? != "0" ]; then
     echo -e "jspm not found: please run 'sudo npm install -g jspm'"
     exit 1
