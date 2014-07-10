@@ -6,14 +6,14 @@
 }
 
 .h2 {
-    font-size: 2rem; // 32px
-    line-height: 1.25; // 40px
+    font-size: 2rem;
+    line-height: 1.25;
 }
 
 .h3 {
     @extend .dotted-top;
-    font-size: 1.3125rem; // 21px
-    line-height: 1.1428571429; // 24px
+    font-size: 1.3125rem;
+    line-height: 1.1428571429;
     font-weight: bold;
 }
 
