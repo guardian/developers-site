@@ -19,8 +19,6 @@
 
 .alt-h3 {
     @extend .h3;
-    // Unset (`h3`)
-    font-weight: normal;
-    // Unset (`h3`)
+    // Unset (`.h3`)
     @include unset(margin-bottom);
 }
