@@ -36,6 +36,24 @@
         "type": "article"
     },
     {
+        "title": "The Symbiotic Web",
+        "authorName": "Sébastien Cevey",
+        "location": "Front-end London",
+        "date": "2013-11-28",
+        "imageFileBasename": "2013-11-28-symbiotic-web.png",
+        "link": "http://bytes.inso.cc/2014/05/09/the-symbiotic-web-frontend-london-nov-2013/",
+        "type": "article"
+    },
+    {
+        "title": "Reactive Programming in JavaScript",
+        "authorName": "Sébastien Cevey",
+        "location": "FunctionalJS London",
+        "date": "2014-04-28",
+        "imageFileBasename": "2014-04-28-funjs-reactive.png",
+        "link": "http://bytes.inso.cc/2014/05/09/reactive-programming-in-javascript-funjs-london/",
+        "type": "article"
+    },
+    {
         "title": "Introducing Wraith-Donk",
         "authorName": "Gideon Goldberg",
         "location": "London Developers in Test Meetup",
