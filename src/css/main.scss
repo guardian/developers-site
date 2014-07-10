@@ -57,7 +57,7 @@ body {
 
 .dotted-top {
     border-top: 1px dotted $blue;
-    padding-top: $gutter-width/4;
+    padding-top: $trailing-margin-height / 4;
 }
 
 .dotted-top--white {
@@ -82,7 +82,7 @@ body {
 }
 
 .island {
-    padding: $gutter-width/2 $gutter-width $gutter-width*1.5 $gutter-width;
+    padding: ($trailing-margin-height / 2) $gutter-width ($trailing-margin-height * 1.5) $gutter-width;
 }
 
 .blue-widget {
