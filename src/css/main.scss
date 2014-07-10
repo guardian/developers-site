@@ -120,7 +120,8 @@ img {
 
 .main-nav {
     @extend .dotted-top;
-    padding-top: 0;
+    // Unset (`.dotted-top`)
+    @include unset(padding-top);
     text-transform: lowercase;
     font-size: 1.2rem;
 

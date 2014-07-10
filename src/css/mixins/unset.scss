@@ -14,6 +14,8 @@
         position: initial;
     } @else if $property == padding-bottom {
         padding-bottom: initial;
+    } @else if $property == padding-top {
+        padding-top: initial;
     } @else if $property == height {
         height: initial;
     } @else if $property == min-height {
