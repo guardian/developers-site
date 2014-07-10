@@ -10,9 +10,12 @@ $trailing-margin-height: 1.5rem;
 @import "mixins/unset";
 @import "mixins/other";
 
+// Normalize/reset
+@import "typography";
+
+// Foundations
 @import "grid";
 @import "headings";
-@import "typography";
 @import "webfonts";
 
 @import "components/main-image";
