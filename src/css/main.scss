@@ -228,7 +228,7 @@ img {
 .developer-blog-section {
     article {
         h3 {
-            margin-bottom: 0;
+            @extend .alt-h3;
         }
 
         time {
