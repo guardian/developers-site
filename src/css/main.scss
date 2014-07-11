@@ -10,9 +10,12 @@ $trailing-margin-height: 1.5rem;
 @import "mixins/unset";
 @import "mixins/other";
 
+// Normalize/reset
+@import "typography";
+
+// Foundations
 @import "grid";
 @import "headings";
-@import "typography";
 @import "webfonts";
 
 @import "components/main-image";
@@ -57,7 +60,7 @@ body {
 
 .dotted-top {
     border-top: 1px dotted $blue;
-    padding-top: $gutter-width/4;
+    padding-top: $trailing-margin-height / 4;
 }
 
 .dotted-top--white {
@@ -82,7 +85,7 @@ body {
 }
 
 .island {
-    padding: $gutter-width/2 $gutter-width $gutter-width*1.5 $gutter-width;
+    padding: ($trailing-margin-height / 2) $gutter-width;
 }
 
 .blue-widget {
@@ -117,7 +120,8 @@ img {
 
 .main-nav {
     @extend .dotted-top;
-    padding-top: 0;
+    // Unset (`.dotted-top`)
+    @include unset(padding-top);
     text-transform: lowercase;
     font-size: 1.2rem;
 
@@ -176,8 +180,8 @@ img {
     @include font-size(2, 1.2rem, 1.5rem);
 
     .h1 {
-        font-size: 2.25em; // 36px
-        line-height: 1; // 36px
+        font-size: 2.25em;
+        line-height: 1;
     }
 }
 
@@ -225,7 +229,7 @@ img {
 .developer-blog-section {
     article {
         h3 {
-            margin-bottom: 0;
+            @extend .alt-h3;
         }
 
         time {

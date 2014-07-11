@@ -1,24 +1,24 @@
+// We make no assumptions about where these classes will be applied, and what
+// styles will be inherited.
 .h1 {
     font-size: 3rem;
     line-height: 1;
 }
 
 .h2 {
-    font-size: 2rem; // 32px
-    line-height: 1.25; // 40px
+    font-size: 2rem;
+    line-height: 1;
 }
 
 .h3 {
     @extend .dotted-top;
-    font-size: 1.3125rem; // 21px
-    line-height: 1.1428571429; // 24px
+    font-size: 1.3rem;
+    line-height: 1;
+    font-weight: bold;
 }
 
 .alt-h3 {
     @extend .h3;
-    // Unset (`h3`)
-    @include unset(border-top);
-    font-weight: normal;
-    // Unset (`h3`)
+    // Unset (`.h3`)
     @include unset(margin-bottom);
 }
