@@ -1,7 +1,7 @@
 // Polyfill for `unset` keyword:
 // https://developer.mozilla.org/en-US/docs/Web/CSS/unset
 // TODO: http://stackoverflow.com/questions/5612302/which-css-styles-are-inherited
-@mixin unset($property) {
+@mixin browserUnset($property) {
     @if $property == flex-grow {
         flex-grow: initial;
     } @else if $property == flex-basis {
@@ -22,5 +22,44 @@
         min-height: initial;
     } @else if $property == width {
         width: initial;
+    }
+}
+
+// Unset a property back to its initial value. Here we can define what we want
+// the initial value to be, if it is not what the UA defines.
+@mixin unset($property) {
+    // TODO: Move initial styles into dictionary
+    @if $property == margin-top {
+        // IE11’s `initial` value is non-zero
+        margin-top: 0;
+    } @else if $property == margin-right {
+        // IE11’s `initial` value is non-zero
+        margin-right: 0;
+    } @else if $property == margin-bottom {
+        // IE11’s `initial` value is non-zero
+        margin-bottom: 0;
+    } @else if $property == margin-left {
+        // IE11’s `initial` value is non-zero
+        margin-left: 0;
+    } @else if $property == padding-top {
+        // IE11’s `initial` value is non-zero
+        padding-top: 0;
+    }  @else if $property == padding-right {
+        // IE11’s `initial` value is non-zero
+        padding-right: 0;
+    } @else if $property == padding-bottom {
+        // IE11’s `initial` value is non-zero
+        padding-bottom: 0;
+    } @else if $property == padding-left {
+        // IE11’s `initial` value is non-zero
+        padding-left: 0;
+    } @else if $property == flex-grow {
+        // IE11’s `initial` value is non-zero (1)
+        flex-grow: 0;
+    } @else if $property == flex-basis {
+        // IE11’s `initial` value is 0, needs to be `auto`
+        flex-basis: auto;
+    } @else {
+        @include browserUnset($property);
     }
 }
