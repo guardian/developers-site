@@ -22,6 +22,15 @@ $trailing-margin-height: 1.5rem;
 
 @import "components/main-image";
 
+.inset {
+    @include breakpoint($desktop) {
+        min-width: $desktop;
+        width: 95vw;
+        max-width: 1110px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 
 // "Objects"
 
@@ -42,10 +51,6 @@ $trailing-margin-height: 1.5rem;
 
 .hidden {
     display: none;
-}
-
-.inset {
-    @include inset();
 }
 
 .dotted-top {
@@ -95,7 +100,7 @@ $trailing-margin-height: 1.5rem;
 
 .header__inner {
     @extend .island;
-    @include inset();
+    @extend .inset;
 
     @include breakpoint($desktop) {
         padding-top: 2rem;
