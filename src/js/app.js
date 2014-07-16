@@ -10,7 +10,7 @@ function renderTemplate(template, options) {
     var renderedString = ejs.render(template, options);
     // EJS has a client-side mode (which I assume outputs a DOM element), but
     // it’s provided in a different file…
-    var bin = document.createElement('div');
+    var bin = window.document.createElement('div');
     bin.innerHTML = renderedString;
     return bin.childNodes[0];
 }
@@ -43,7 +43,7 @@ reqwest({
         }
     });
 
-    var developerBlogSectionDropZone = document.querySelector('.developer-blog-section .drop-zone');
+    var developerBlogSectionDropZone = window.document.querySelector('.developer-blog-section .drop-zone');
     developerBlogSectionDropZone.appendChild(renderedElement);
     developerBlogSectionDropZone.hidden = false;
 });
