@@ -35,7 +35,6 @@ reqwest({
     url: url,
     type: 'jsonp'
 }).then(function (response) {
-    console.log(1, response.response.results);
     var renderedElement = renderTemplate(template, {
         articles: response.response.results,
         formatDate: function (dateString) {
