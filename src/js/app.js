@@ -16,10 +16,7 @@ function renderTemplate(template, options) {
 }
 
 function constructURLQueryParameters(map) {
-    return Object.keys(map).map(function (key) {
-        var value = map[key];
-        return key + '=' + value;
-    }).join('&');
+    return Object.keys(map).map(key => key + '=' + map[key]).join('&');
 }
 
 var urlParameters = constructURLQueryParameters({
@@ -34,12 +31,10 @@ reqwest({
     // TODO: API key
     url: url,
     type: 'jsonp'
-}).then(function (response) {
+}).then(response => {
     var renderedElement = renderTemplate(template, {
         articles: response.response.results,
-        formatDate: function (dateString) {
-            return moment(dateString).format('D MMM YYYY');
-        }
+        formatDate: dateString => moment(dateString).format('D MMM YYYY')
     });
 
     var developerBlogSectionDropZone = window.document.querySelector('.developer-blog-section .drop-zone');
