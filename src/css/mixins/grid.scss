@@ -34,10 +34,6 @@
         }
     }
 
-    .l-#{$unit}-grid--flex-cells > .l-#{$unit}-grid-cell {
-        display: flex;
-    }
-
     .l-#{$unit}-grid-cell {
         flex-grow: 1;
         flex-basis: 0;
