@@ -54,6 +54,15 @@
         "type": "article"
     },
     {
+        "title": "Git Going Faster... with Scala",
+        "authorName": "Roberto Tyley",
+        "location": "ScalaDays Berlin",
+        "date": "2014-06-18",
+        "imageFileBasename": "2014-06-18-git-going-faster-with-scala.png",
+        "link": "http://www.parleys.com/play/53a7d2d1e4b0543940d9e56b/",
+        "type": "video"
+    },
+    {
         "title": "Introducing Wraith-Donk",
         "authorName": "Gideon Goldberg",
         "location": "London Developers in Test Meetup",
