@@ -8,15 +8,6 @@
         "link": "https://speakerdeck.com/gidsg/introducing-wraith-donk",
         "type": "slides"
     },
-		{
-        "title": "Delivering Continuous Delivery Continuously",
-        "authorName": "Simon Hildrew",
-        "location": "Craft Conference",
-        "date": "2014-04-25",
-        "imageFileBasename": "2014-04-delivering-continuous-delivery-continuously.jpg",
-        "link": "http://www.ustream.tv/recorded/46668417",
-        "type": "video"
-    },
     {
         "title": "Reactive Programming in JavaScript",
         "authorName": "Sébastien Cevey",
@@ -25,6 +16,15 @@
         "imageFileBasename": "2014-04-28-funjs-reactive.png",
         "link": "http://bytes.inso.cc/2014/05/09/reactive-programming-in-javascript-funjs-london/",
         "type": "article"
+    },
+		{
+        "title": "Delivering Continuous Delivery Continuously",
+        "authorName": "Simon Hildrew",
+        "location": "Craft Conference",
+        "date": "2014-04-25",
+        "imageFileBasename": "2014-04-delivering-continuous-delivery-continuously.jpg",
+        "link": "http://www.ustream.tv/recorded/46668417",
+        "type": "video"
     },
     {
         "title": "The Symbiotic Web",
