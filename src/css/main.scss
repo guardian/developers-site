@@ -17,20 +17,11 @@ $trailing-margin-height: 1.5rem;
 @import "grid";
 @import "headings";
 @import "webfonts";
+@import "polyfills";
+@import "base";
 
 @import "components/main-image";
 
-
-* {
-    // http://caniuse.com/#feat=css3-boxsizing
-    box-sizing: border-box;
-}
-
-// IE11 does not have UA styles for `main`
-// As per: http://stackoverflow.com/a/20095764/1082754
-main {
-    display: block;
-}
 
 // "Objects"
 
@@ -55,13 +46,6 @@ main {
 
 .inset {
     @include inset();
-}
-
-// Base
-
-body {
-    // Unset
-    margin: 0;
 }
 
 .dotted-top {
@@ -102,11 +86,6 @@ body {
 .grey-widget {
     @extend %white-text;
     background-color: $grey;
-}
-
-iframe,
-img {
-    max-width: 100%;
 }
 
 .header {
@@ -253,11 +232,6 @@ img {
     // Alternatively, we could set `img` `display: block`, but this effects
     // the click area of the hyperlink which is not what we want.
     line-height: 0;
-}
-
-// TODO: Is this a sensible default?
-img {
-    vertical-align: middle;
 }
 
 // TODO: BEMify?

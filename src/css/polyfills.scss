@@ -1,0 +1,5 @@
+// IE11 does not have UA styles for `main`
+// As per: http://stackoverflow.com/a/20095764/1082754
+main {
+    display: block;
+}

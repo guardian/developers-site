@@ -1,0 +1,20 @@
+* {
+    // http://caniuse.com/#feat=css3-boxsizing
+    box-sizing: border-box;
+}
+
+body {
+    // Unset
+    margin: 0;
+}
+
+// TODO: Is this a sensible default?
+img {
+    vertical-align: middle;
+}
+
+// TODO: Is this a sensible default?
+iframe,
+img {
+    max-width: 100%;
+}
