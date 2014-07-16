@@ -191,8 +191,7 @@ img {
     }
 }
 
-// TODO:
-.foo {
+.small-home-banner {
     $x: 50;
     $y: hundred-percent-from(2rem, 4);
     // max-width: percent-of($y, $x);
