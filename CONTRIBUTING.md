@@ -6,6 +6,7 @@
 * Recognised types: `slides`, `video`, `article`
 * `date` should be in ISO 8601 format
 * Make sure there is a corresponding author entity (we intersect by `name`)
+* Your image must have an aspect ratio of 4:3 (minimum of 960x720)
 
 ### Author
 * `emailAddress` is used for the Gravatar
