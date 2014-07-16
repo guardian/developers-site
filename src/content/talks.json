@@ -61,5 +61,14 @@
         "imageFileBasename": "2014-05-01-introducing-wraith-donk.jpg",
         "link": "https://speakerdeck.com/gidsg/introducing-wraith-donk",
         "type": "slides"
+    },
+		{
+        "title": "Delivering Continuous Delivery Continuously",
+        "authorName": "Simon Hildrew",
+        "location": "Craft Conference",
+        "date": "2014-04-25",
+        "imageFileBasename": "2014-04-delivering-continuous-delivery-continuously.jpg",
+        "link": "http://www.ustream.tv/recorded/46668417",
+        "type": "video"
     }
 ]
