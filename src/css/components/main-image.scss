@@ -3,11 +3,11 @@ $x: 650px;
 
 .main-image {
     @extend .trailing-margin;
-    padding-bottom: $trailing-margin-height;
 
     @include breakpoint($x) {
         // Position `.main-image-overlay` relative to this
         position: relative;
+        padding-bottom: $trailing-margin-height;
     }
 
     // If there is no `object-fit`, hide the image.
