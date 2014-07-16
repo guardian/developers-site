@@ -10,16 +10,13 @@ function renderTemplate(template, options) {
     var renderedString = ejs.render(template, options);
     // EJS has a client-side mode (which I assume outputs a DOM element), but
     // it’s provided in a different file…
-    var bin = document.createElement('div');
+    var bin = window.document.createElement('div');
     bin.innerHTML = renderedString;
     return bin.childNodes[0];
 }
 
 function constructURLQueryParameters(map) {
-    return Object.keys(map).map(function (key) {
-        var value = map[key];
-        return key + '=' + value;
-    }).join('&');
+    return Object.keys(map).map(key => key + '=' + map[key]).join('&');
 }
 
 var urlParameters = constructURLQueryParameters({
@@ -34,16 +31,13 @@ reqwest({
     // TODO: API key
     url: url,
     type: 'jsonp'
-}).then(function (response) {
-    console.log(1, response.response.results);
+}).then(response => {
     var renderedElement = renderTemplate(template, {
         articles: response.response.results,
-        formatDate: function (dateString) {
-            return moment(dateString).format('D MMM YYYY');
-        }
+        formatDate: dateString => moment(dateString).format('D MMM YYYY')
     });
 
-    var developerBlogSectionDropZone = document.querySelector('.developer-blog-section .drop-zone');
+    var developerBlogSectionDropZone = window.document.querySelector('.developer-blog-section .drop-zone');
     developerBlogSectionDropZone.appendChild(renderedElement);
     developerBlogSectionDropZone.hidden = false;
 });
