@@ -36,7 +36,9 @@
                 <section class="dotted-top">
                     <h2>Recents talks by the Guardian</h2>
                     <ul class="l-grid l-tablet-grid l-tablet-grid--1of2 l-desktop-grid l-desktop-grid--1of3 base-list">
-                        <% scope.talks.forEach(function (talk) {
+                        <% scope.talks.sort(function(a, b) {
+                                return a.date > b.date ? -1: 1;
+                        }).forEach(function (talk) {
                             var author = scope.findAuthorByName(talk.authorName);
                             var talkLinkTitle = {
                                 'slides': 'View slides',
