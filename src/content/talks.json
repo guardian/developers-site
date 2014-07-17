@@ -1,59 +1,5 @@
 [
     {
-        "title": "CSS and the Critical Path",
-        "authorName": "Patrick Hamann",
-        "location": "Over the Air",
-        "date": "2013-09-27",
-        "imageFileBasename": "2013-09-27-css-and-the-critical-path.jpg",
-        "link": "https://speakerdeck.com/patrickhamann/css-and-the-critical-path",
-        "type": "slides"
-    },
-    {
-        "title": "Why APIs are Essential in Web Development",
-        "authorName": "Jenny Sivapalan",
-        "location": "Kings Place, London",
-        "date": "2013-09-11",
-        "imageFileBasename": "2013-09-11-why-apis-are-essential-in-web-development.jpg",
-        "link": "https://www.youtube.com/watch?v=JFG9I1tKNDk",
-        "type": "video"
-    },
-    {
-        "title": "Democratising Attention Data at guardian.co.uk",
-        "authorName": "Graham Tackley",
-        "location": "Aarhus International Software Development Conference",
-        "date": "2013-10-01",
-        "imageFileBasename": "2013-10-01-democratising-attention-data-at-guardian-co-uk.jpg",
-        "link": "https://www.youtube.com/watch?v=GOC1Nad5dMg",
-        "type": "video"
-    },
-    {
-        "title": "Responsive Design at the Guardian",
-        "authorName": "Matt Andrews",
-        "location": "IET Austin Court, Birmingham",
-        "date": "2013-10-10",
-        "imageFileBasename": "2013-10-10-responsive-design-at-the-guardian.png",
-        "link": "http://mattandrews.info/talks/canvasconf-2013/",
-        "type": "article"
-    },
-    {
-        "title": "The Symbiotic Web",
-        "authorName": "Sébastien Cevey",
-        "location": "Front-end London",
-        "date": "2013-11-28",
-        "imageFileBasename": "2013-11-28-symbiotic-web.png",
-        "link": "http://bytes.inso.cc/2014/05/09/the-symbiotic-web-frontend-london-nov-2013/",
-        "type": "article"
-    },
-    {
-        "title": "Reactive Programming in JavaScript",
-        "authorName": "Sébastien Cevey",
-        "location": "FunctionalJS London",
-        "date": "2014-04-28",
-        "imageFileBasename": "2014-04-28-funjs-reactive.png",
-        "link": "http://bytes.inso.cc/2014/05/09/reactive-programming-in-javascript-funjs-london/",
-        "type": "article"
-    },
-    {
         "title": "Git Going Faster... with Scala",
         "authorName": "Roberto Tyley",
         "location": "ScalaDays Berlin",
@@ -70,5 +16,68 @@
         "imageFileBasename": "2014-05-01-introducing-wraith-donk.jpg",
         "link": "https://speakerdeck.com/gidsg/introducing-wraith-donk",
         "type": "slides"
+    },
+    {
+        "title": "Reactive Programming in JavaScript",
+        "authorName": "Sébastien Cevey",
+        "location": "FunctionalJS London",
+        "date": "2014-04-28",
+        "imageFileBasename": "2014-04-28-funjs-reactive.png",
+        "link": "http://bytes.inso.cc/2014/05/09/reactive-programming-in-javascript-funjs-london/",
+        "type": "article"
+    },
+		{
+        "title": "Delivering Continuous Delivery Continuously",
+        "authorName": "Simon Hildrew",
+        "location": "Craft Conference",
+        "date": "2014-04-25",
+        "imageFileBasename": "2014-04-delivering-continuous-delivery-continuously.jpg",
+        "link": "http://www.ustream.tv/recorded/46668417",
+        "type": "video"
+    },
+    {
+        "title": "The Symbiotic Web",
+        "authorName": "Sébastien Cevey",
+        "location": "Front-end London",
+        "date": "2013-11-28",
+        "imageFileBasename": "2013-11-28-symbiotic-web.png",
+        "link": "http://bytes.inso.cc/2014/05/09/the-symbiotic-web-frontend-london-nov-2013/",
+        "type": "article"
+    },
+    {
+        "title": "Responsive Design at the Guardian",
+        "authorName": "Matt Andrews",
+        "location": "IET Austin Court, Birmingham",
+        "date": "2013-10-10",
+        "imageFileBasename": "2013-10-10-responsive-design-at-the-guardian.png",
+        "link": "http://mattandrews.info/talks/canvasconf-2013/",
+        "type": "article"
+    },
+    {
+        "title": "Democratising Attention Data at guardian.co.uk",
+        "authorName": "Graham Tackley",
+        "location": "Aarhus International Software Development Conference",
+        "date": "2013-10-01",
+        "imageFileBasename": "2013-10-01-democratising-attention-data-at-guardian-co-uk.jpg",
+        "link": "https://www.youtube.com/watch?v=GOC1Nad5dMg",
+        "type": "video"
+    },
+    {
+        "title": "CSS and the Critical Path",
+        "authorName": "Patrick Hamann",
+        "location": "Over the Air",
+        "date": "2013-09-27",
+        "imageFileBasename": "2013-09-27-css-and-the-critical-path.jpg",
+        "link": "https://speakerdeck.com/patrickhamann/css-and-the-critical-path",
+        "type": "slides"
+    },
+    {
+        "title": "Why APIs are Essential in Web Development",
+        "authorName": "Jenny Sivapalan",
+        "location": "Kings Place, London",
+        "date": "2013-09-11",
+        "imageFileBasename": "2013-09-11-why-apis-are-essential-in-web-development.jpg",
+        "link": "https://www.youtube.com/watch?v=JFG9I1tKNDk",
+        "type": "video"
     }
 ]
