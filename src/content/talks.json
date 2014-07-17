@@ -79,5 +79,41 @@
         "imageFileBasename": "2013-09-11-why-apis-are-essential-in-web-development.jpg",
         "link": "https://www.youtube.com/watch?v=JFG9I1tKNDk",
         "type": "video"
+    },
+    {
+        "title": "CSS and the Critical Path",
+        "authorName": "Patrick Hamann",
+        "location": "CSSConf US - Jacksonville, Florida",
+        "date": "2014-05-27",
+        "imageFileBasename": "2014-05-27-css-and-the-critical-path.jpg",
+        "link": "https://speakerdeck.com/patrickhamann/css-and-the-critical-path-cssconf-may-2014",
+        "type": "slides"
+    },
+    {
+        "title": "Breaking news at 1000ms",
+        "authorName": "Patrick Hamann",
+        "location": "FrontTrends - Warsaw, Poland",
+        "date": "2014-05-08",
+        "imageFileBasename": "2014-05-08-breaking-news-at-1000ms.jpg",
+        "link": "https://speakerdeck.com/patrickhamann/breaking-news-at-1000ms-front-trends-2014",
+        "type": "slides"
+    },
+    {
+        "title": "Planting the responsive seed",
+        "authorName": "Patrick Hamann",
+        "location": "Breaking Borders - Reading",
+        "date": "2013-06-25",
+        "imageFileBasename": "2013-06-25-planting-the-responsive-seed.jpg",
+        "link": "https://speakerdeck.com/patrickhamann/planting-the-responsive-seed",
+        "type": "slides"
+    },
+    {
+        "title": "Measuring your websites performance",
+        "authorName": "Patrick Hamann",
+        "location": "FrontEnd London - London",
+        "date": "2013-04-24",
+        "imageFileBasename": "2013-04-24-measuring-your-websites-performance.jpg",
+        "link": "https://speakerdeck.com/patrickhamann/why-performance-matters-measuring-your-websites-performance",
+        "type": "slides"
     }
 ]
