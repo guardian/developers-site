@@ -15,7 +15,8 @@
 The `master` branch only contains sources. `gh-pages` only contains the compiled
 code.
 
-* Create a branch off of ``master``
+* Create a branch off of ``master``, prefixed with your initials, e.g.
+  `oja-foo`.
 * Commit only your changes to ``src``
 * Open a Pull Request
 
