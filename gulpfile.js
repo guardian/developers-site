@@ -7,6 +7,7 @@ var ejs = require('ejs');
 var fs = require('fs');
 var path = require('path');
 var Q = require('q');
+var flatten = require('lodash-node/modern/arrays/flatten');
 var assign = require('lodash-node/modern/objects/assign');
 var filter = require('lodash-node/modern/collections/filter');
 var contains = require('lodash-node/modern/collections/contains');
@@ -46,7 +47,7 @@ gulp.task('copy', function () {
 });
 
 
-gulp.task('generate', function () {
+gulp.task('generate', ['lanyrd'], function () {
     generatePages();
 });
 
@@ -63,7 +64,7 @@ gulp.task('watch', function () {
     });
 });
 
-gulp.task('default', ['css', 'copy', 'generate']);
+gulp.task('default', ['css', 'copy', 'lanyrd', 'generate']);
 
 var talks = require('./src/content/talks.json');
 var authors = require('./src/content/authors.json');
@@ -126,14 +127,11 @@ function generatePages() {
 }
 
 function getUpcomingEvents() {
-    var users = filter(authors, function(author) {
-        return contains(Object.keys(author), 'lanyrd');
-    });
-
+    var users = filter(authors, 'lanyrd');
     var events = users.map(function(user) {
         var deferred = Q.defer();
         Lanyrd.futureEvents(user.lanyrd, function(err, resp, events) {
-            deferred.resolve(events);
+            deferred.resolve(filter(events, {subsubtitle_class: 'speaking'}));
         });
         return deferred.promise;
     });
@@ -143,6 +141,6 @@ function getUpcomingEvents() {
 
 gulp.task('lanyrd', function() {
     return getUpcomingEvents().then(function(events){
-        console.log(events);
+        find(pages, {title: 'Events & Talks'}).upcomingEvents = flatten(events);
     });
 });
