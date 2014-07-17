@@ -80,7 +80,7 @@ $trailing-margin-height: 1.5rem;
 }
 
 .island {
-    padding: ($trailing-margin-height / 2) $gutter-width;
+    padding: $trailing-margin-height $gutter-width;
 }
 
 .blue-widget {
