@@ -6,8 +6,12 @@ var autoprefixCss = require('gulp-autoprefixer');
 var ejs = require('ejs');
 var fs = require('fs');
 var path = require('path');
+var Q = require('q');
 var assign = require('lodash-node/modern/objects/assign');
+var filter = require('lodash-node/modern/collections/filter');
+var contains = require('lodash-node/modern/collections/contains');
 var find = require('lodash-node/modern/collections/find');
+var Lanyrd = require('lanyrd')
 
 var basePath = __dirname + '/src';
 
@@ -120,3 +124,25 @@ function generatePages() {
             output, { encoding: 'utf8' });
     });
 }
+
+function getUpcomingEvents() {
+    var users = filter(authors, function(author) {
+        return contains(Object.keys(author), 'lanyrd');
+    });
+
+    var events = users.map(function(user) {
+        var deferred = Q.defer();
+        Lanyrd.futureEvents(user.lanyrd, function(err, resp, events) {
+            deferred.resolve(events);
+        });
+        return deferred.promise;
+    });
+
+    return Q.all(events);
+}
+
+gulp.task('lanyrd', function() {
+    return getUpcomingEvents().then(function(events){
+        console.log(events);
+    });
+});
