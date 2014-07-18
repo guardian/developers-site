@@ -115,5 +115,14 @@
         "imageFileBasename": "2013-04-24-measuring-your-websites-performance.jpg",
         "link": "https://speakerdeck.com/patrickhamann/why-performance-matters-measuring-your-websites-performance",
         "type": "slides"
+    },
+    {
+        "title": "Building the next generation of the Guardian with Play!",
+        "authorName": "Grant Klopper",
+        "location": "PingConf - Budapest, Hungary",
+        "date": "2014-01-17",
+        "imageFileBasename": "2014-01-17-building-guardian-with-play.jpg",
+        "link": "http://www.ustream.tv/recorded/42805704",
+        "type": "video"
     }
 ]
