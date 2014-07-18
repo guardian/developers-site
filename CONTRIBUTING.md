@@ -2,6 +2,8 @@
 
 * Install the [EditorConfig](http://editorconfig.org/) plugin for your IDE. This
   enforces consistent settings for indent style, indent size, and other things.
+* For content, use semantic characters, e.g. `’` instead of `'`, `…` instead of
+  `...`.
 
 ## Content
 
