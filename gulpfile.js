@@ -7,12 +7,14 @@ var ejs = require('ejs');
 var fs = require('fs');
 var path = require('path');
 var Q = require('q');
+var moment = require('moment');
 var flatten = require('lodash-node/modern/arrays/flatten');
 var assign = require('lodash-node/modern/objects/assign');
 var filter = require('lodash-node/modern/collections/filter');
-var contains = require('lodash-node/modern/collections/contains');
 var find = require('lodash-node/modern/collections/find');
-var Lanyrd = require('lanyrd')
+var groupBy = require('lodash-node/modern/collections/groupBy');
+var forEach = require('lodash-node/modern/collections/forEach');
+var Lanyrd = require('lanyrd');
 
 var basePath = __dirname + '/src';
 
@@ -104,7 +106,6 @@ function generatePages() {
                 return find(authors, { name: authorName });
             },
             momentFilter: function (dateString, formatString) {
-                var moment = require('moment');
                 return moment(dateString).format(formatString);
             },
             getGravatarUrl: function (emailAddress) {
@@ -131,7 +132,13 @@ function getUpcomingEvents() {
     var events = users.map(function(user) {
         var deferred = Q.defer();
         Lanyrd.futureEvents(user.lanyrd, function(err, resp, events) {
-            deferred.resolve(filter(events, {subsubtitle_class: 'speaking'}));
+            if(err){ throw new Error(err); }
+            deferred.resolve(
+                events.map(function(event){
+                    event.users = [user];
+                    return event;
+                })
+            );
         });
         return deferred.promise;
     });
@@ -139,8 +146,32 @@ function getUpcomingEvents() {
     return Q.all(events);
 }
 
+function sortEvents(events) {
+    var groups = groupBy(flatten(events), 'subsubtitle_class');
+
+    Object.keys(groups).forEach(function(type) {
+        groups[type] = groups[type].sort(function(a, b){
+            return moment(a.month).valueOf() > moment(b.month).valueOf();
+        }).reduce(function(newEvents, event) {
+            var existingEvent = find(newEvents, { title: event.title });
+
+            if (existingEvent) {
+                event.users.forEach(function(user) {
+                    existingEvent.users.push(user);
+                });
+            } else {
+                newEvents.push(event);
+            }
+
+            return newEvents;
+        }, []);
+    });
+
+    return groups;
+}
+
 gulp.task('lanyrd', function() {
     return getUpcomingEvents().then(function(events){
-        find(pages, {title: 'Events & Talks'}).upcomingEvents = flatten(events);
+        find(pages, {title: 'Events & Talks'}).upcomingEvents = sortEvents(events);
     });
 });
