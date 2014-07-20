@@ -27,27 +27,17 @@ var urlParameters = constructURLQueryParameters({
 });
 var url = 'http://content.guardianapis.com/search?' + urlParameters;
 
-function transcludeDeveloperBlog() {
-    reqwest({
-        // TODO: API key
-        url: url,
-        type: 'jsonp'
-    }).then(response => {
-        var renderedElement = renderTemplate(template, {
-            articles: response.response.results,
-            formatDate: dateString => moment(dateString).format('D MMM YYYY')
-        });
-
-        var developerBlogSectionDropZone = window.document.querySelector('.developer-blog-section .drop-zone');
-        developerBlogSectionDropZone.appendChild(renderedElement);
-        developerBlogSectionDropZone.hidden = false;
+reqwest({
+    // TODO: API key
+    url: url,
+    type: 'jsonp'
+}).then(response => {
+    var renderedElement = renderTemplate(template, {
+        articles: response.response.results,
+        formatDate: dateString => moment(dateString).format('D MMM YYYY')
     });
-}
 
-switch(window.location.pathname) {
-    case '/' :
-        transcludeDeveloperBlog();
-        break;
-    default:
-        break;
-}
+    var developerBlogSectionDropZone = window.document.querySelector('.developer-blog-section .drop-zone');
+    developerBlogSectionDropZone.appendChild(renderedElement);
+    developerBlogSectionDropZone.hidden = false;
+});
