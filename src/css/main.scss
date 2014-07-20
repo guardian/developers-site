@@ -289,3 +289,29 @@ $trailing-margin-height: 1.5rem;
     bottom: 0;
     right: -$gutter-width/2;
 }
+
+.event {
+    position: relative;
+}
+
+.event__title {
+    padding-right: 56px;
+}
+
+.event__desc {
+    padding-right: 56px;
+    margin: 0;
+}
+
+.event__users {
+    position: absolute;
+    right: 0;
+    top: -28px;
+}
+
+.event__user-gravatar {
+    float: right;
+    margin-left: 4px;
+    // TODO: Vendor prefix
+    border-radius: 100%;
+}
