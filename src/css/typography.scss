@@ -62,3 +62,9 @@ h2 {
 h3 {
     @extend .h3;
 }
+
+time {
+    font-family: "AgateSans", sans-serif;
+    font-size: 14px;
+    color: #767676;
+}
