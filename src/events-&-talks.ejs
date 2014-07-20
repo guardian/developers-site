@@ -73,24 +73,38 @@
             </div>
             <div class="island">
                 <section class="dotted-top">
-                    <h2>Upcoming events we are speaking at:</h2>
-                    <ul class="l-grid l-tablet-grid l-tablet-grid--1of2 l-desktop-grid l-desktop-grid--1of3 base-list">
-                    <% scope.upcomingEvents.forEach(function (event) {  %>
-                        <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">
-                            <h3 class="alt-h3">
-                                <a href="<%= event.external %>" title="<%= event.external_body %>">
-                                    <%= event.title %>
-                                </a>
-                            </h3>
-                            <br>
-                            <% if(event.tagline) { %>
-                            <span><%= event.tagline %></span>,
-                            <br>
-                            <% } %>
-                            <time><%= event.month %></time>
-                        </li>
-                    <% }); %>
-                    </ul>
+                    <h2>Upcoming events we are speaking at</h2>
+                    <div class="l-grid l-desktop-grid">
+                        <div class="l-desktop-grid-cell l-grid-cell l-desktop-1of3">
+                            <p>Here is a list of the upcoming events our developers are speaking at.</a></p>
+                        </div>
+                        <div class="l-desktop-grid-cell l-grid-cell">
+                            <ul class="base-list">
+                                <% scope.upcomingEvents.speaking.forEach(function(event) {  %>
+                                    <% include enhanced-views/event %>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="island">
+                <section class="dotted-top">
+                    <h2>Upcoming events we are attending</h2>
+                    <div class="l-grid l-desktop-grid">
+                        <div class="l-desktop-grid-cell l-grid-cell l-desktop-1of3">
+                            <p>We regularly attend meetups and conferences and would love for you to come and say
+                                hello if you are also attending. You can also see a curated list of the conferences that interest
+                                us on our <a href="http://lanyrd.com/guides/guardian-devs/">Lanyrd page</a>.</p>
+                        </div>
+                        <div class="l-desktop-grid-cell l-grid-cell">
+                            <ul class="base-list">
+                                <% scope.upcomingEvents.attending.forEach(function(event) {  %>
+                                    <% include enhanced-views/event %>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>

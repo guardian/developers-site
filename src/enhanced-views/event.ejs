@@ -1,0 +1,18 @@
+<li class="event trailing-margin">
+    <div class="event__users">
+        <% event.users.forEach(function(user) { %>
+            <a href="<%= user.link %>">
+                <img src="<%= scope.getGravatarUrl(user.emailAddress) %>" alt="<%= user.name %>" class="event__user-gravatar" width="56" height="56">
+            </a>
+        <% }); %>
+    </div>
+    <h3 class="event__title alt-h3">
+        <a href="<%= event.external %>" title="<%= event.external_body %>">
+            <%= event.title %>
+        </a>
+    </h3>
+    <% if(event.tagline) { %>
+    <p class="event__desc"><%= event.tagline %></p>
+    <% } %>
+    <time class="event__timestamp"><%= scope.momentFilter(event.month, 'MMMM YYYY') %></time>
+</li>
