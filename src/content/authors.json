@@ -23,12 +23,14 @@
     {
         "name": "Sébastien Cevey",
         "link": "https://twitter.com/theefer",
-        "emailAddress": "seb.cevey@guardian.co.uk"
+        "emailAddress": "seb.cevey@guardian.co.uk",
+        "lanyrd": "theefer"
     },
     {
         "name": "Roberto Tyley",
         "link": "https://twitter.com/rtyley",
-        "emailAddress": "roberto.tyley@guardian.co.uk"
+        "emailAddress": "roberto.tyley@guardian.co.uk",
+        "lanyrd": "rtyley"
     },
     {
         "name": "Gideon Goldberg",
@@ -39,5 +41,17 @@
         "name": "Simon Hildrew",
         "link": "https://twitter.com/sihil",
         "emailAddress": "simon.hildrew@guardian.co.uk"
-	}
+    },
+    {
+        "name": "Oliver Joseph Ash",
+        "link": "https://twitter.com/oliverjash",
+        "emailAddress": "oliver.ash@guardian.co.uk",
+        "lanyrd": "oliverjash"
+    },
+    {
+        "name": "Kaelig",
+        "link": "https://twitter.com/kaelig",
+        "emailAddress": "kaelig@deloumeau.fr",
+        "lanyrd": "kaelig"
+    }
 ]
