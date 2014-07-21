@@ -294,24 +294,30 @@ $trailing-margin-height: 1.5rem;
     position: relative;
 }
 
-.event__title {
-    padding-right: 56px;
+.event__title,
+.event__desc {
+    @include breakpoint($tablet) {
+        padding-right: 56px;
+    }
 }
 
 .event__desc {
-    padding-right: 56px;
     margin: 0;
 }
 
 .event__users {
-    position: absolute;
-    right: 0;
-    // Positioned relative to `.event` container
-    top: -28px;
+    @include breakpoint($tablet) {
+        position: absolute;
+        right: 0;
+        // Positioned relative to `.event` container
+        top: -28px;
+    }
 }
 
 .event__user-gravatar {
-    float: right;
-    margin-left: 4px;
     border-radius: 100%;
+    @include breakpoint($tablet) {
+        float: right;
+        margin-left: 4px;
+    }
 }
