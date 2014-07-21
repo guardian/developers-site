@@ -1,6 +1,7 @@
 import moment from 'moment';
 import reqwest from 'github:ded/reqwest';
 import ejs from 'npm:ejs';
+import Picturefill from 'github:scottjehl/picturefill/src/picturefill';
 // FIXME: Must be last. Why?
 import template from '../enhanced-views/developer-blog-section.ejs!github:systemjs/plugin-text';
 
@@ -27,17 +28,27 @@ var urlParameters = constructURLQueryParameters({
 });
 var url = 'http://content.guardianapis.com/search?' + urlParameters;
 
-reqwest({
-    // TODO: API key
-    url: url,
-    type: 'jsonp'
-}).then(response => {
-    var renderedElement = renderTemplate(template, {
-        articles: response.response.results,
-        formatDate: dateString => moment(dateString).format('D MMM YYYY')
-    });
+function transcludeDeveloperBlog() {
+    reqwest({
+        // TODO: API key
+        url: url,
+        type: 'jsonp'
+    }).then(response => {
+        var renderedElement = renderTemplate(template, {
+            articles: response.response.results,
+            formatDate: dateString => moment(dateString).format('D MMM YYYY')
+        });
 
-    var developerBlogSectionDropZone = window.document.querySelector('.developer-blog-section .drop-zone');
-    developerBlogSectionDropZone.appendChild(renderedElement);
-    developerBlogSectionDropZone.hidden = false;
-});
+        var developerBlogSectionDropZone = window.document.querySelector('.developer-blog-section .drop-zone');
+        developerBlogSectionDropZone.appendChild(renderedElement);
+        developerBlogSectionDropZone.hidden = false;
+    });
+}
+
+switch(window.location.pathname) {
+    case '/' :
+        transcludeDeveloperBlog();
+        break;
+    default:
+        break;
+}
