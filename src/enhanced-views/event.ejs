@@ -11,8 +11,8 @@
             <%= event.title %>
         </a>
     </h3>
+    <time class="event__timestamp"><%= scope.momentFilter(event.month, 'MMMM YYYY') %></time>
     <% if(event.tagline) { %>
     <p class="event__desc"><%= event.tagline %></p>
     <% } %>
-    <time class="event__timestamp"><%= scope.momentFilter(event.month, 'MMMM YYYY') %></time>
 </li>
