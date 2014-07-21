@@ -306,12 +306,12 @@ $trailing-margin-height: 1.5rem;
 .event__users {
     position: absolute;
     right: 0;
+    // Positioned relative to `.event` container
     top: -28px;
 }
 
 .event__user-gravatar {
     float: right;
     margin-left: 4px;
-    // TODO: Vendor prefix
     border-radius: 100%;
 }
