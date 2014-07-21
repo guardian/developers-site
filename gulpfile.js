@@ -129,17 +129,13 @@ function generatePages() {
 function getUpcomingEvents() {
     var users = filter(authors, 'lanyrd');
     var events = users.map(function(user) {
-        var deferred = Q.defer();
-        Lanyrd.futureEvents(user.lanyrd, function(err, resp, events) {
-            if(err){ throw new Error(err); }
-            deferred.resolve(
-                events.map(function(event){
-                    event.users = [user];
-                    return event;
-                })
-            );
+        var futureEvents = Q.nbind(Lanyrd.futureEvents, Lanyrd);
+        return futureEvents(user.lanyrd).spread(function(resp, events) {
+            return events.map(function(event) {
+                event.users = [user];
+                return event;
+            });
         });
-        return deferred.promise;
     });
 
     return Q.all(events);
