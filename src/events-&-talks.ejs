@@ -34,7 +34,7 @@
             </div>
             <div class="island">
                 <section class="dotted-top">
-                    <h2>Recents talks by the Guardian</h2>
+                    <h2>Recents Talks by the Guardian</h2>
                     <ul class="l-grid l-tablet-grid l-tablet-grid--1of2 l-desktop-grid l-desktop-grid--1of3 base-list">
                         <% scope.talks.sort(function(a, b) {
                                 return a.date > b.date ? -1: 1;
@@ -69,6 +69,42 @@
                             </li>
                         <% }); %>
                     </ul>
+                </section>
+            </div>
+            <div class="island">
+                <section class="dotted-top">
+                    <h2>Upcoming Events We Are Speaking At</h2>
+                    <div class="l-grid l-desktop-grid">
+                        <div class="l-desktop-grid-cell l-grid-cell l-desktop-1of3">
+                            <p>Here is a list of the upcoming events our developers are speaking at.</a></p>
+                        </div>
+                        <div class="l-desktop-grid-cell l-grid-cell">
+                            <ul class="base-list">
+                                <% scope.upcomingEvents.speaking.forEach(function(event) {  %>
+                                    <% include enhanced-views/event %>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="island">
+                <section class="dotted-top">
+                    <h2>Upcoming Events We Are Attending</h2>
+                    <div class="l-grid l-desktop-grid">
+                        <div class="l-desktop-grid-cell l-grid-cell l-desktop-1of3">
+                            <p>We regularly attend meetups and conferences and would love for you to come and say
+                                hello if you are also attending. You can also see a curated list of the conferences that interest
+                                us on our <a href="http://lanyrd.com/guides/guardian-devs/">Lanyrd page</a>.</p>
+                        </div>
+                        <div class="l-desktop-grid-cell l-grid-cell">
+                            <ul class="base-list">
+                                <% scope.upcomingEvents.attending.forEach(function(event) {  %>
+                                    <% include enhanced-views/event %>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>

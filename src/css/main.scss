@@ -210,7 +210,6 @@ $trailing-margin-height: 1.5rem;
         time {
             @extend .trailing-margin;
             display: block;
-            color: hsl(0, 0%, 50%);
         }
     }
 }
@@ -288,4 +287,32 @@ $trailing-margin-height: 1.5rem;
     position: absolute;
     bottom: 0;
     right: -$gutter-width/2;
+}
+
+.event {
+    position: relative;
+}
+
+.event__title,
+.event__desc {
+    @include breakpoint($tablet) {
+        padding-right: 56px;
+    }
+}
+
+.event__users {
+    @include breakpoint($tablet) {
+        position: absolute;
+        right: 0;
+        // Positioned relative to `.event` container
+        top: -28px;
+    }
+}
+
+.event__user-gravatar {
+    border-radius: 100%;
+    @include breakpoint($tablet) {
+        float: right;
+        margin-left: 4px;
+    }
 }

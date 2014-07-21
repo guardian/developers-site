@@ -6,8 +6,14 @@ var autoprefixCss = require('gulp-autoprefixer');
 var ejs = require('ejs');
 var fs = require('fs');
 var path = require('path');
+var Q = require('q');
+var moment = require('moment');
+var flatten = require('lodash-node/modern/arrays/flatten');
 var assign = require('lodash-node/modern/objects/assign');
+var filter = require('lodash-node/modern/collections/filter');
 var find = require('lodash-node/modern/collections/find');
+var groupBy = require('lodash-node/modern/collections/groupBy');
+var Lanyrd = require('lanyrd');
 
 var basePath = __dirname + '/src';
 
@@ -42,7 +48,7 @@ gulp.task('copy', function () {
 });
 
 
-gulp.task('generate', function () {
+gulp.task('generate', ['lanyrd'], function () {
     generatePages();
 });
 
@@ -59,7 +65,7 @@ gulp.task('watch', function () {
     });
 });
 
-gulp.task('default', ['css', 'copy', 'generate']);
+gulp.task('default', ['css', 'copy', 'lanyrd', 'generate']);
 
 var talks = require('./src/content/talks.json');
 var authors = require('./src/content/authors.json');
@@ -99,7 +105,6 @@ function generatePages() {
                 return find(authors, { name: authorName });
             },
             momentFilter: function (dateString, formatString) {
-                var moment = require('moment');
                 return moment(dateString).format(formatString);
             },
             getGravatarUrl: function (emailAddress) {
@@ -120,3 +125,52 @@ function generatePages() {
             output, { encoding: 'utf8' });
     });
 }
+
+function getUpcomingEvents() {
+    var users = filter(authors, 'lanyrd');
+    var events = users.map(function(user) {
+        var futureEvents = Q.nbind(Lanyrd.futureEvents, Lanyrd);
+        return futureEvents(user.lanyrd).spread(function(resp, events) {
+            return events.map(function(event) {
+                event.users = [user];
+                return event;
+            });
+        });
+    });
+
+    return Q.all(events);
+}
+
+function sortEvents(events) {
+    //Group events by activity type 'speaking', 'attending' or 'tracking'
+    var groups = groupBy(flatten(events), 'subsubtitle_class');
+
+    Object.keys(groups).forEach(function(type) {
+        //First sort events by date
+        groups[type] = groups[type].sort(function(a, b){
+            return moment(a.month).unix() > moment(b.month).unix() ? 1 : -1;
+
+        //Dedupe events whilst maintaining users attending
+        }).reduce(function(newEvents, event) {
+            var existingEvent = find(newEvents, { title: event.title });
+
+            if (existingEvent) {
+                event.users.forEach(function(user) {
+                    existingEvent.users.push(user);
+                });
+            } else {
+                newEvents.push(event);
+            }
+
+            return newEvents;
+        }, []);
+    });
+
+    return groups;
+}
+
+gulp.task('lanyrd', function() {
+    return getUpcomingEvents().then(function(events){
+        find(pages, {title: 'Events & Talks'}).upcomingEvents = sortEvents(events);
+    });
+});
