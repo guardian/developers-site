@@ -147,11 +147,15 @@ function getUpcomingEvents() {
 }
 
 function sortEvents(events) {
+    //Group events by activity type 'speaking', 'attending' or 'tracking'
     var groups = groupBy(flatten(events), 'subsubtitle_class');
 
     Object.keys(groups).forEach(function(type) {
+        //First sort events by date
         groups[type] = groups[type].sort(function(a, b){
             return moment(a.month).unix() > moment(b.month).unix() ? 1 : -1;
+
+        //Dedupe events whilst maintaining users attending
         }).reduce(function(newEvents, event) {
             var existingEvent = find(newEvents, { title: event.title });
 
