@@ -13,7 +13,6 @@ var assign = require('lodash-node/modern/objects/assign');
 var filter = require('lodash-node/modern/collections/filter');
 var find = require('lodash-node/modern/collections/find');
 var groupBy = require('lodash-node/modern/collections/groupBy');
-var forEach = require('lodash-node/modern/collections/forEach');
 var Lanyrd = require('lanyrd');
 
 var basePath = __dirname + '/src';
