@@ -301,10 +301,6 @@ $trailing-margin-height: 1.5rem;
     }
 }
 
-.event__desc {
-    margin: 0;
-}
-
 .event__users {
     @include breakpoint($tablet) {
         position: absolute;
