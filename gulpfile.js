@@ -151,7 +151,7 @@ function sortEvents(events) {
 
     Object.keys(groups).forEach(function(type) {
         groups[type] = groups[type].sort(function(a, b){
-            return moment(a.month).valueOf() > moment(b.month).valueOf();
+            return moment(a.month).unix() > moment(b.month).unix() ? 1 : -1;
         }).reduce(function(newEvents, event) {
             var existingEvent = find(newEvents, { title: event.title });
 
