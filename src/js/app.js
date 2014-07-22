@@ -1,7 +1,6 @@
 import moment from 'moment';
 import reqwest from 'github:ded/reqwest';
 import ejs from 'npm:ejs';
-import Picturefill from 'github:scottjehl/picturefill/src/picturefill';
 // FIXME: Must be last. Why?
 import template from '../enhanced-views/developer-blog-section.ejs!github:systemjs/plugin-text';
 
