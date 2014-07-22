@@ -14,6 +14,7 @@
             // Must be loaded before the body is parsed?
             System.import('js/modernizr');
         </script>
+        <script src="./js/picturefill.min.js" async></script>
     </head>
     <body>
         <header class="header">
@@ -160,9 +161,13 @@
                 © Guardian News and Media Limited or its affiliated companies. All rights reserved.
             </div>
         </footer>
-        <script>
+        <script async>
             /* global System */
-            System.import('js/app');
+            System.import('js/app').catch(function(e) {
+                setTimeout(function() {
+                    throw e;
+                });
+            });
         </script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
