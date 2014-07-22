@@ -2,10 +2,12 @@
 
 * Install the [EditorConfig](http://editorconfig.org/) plugin for your IDE. This
   enforces consistent settings for indent style, indent size, and other things.
-* For content, use semantic characters, e.g. `’` instead of `'`, `…` instead of
-  `...`.
 
 ## Content
+
+* For content, use semantic characters, e.g. `’` instead of `'`, `…` instead of
+  `...`.
+* [Titles should be capitalised](http://english.stackexchange.com/questions/14/which-words-in-a-title-should-be-capitalized/34#34).
 
 ### Talks
 * Recognised types: `slides`, `video`, `article`
