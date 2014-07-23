@@ -1,21 +1,21 @@
 [
     {
-        "title": "Senior software engineers",
+        "title": "Senior Software Engineer",
         "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00006Q",
         "description": "<p>Senior engineers are experienced developers will a variety of experience across domains and technologies. They have established their own areas of knowledge and expertise but are willing to share what they know and are always eager to learn new things.</p><p>They are humble and moderate in their views. Happy to mentor a junior developer, capable of leading a team or supporting one of their peers to deliver a shared technical vision. They see the world in terms of potential solutions, not problems. They support their opinions with data and metrics rather than rhetoric. They find out how to delight our journalists and readers and deliver the things that really matter to our organisation.</p>"
     },
     {
-        "title": "Software engineer",
+        "title": "Software Engineer",
         "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002J",
         "description": "<p>We are seeking excellent and passionate engineers to work on projects across our business. Our main news website <a href=\"http://www.theguardian.com\">theguardian.com</a>, which serves millions of readers each day, has traffic peaks of up to 1200 pages per second and close to 100% uptime. Our Open Platform makes our content available not just to our internal websites and mobile applications but also many other partners and developers.</p><p>We have many projects in progress simultaneously and our teams are given the autonomy to choose the right technologies to solve their problems. Our core platforms are Scala, Javascript, <a href=\"http://www.playframework.com/\">Play</a> and Amazon Web Services.</p><p>Our developers are continually developing their skills and are eager to learn new things, displaying the aptitude to change and respond to a changing news situation. They are at the forefront of our work to create a Guardian for the new century.</p>"
     },
     {
-        "title": "Client-side developer",
+        "title": "Client-side Developer",
         "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002D",
         "description": "<p>You’ll be an expert with CSS3 and modern JavaScript, comfortable writing OOCSS and using technologies such as AMD and CommonJS, and thinking and working in a responsive, progressively-enhanced manner. We’re looking for creative Client-side Developers with good knowledge of scalability and performance. Knowledge of HTML5 and CSS3 is a must, and an eye for design and/or UX would be a bonus. Knowledge and experience of automated or multi-platform testing is desirable, too.</p>"
     },
     {
-      "title": "Javascript engineer",
+      "title": "Javascript Engineer",
       "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN000076",
       "description": "This is a specialised role focusing on development of single page applications using common Javascript application frameworks like <a href=\"https://angularjs.org/\">AngularJS</a> and <a href=\"https://facebook.github.io/react/\">React</a>. You should be able to demonstrate experience of working with stakeholders to support their needs in the applications you have built. You will have expertise in functional Javascript and semantic HTML. We want someone with a pro-active attitude towards automated testing, performance and good build processes. We would like you to have a sensible approach to organising and extending your CSS for maintainability and you will ideally have a good grasp of user experience and design concerns. You will also be expected to help the team stay current on new Web technologies and keep the platform stable and maintainable."
     }
