@@ -3,6 +3,11 @@
     <head>
         <title><%= scope.title !== 'Home' ? scope.title + ' – ' : '' %>The Guardian – Developers</title>
         <meta charset="utf-8">
+
+        <% if(scope.description) { %>
+        <meta name="description" content="<%= scope.description %>">
+        <% } %>
+
         <link rel="stylesheet" href="./css/main.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
