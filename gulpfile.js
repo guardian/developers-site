@@ -56,6 +56,7 @@ gulp.task('watch', function () {
     var server = livereload();
     gulp.watch('./src/css/**/*.scss', ['css']);
     gulp.watch('./src/**/*.ejs', ['generate']);
+    gulp.watch('./src/content/*.json', ['generate']);
     gulp.watch('./src/js/**/*.js', ['copy']);
     gulp.watch('./src/images/**', ['copy']);
     gulp.watch('./src/enhanced-views/**/*.ejs', ['copy']);
