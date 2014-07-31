@@ -88,7 +88,7 @@ var pages = [
     },
     {
         title: "Join the Guardian’s development team",
-        menuTitle: "Join our team",
+        menuTitle: "Join the team",
         fileBasename: 'join-the-team.ejs',
         description: "The Guardian is the world’s leading liberal voice, come join the team of developers behind the Pulitzer Prize-winning site theguardian.com",
         jobs: jobs
