@@ -1,10 +1,5 @@
 [
     {
-        "title": "Senior Software Engineer",
-        "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00006Q&src=DevelopersSite",
-        "description": "<p>Senior engineers are experienced developers will a variety of experience across domains and technologies. They have established their own areas of knowledge and expertise but are willing to share what they know and are always eager to learn new things.</p><p>They are humble and moderate in their views. Happy to mentor a junior developer, capable of leading a team or supporting one of their peers to deliver a shared technical vision. They see the world in terms of potential solutions, not problems. They support their opinions with data and metrics rather than rhetoric. They find out how to delight our journalists and readers and deliver the things that really matter to our organisation.</p>"
-    },
-    {
         "title": "Software Engineer",
         "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002J&src=DevelopersSite",
         "description": "<p>We are seeking excellent and passionate engineers to work on projects across our business. Our main news website <a href=\"http://www.theguardian.com\">theguardian.com</a>, which serves millions of readers each day, has traffic peaks of up to 1200 pages per second and close to 100% uptime. Our Open Platform makes our content available not just to our internal websites and mobile applications but also many other partners and developers.</p><p>We have many projects in progress simultaneously and our teams are given the autonomy to choose the right technologies to solve their problems. Our core platforms are Scala, JavaScript, <a href=\"http://www.playframework.com/\">Play</a> and Amazon Web Services.</p><p>Our developers are continually developing their skills and are eager to learn new things, displaying the aptitude to change and respond to a changing news situation. They are at the forefront of our work to create a Guardian for the new century.</p>"
