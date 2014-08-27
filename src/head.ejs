@@ -11,6 +11,21 @@
         <link rel="stylesheet" href="./css/main.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- Social -->
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:site" content="@gdndevelopers" />
+        <meta property="twitter:title" content="<%= scope.title %>" />
+
+
+        <meta property="og:title" content="<%= scope.title %>" />
+        <meta property="og:site_name" content="Guardian developers" />
+        <meta property="og:image" content="http://developers.theguardian.com/images/default-social.jpg" />
+
+        <% if(scope.description) { %>
+        <meta name="twitter:description" content="<%= scope.description %>">
+        <meta name="og:description" content="<%= scope.description %>">
+        <% } %>        
+
         <!-- TODO: Concatenate -->
         <script src="./jspm_packages/system@0.6.js"></script>
         <script src="./js/config.js"></script>

@@ -75,7 +75,8 @@ var jobs = require('./src/content/jobs.json');
 var pages = [
     {
         title: 'Home',
-        fileBasename: 'index.ejs'
+        fileBasename: 'index.ejs',
+        description: "The innovation of a startup combined with the authority of our journalism. The developers of the Guardian are shaping the future of news, join us"
     },
     {
         title: 'Open Source',
