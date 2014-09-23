@@ -1,6 +1,7 @@
 /.sass-cache
 /node_modules
 /src/jspm_packages
+.DS_Store
 /.idea
 /*.iml
 *~
