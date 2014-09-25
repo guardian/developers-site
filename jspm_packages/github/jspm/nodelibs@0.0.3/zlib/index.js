@@ -1,0 +1,3 @@
+/* */ 
+"format cjs";function error(){var e=[].slice.call(arguments).join(" ");throw new Error([e,"we accept pull requests","http://github.com/brianloveswords/zlib-browserify"].join("\n"))}var Zlib=module.exports=require("./zlib");["createGzip","createGunzip","createDeflate","createDeflateRaw","createInflate","createInflateRaw","createUnzip","Gzip","Gunzip","Inflate","InflateRaw","Deflate","DeflateRaw","Unzip","inflateRaw","deflateRaw"].forEach(function(e){Zlib[e]=function(){error("sorry,",e,"is not implemented yet")}});var _deflate=Zlib.deflate,_gzip=Zlib.gzip;Zlib.deflate=function(e,t){return _deflate(Buffer(e),t)},Zlib.gzip=function(e,t){return _gzip(Buffer(e),t)};
+//# sourceMappingURL=index.js.map

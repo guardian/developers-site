@@ -1,0 +1,3 @@
+/* */
+"format cjs";!function(){"use strict";var e,r=require("../lib/b64"),t=["a","aa","aaa","hi","hi!","hi!!","sup","sup?","sup?!"];e=t.some(function(e){var t,n,i;return t=r.fromByteArray(Array.prototype.map.call(e,function(e){return e.charCodeAt(0)})),n=r.toByteArray(t),i=n.map(function(e){return String.fromCharCode(e)}).join(""),e!==i?(console.log("Fail:",e),console.log("Base64:",t),!0):void 0}),console.log(e?"Test failed":"All tests passed!")}();
+//# sourceMappingURL=runner.js.map

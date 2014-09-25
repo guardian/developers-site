@@ -1,0 +1,1 @@
+export * from "github:anselmh/object-fit@0.3.4/object-fit";

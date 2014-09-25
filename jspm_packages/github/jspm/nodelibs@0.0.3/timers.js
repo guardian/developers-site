@@ -1,0 +1,3 @@
+/* */ 
+"format cjs";"undefined"!=typeof setTimeout&&(exports.setTimeout=function(){return setTimeout.apply(window,arguments)}),"undefined"!=typeof clearTimeout&&(exports.clearTimeout=function(){clearTimeout.apply(window,arguments)}),"undefined"!=typeof setInterval&&(exports.setInterval=function(){return setInterval.apply(window,arguments)}),"undefined"!=typeof clearInterval&&(exports.clearInterval=function(){clearInterval.apply(window,arguments)}),exports.enroll=function(e,t){e._timeoutID=setTimeout(e._onTimeout,t)},exports.unenroll=function(e){clearTimeout(e._timeoutID)},exports.active=function(){},exports.setImmediate=require("./process").nextTick;
+//# sourceMappingURL=timers.js.map

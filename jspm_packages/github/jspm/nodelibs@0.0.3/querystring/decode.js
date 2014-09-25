@@ -1,0 +1,3 @@
+/* */ 
+"format cjs";"use strict";function hasOwnProperty(e,t){return Object.prototype.hasOwnProperty.call(e,t)}module.exports=function(e,t,r,n){t=t||"&",r=r||"=";var i={};if("string"!=typeof e||0===e.length)return i;var o=/\+/g;e=e.split(t);var s=1e3;n&&"number"==typeof n.maxKeys&&(s=n.maxKeys);var a=e.length;s>0&&a>s&&(a=s);for(var u=0;a>u;++u){var f,l,h,c,d=e[u].replace(o,"%20"),p=d.indexOf(r);p>=0?(f=d.substr(0,p),l=d.substr(p+1)):(f=d,l=""),h=decodeURIComponent(f),c=decodeURIComponent(l),hasOwnProperty(i,h)?Array.isArray(i[h])?i[h].push(c):i[h]=[i[h],c]:i[h]=c}return i};
+//# sourceMappingURL=decode.js.map
