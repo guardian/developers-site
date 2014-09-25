@@ -1,5 +1,14 @@
 [
     {
+        "title": "Server-less apps powered by Web Components",
+        "authorName": "Sébastien Cevey",
+        "location": "JSConf EU - Berlin",
+        "date": "2014-09-14",
+        "imageFileBasename": "2014-09-14-serverless-apps.png",
+        "link": "http://slides.com/theefer/serverless-web-components-jsconf",
+        "type": "slides"
+    },
+    {
         "title": "Git Going Faster... with Scala",
         "authorName": "Roberto Tyley",
         "location": "ScalaDays Berlin",
