@@ -1,5 +1,14 @@
 [
     {
+        "title": "Building a CMS for the Responsive Web",
+        "authorNames": ["Oliver Joseph Ash", "Sébastien Cevey"],
+        "location": "Front-end London",
+        "date": "2014-08-28",
+        "imageFileBasename": "2014-08-28-building-a-cms-for-the-responsive-web.png",
+        "link": "https://speakerdeck.com/oliverjash/building-a-cms-for-the-responsive-web",
+        "type": "slides"
+    },
+    {
         "title": "Server-less apps powered by Web Components",
         "authorNames": ["Sébastien Cevey"],
         "location": "JSConf EU - Berlin",
