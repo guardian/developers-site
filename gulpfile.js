@@ -106,7 +106,11 @@ function generatePages() {
         var rootScope = {
             pages: pages,
             findAuthorByName: function (authorName) {
-                return find(authors, { name: authorName });
+                var author = find(authors, { name: authorName });
+                if (! author) {
+                    throw new Error('Could not find author with name ' + authorName);
+                }
+                return author;
             },
             momentFilter: function (dateString, formatString) {
                 return moment(dateString).format(formatString);
