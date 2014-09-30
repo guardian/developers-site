@@ -76,7 +76,8 @@ var pages = [
     {
         title: 'Home',
         fileBasename: 'index.ejs',
-        description: "The innovation of a startup combined with the authority of our journalism. The developers of the Guardian are shaping the future of news, join us"
+        description: "The innovation of a startup combined with the authority of our journalism. The developers of the Guardian are shaping the future of news, join us",
+        jobs: jobs
     },
     {
         title: 'Open Source',
