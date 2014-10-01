@@ -66,7 +66,15 @@
                             <div class="island">
                                 <h2 class="h3">What’s it like to work at the Guardian?</h2>
                                 <p>Members of our team talk about what they enjoy about working at the Guardian.</p>
-                                <p><a href="#" class="cta-link">Join our team</a></p>
+                                <nav>
+                                    <h3 class="h4"><a href="./join-the-team.html" class="cta-link">Our current job roles</a></h3>
+                                    <ul>
+                                        <% scope.jobs.forEach(function (job) { %>
+                                            <li><a href="./join-the-team.html#<%= job.title %>"
+                                                   title="View job details"><%= job.title %></a></li>
+                                        <% }); %>
+                                    </ul>
+                                </nav>
                             </div>
                         </section>
                     </div>
