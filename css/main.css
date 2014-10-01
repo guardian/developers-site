@@ -192,6 +192,11 @@ time {
   line-height: 1;
   font-weight: bold; }
 
+.h4, h4 {
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: bold; }
+
 .alt-h3, .developer-blog-section article h3 {
   margin-bottom: 0; }
 
