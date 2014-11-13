@@ -280,13 +280,16 @@ $trailing-margin-height: 1.5rem;
     border: 1px solid $light-grey;
 }
 
-.talk__image-container__author-gravatar {
-    // TODO: Vendor prefix
-    border-radius: 100%;
+.talk__image-container__authors {
     // Positioned relative to `.talk__image-container`
     position: absolute;
     bottom: 0;
     right: -$gutter-width/2;
+}
+
+.talk__image-container__author-gravatar {
+    // TODO: Vendor prefix
+    border-radius: 100%;
 }
 
 .event {
