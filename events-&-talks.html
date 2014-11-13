@@ -3,33 +3,17 @@
     <head>
         <title>Events &amp; Talks – The Guardian – Developers</title>
         <meta charset="utf-8">
-
-        
-
         <link rel="stylesheet" href="./css/main.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Social -->
-        <meta property="twitter:card" content="summary" />
-        <meta property="twitter:site" content="@gdndevelopers" />
-        <meta property="twitter:title" content="Events &amp; Talks" />
-
-
-        <meta property="og:title" content="Events &amp; Talks" />
-        <meta property="og:site_name" content="Guardian developers" />
-        <meta property="og:image" content="http://developers.theguardian.com/images/default-social.jpg" />
-
-                
-
         <!-- TODO: Concatenate -->
-        <script src="./jspm_packages/system.js"></script>
+        <script src="./jspm_packages/system@0.6.js"></script>
         <script src="./js/config.js"></script>
         <script>
             /* global System */
             // Must be loaded before the body is parsed?
             System.import('js/modernizr');
         </script>
-        <script src="./js/picturefill.min.js" async></script>
     </head>
     <body>
         <header class="header">
@@ -112,27 +96,6 @@
                                     <p>FunctionalJS is a meetup to learn about functional programming with JavaScript – whether that means using Underscore/Lodash, exploring currying and functional-reactive programming, or languages that compile to JavaScript to bring more functional tools to bear.</p>
                                 </div>
                             </div>
-                            <div class="media">
-                                <div class="media__img">
-                                    <img src="./images/content/events/girls-in-tech-london.jpg"
-                                         alt="Girls in Tech London">
-                                </div>
-                                <div class="media__body event__body">
-                                    <h3 class="alt-h3"><a href="https://www.eventbrite.co.uk/e/the-future-of-news-olivia-solon-talks-to-tanya-cordrey-of-the-guardian-tickets-13164917623">Girls in Tech London - 1st October</a></h3>
-                                    <p>Girls in Tech London is the UK branch of the Girls in Tech Network. On 1st October the Guardian will be hosting
-                                    the event with Chief Digital Officer, Tanya Cordrey, talking about the future of news.</p>
-                                </div>
-                            </div>
-                            <div class="media">                             
-                                <div class="media__img">
-                                    <img src="./images/content/events/elasticsearch.jpg"
-                                         alt="Elasticsearch" width="85">
-                                </div>
-                                <div class="media__body event__body">
-                                    <h3 class="alt-h3"><a href="http://www.meetup.com/London-ElasticSearch-User-Group/events/199095182/"> London Elasticsearch User Group - 10th December</a></h3>
-                                    <p>Mariot Chauvin and Jenny Sivapalan will be giving a talk on Getting it right, eventually - lessons learned from tuning Elasticsearch for 1000s of searches per second.</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -144,96 +107,21 @@
                         
                             <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">
                                 <div class="talk__image-container">
-                                    <a href="http://slides.com/theefer/serverless-web-components-jsconf" title="View slides">
-                                        <img src="./images/content/talks/2014-09-14-serverless-apps.png"
-                                             alt="Server-less apps powered by Web Components"
-                                             class="talk__image-container__image">
-                                    </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/theefer">
-                                                <img src="http://www.gravatar.com/avatar/beea6c2e011b426ce59b6a0910f4354f" alt="Sébastien Cevey" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
-                                </div>
-                                <h3 class="alt-h3">
-                                    <a href="http://slides.com/theefer/serverless-web-components-jsconf" title="View slides">
-                                        Server-less apps powered by Web Components
-                                    </a>
-                                </h3>
-                                
-                                    <span><a href="https://twitter.com/theefer">Sébastien Cevey</a></span><!--
-                                    -->
-                                
-                                <br>
-                                <span>JSConf EU - Berlin</span>,
-                                <time>September 2014</time>
-                            </li>
-                        
-                            <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">
-                                <div class="talk__image-container">
-                                    <a href="https://www.youtube.com/watch?v=31EpyxcmBeU" title="View video">
-                                        <img src="./images/content/talks/2014-08-28-building-a-cms-for-the-responsive-web.png"
-                                             alt="Building a CMS for the Responsive Web"
-                                             class="talk__image-container__image">
-                                    </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/oliverjash">
-                                                <img src="http://www.gravatar.com/avatar/5ad681360d1a5185bbcc15d1ae40f09a" alt="Oliver Joseph Ash" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                            <a href="https://twitter.com/theefer">
-                                                <img src="http://www.gravatar.com/avatar/beea6c2e011b426ce59b6a0910f4354f" alt="Sébastien Cevey" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
-                                </div>
-                                <h3 class="alt-h3">
-                                    <a href="https://www.youtube.com/watch?v=31EpyxcmBeU" title="View video">
-                                        Building a CMS for the Responsive Web
-                                    </a>
-                                </h3>
-                                
-                                    <span><a href="https://twitter.com/oliverjash">Oliver Joseph Ash</a></span><!--
-                                    -->, 
-                                
-                                    <span><a href="https://twitter.com/theefer">Sébastien Cevey</a></span><!--
-                                    -->
-                                
-                                <br>
-                                <span>Front-end London</span>,
-                                <time>August 2014</time>
-                            </li>
-                        
-                            <li class="l-grid-cell l-tablet-grid-cell l-desktop-grid-cell">
-                                <div class="talk__image-container">
                                     <a href="http://www.parleys.com/play/53a7d2d1e4b0543940d9e56b/" title="View video">
                                         <img src="./images/content/talks/2014-06-18-git-going-faster-with-scala.png"
                                              alt="Git Going Faster... with Scala"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/rtyley">
-                                                <img src="http://www.gravatar.com/avatar/692cebb58153d20abe15ff94d318c879" alt="Roberto Tyley" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/rtyley">
+                                        <img src="http://www.gravatar.com/avatar/692cebb58153d20abe15ff94d318c879" alt="Roberto Tyley" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="http://www.parleys.com/play/53a7d2d1e4b0543940d9e56b/" title="View video">
                                         Git Going Faster... with Scala
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/rtyley">Roberto Tyley</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/rtyley">Roberto Tyley</a></span>
                                 <br>
                                 <span>ScalaDays Berlin</span>,
                                 <time>June 2014</time>
@@ -246,24 +134,16 @@
                                              alt="CSS and the Critical Path"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/patrickhamann">
-                                                <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/patrickhamann">
+                                        <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="https://speakerdeck.com/patrickhamann/css-and-the-critical-path-cssconf-may-2014" title="View slides">
                                         CSS and the Critical Path
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/patrickhamann">Patrick Hamann</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/patrickhamann">Patrick Hamann</a></span>
                                 <br>
                                 <span>CSSConf US - Jacksonville, Florida</span>,
                                 <time>May 2014</time>
@@ -276,24 +156,16 @@
                                              alt="Breaking News at 1000ms"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/patrickhamann">
-                                                <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/patrickhamann">
+                                        <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="https://speakerdeck.com/patrickhamann/breaking-news-at-1000ms-front-trends-2014" title="View slides">
                                         Breaking News at 1000ms
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/patrickhamann">Patrick Hamann</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/patrickhamann">Patrick Hamann</a></span>
                                 <br>
                                 <span>FrontTrends - Warsaw, Poland</span>,
                                 <time>May 2014</time>
@@ -306,24 +178,16 @@
                                              alt="Introducing Wraith-Donk"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/gidsg">
-                                                <img src="http://www.gravatar.com/avatar/f002c0ac4c775cec82b16a396181bb23" alt="Gideon Goldberg" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/gidsg">
+                                        <img src="http://www.gravatar.com/avatar/f002c0ac4c775cec82b16a396181bb23" alt="Gideon Goldberg" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="https://speakerdeck.com/gidsg/introducing-wraith-donk" title="View slides">
                                         Introducing Wraith-Donk
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/gidsg">Gideon Goldberg</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/gidsg">Gideon Goldberg</a></span>
                                 <br>
                                 <span>London Developers in Test Meetup</span>,
                                 <time>May 2014</time>
@@ -336,24 +200,16 @@
                                              alt="Reactive Programming in JavaScript"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/theefer">
-                                                <img src="http://www.gravatar.com/avatar/beea6c2e011b426ce59b6a0910f4354f" alt="Sébastien Cevey" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/theefer">
+                                        <img src="http://www.gravatar.com/avatar/beea6c2e011b426ce59b6a0910f4354f" alt="Sébastien Cevey" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="http://bytes.inso.cc/2014/05/09/reactive-programming-in-javascript-funjs-london/" title="Read article">
                                         Reactive Programming in JavaScript
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/theefer">Sébastien Cevey</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/theefer">Sébastien Cevey</a></span>
                                 <br>
                                 <span>FunctionalJS London</span>,
                                 <time>April 2014</time>
@@ -366,24 +222,16 @@
                                              alt="Delivering Continuous Delivery Continuously"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/sihil">
-                                                <img src="http://www.gravatar.com/avatar/f5973b5a70f6f167c0f6611cad29f0c3" alt="Simon Hildrew" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/sihil">
+                                        <img src="http://www.gravatar.com/avatar/f5973b5a70f6f167c0f6611cad29f0c3" alt="Simon Hildrew" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="http://www.ustream.tv/recorded/46668417" title="View video">
                                         Delivering Continuous Delivery Continuously
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/sihil">Simon Hildrew</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/sihil">Simon Hildrew</a></span>
                                 <br>
                                 <span>Craft Conference</span>,
                                 <time>April 2014</time>
@@ -396,24 +244,16 @@
                                              alt="Building the Next Generation of the Guardian with Play!"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/grantklopper">
-                                                <img src="http://www.gravatar.com/avatar/4ce037941086f4cc313eebc8fe1a00db" alt="Grant Klopper" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/grantklopper">
+                                        <img src="http://www.gravatar.com/avatar/4ce037941086f4cc313eebc8fe1a00db" alt="Grant Klopper" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="http://www.ustream.tv/recorded/42805704" title="View video">
                                         Building the Next Generation of the Guardian with Play!
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/grantklopper">Grant Klopper</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/grantklopper">Grant Klopper</a></span>
                                 <br>
                                 <span>PingConf - Budapest, Hungary</span>,
                                 <time>January 2014</time>
@@ -426,24 +266,16 @@
                                              alt="The Symbiotic Web"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/theefer">
-                                                <img src="http://www.gravatar.com/avatar/beea6c2e011b426ce59b6a0910f4354f" alt="Sébastien Cevey" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/theefer">
+                                        <img src="http://www.gravatar.com/avatar/beea6c2e011b426ce59b6a0910f4354f" alt="Sébastien Cevey" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="http://bytes.inso.cc/2014/05/09/the-symbiotic-web-frontend-london-nov-2013/" title="Read article">
                                         The Symbiotic Web
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/theefer">Sébastien Cevey</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/theefer">Sébastien Cevey</a></span>
                                 <br>
                                 <span>Front-end London</span>,
                                 <time>November 2013</time>
@@ -456,24 +288,16 @@
                                              alt="Responsive Design at the Guardian"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/mattpointblank">
-                                                <img src="http://www.gravatar.com/avatar/4fd9f8e3a0d0d7b37fd4a27003706ad4" alt="Matt Andrews" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/mattpointblank">
+                                        <img src="http://www.gravatar.com/avatar/4fd9f8e3a0d0d7b37fd4a27003706ad4" alt="Matt Andrews" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="http://mattandrews.info/talks/canvasconf-2013/" title="Read article">
                                         Responsive Design at the Guardian
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/mattpointblank">Matt Andrews</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/mattpointblank">Matt Andrews</a></span>
                                 <br>
                                 <span>IET Austin Court, Birmingham</span>,
                                 <time>October 2013</time>
@@ -486,24 +310,16 @@
                                              alt="Democratising Attention Data at guardian.co.uk"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/tackers">
-                                                <img src="http://www.gravatar.com/avatar/35180bb5b849728718c1bc725f0885b4" alt="Graham Tackley" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/tackers">
+                                        <img src="http://www.gravatar.com/avatar/35180bb5b849728718c1bc725f0885b4" alt="Graham Tackley" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="https://www.youtube.com/watch?v=GOC1Nad5dMg" title="View video">
                                         Democratising Attention Data at guardian.co.uk
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/tackers">Graham Tackley</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/tackers">Graham Tackley</a></span>
                                 <br>
                                 <span>Aarhus International Software Development Conference</span>,
                                 <time>October 2013</time>
@@ -516,24 +332,16 @@
                                              alt="CSS and the Critical Path"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/patrickhamann">
-                                                <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/patrickhamann">
+                                        <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="https://speakerdeck.com/patrickhamann/css-and-the-critical-path" title="View slides">
                                         CSS and the Critical Path
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/patrickhamann">Patrick Hamann</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/patrickhamann">Patrick Hamann</a></span>
                                 <br>
                                 <span>Over the Air</span>,
                                 <time>September 2013</time>
@@ -546,24 +354,16 @@
                                              alt="Why APIs are Essential in Web Development"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/jenny_sivapalan">
-                                                <img src="http://www.gravatar.com/avatar/32618805e3fc3b2613fc8d6fc677c814" alt="Jenny Sivapalan" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/jenny_sivapalan">
+                                        <img src="http://www.gravatar.com/avatar/32618805e3fc3b2613fc8d6fc677c814" alt="Jenny Sivapalan" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="https://www.youtube.com/watch?v=JFG9I1tKNDk" title="View video">
                                         Why APIs are Essential in Web Development
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/jenny_sivapalan">Jenny Sivapalan</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/jenny_sivapalan">Jenny Sivapalan</a></span>
                                 <br>
                                 <span>Kings Place, London</span>,
                                 <time>September 2013</time>
@@ -576,24 +376,16 @@
                                              alt="Planting the Responsive Seed"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/patrickhamann">
-                                                <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/patrickhamann">
+                                        <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="https://speakerdeck.com/patrickhamann/planting-the-responsive-seed" title="View slides">
                                         Planting the Responsive Seed
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/patrickhamann">Patrick Hamann</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/patrickhamann">Patrick Hamann</a></span>
                                 <br>
                                 <span>Breaking Borders - Reading</span>,
                                 <time>June 2013</time>
@@ -606,24 +398,16 @@
                                              alt="Measuring Your Websites Performance"
                                              class="talk__image-container__image">
                                     </a>
-                                    <!-- TODO: Multiple author images -->
-                                    <div class="talk__image-container__authors">
-                                        
-                                            <a href="https://twitter.com/patrickhamann">
-                                                <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="talk__image-container__author-gravatar" width="56" height="56">
-                                            </a>
-                                        
-                                    </div>
+                                    <a href="https://twitter.com/patrickhamann">
+                                        <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    </a>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="https://speakerdeck.com/patrickhamann/why-performance-matters-measuring-your-websites-performance" title="View slides">
                                         Measuring Your Websites Performance
                                     </a>
                                 </h3>
-                                
-                                    <span><a href="https://twitter.com/patrickhamann">Patrick Hamann</a></span><!--
-                                    -->
-                                
+                                <span><a href="https://twitter.com/patrickhamann">Patrick Hamann</a></span>
                                 <br>
                                 <span>FrontEnd London - London</span>,
                                 <time>April 2013</time>
@@ -644,13 +428,34 @@
                                 
                                     <li class="event trailing-margin">
     <h3 class="event__title alt-h3">
-        <a href="http://lanyrd.com/2014/velocity-europe/" title="Check out The O&#39;Reilly Velocity Conference on Lanyrd">
-            The O&#39;Reilly Velocity Conference
+        <a href="http://lanyrd.com/2014/redevelop/" title="Check out Redevelop Conference 2014 on Lanyrd">
+            Redevelop Conference 2014
         </a>
     </h3>
-    <time class="event__timestamp">November 2014</time>
+    <time class="event__timestamp">August 2014</time>
     
-    <p class="event__desc">Velocity is about the people and technologies that make the Web fast, scalable, resilient, and highly available. From ecommerce to mobile to the cloud, Velocity is where the future of the Web takes shape.</p>
+    <p class="event__desc">A one-day developer conference packed with great speakers, right next to Britain’s top rated beach.</p>
+    
+    <div class="event__users">
+        
+        <a href="https://twitter.com/patrickhamann">
+            <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="event__user-gravatar" width="56" height="56">
+        </a>
+        
+        <a href="https://twitter.com/kaelig">
+            <img src="http://www.gravatar.com/avatar/f7e7b837bd06d6193f4ac70f17e6f44b" alt="Kaelig Deloumeau-Prigent" class="event__user-gravatar" width="56" height="56">
+        </a>
+        
+    </div>
+</li>
+                                
+                                    <li class="event trailing-margin">
+    <h3 class="event__title alt-h3">
+        <a href="http://lanyrd.com/2014/londonjsconf-autumn/" title="Check out London JS Conf - Autumn on Lanyrd">
+            London JS Conf - Autumn
+        </a>
+    </h3>
+    <time class="event__timestamp">September 2014</time>
     
     <div class="event__users">
         
@@ -663,13 +468,32 @@
                                 
                                     <li class="event trailing-margin">
     <h3 class="event__title alt-h3">
-        <a href="http://lanyrd.com/2014/dotcss/" title="Check out dotCSS 2014 on Lanyrd">
-            dotCSS 2014
+        <a href="http://lanyrd.com/2014/revolutionconf/" title="Check out (R)Evolution 2014 on Lanyrd">
+            (R)Evolution 2014
         </a>
     </h3>
-    <time class="event__timestamp">November 2014</time>
+    <time class="event__timestamp">September 2014</time>
     
-    <p class="event__desc">The largest CSS conference in Europe</p>
+    <p class="event__desc">Shropshire&#39;s original web conference</p>
+    
+    <div class="event__users">
+        
+        <a href="https://twitter.com/theefer">
+            <img src="http://www.gravatar.com/avatar/beea6c2e011b426ce59b6a0910f4354f" alt="Sébastien Cevey" class="event__user-gravatar" width="56" height="56">
+        </a>
+        
+    </div>
+</li>
+                                
+                                    <li class="event trailing-margin">
+    <h3 class="event__title alt-h3">
+        <a href="http://lanyrd.com/2014/smartwebconf/" title="Check out SmartWeb Conference 2014 on Lanyrd">
+            SmartWeb Conference 2014
+        </a>
+    </h3>
+    <time class="event__timestamp">September 2014</time>
+    
+    <p class="event__desc">A conference for east-european web designers and developers</p>
     
     <div class="event__users">
         
@@ -699,18 +523,92 @@
                                 
                                     <li class="event trailing-margin">
     <h3 class="event__title alt-h3">
-        <a href="http://lanyrd.com/2014/smashing-conference-whistler/" title="Check out SmashingConf Whistler 2014 on Lanyrd">
-            SmashingConf Whistler 2014
+        <a href="http://lanyrd.com/2014/front-end-london/" title="Check out Front-end London (July 2014) on Lanyrd">
+            Front-end London (July 2014)
         </a>
     </h3>
-    <time class="event__timestamp">December 2014</time>
+    <time class="event__timestamp">July 2014</time>
     
-    <p class="event__desc">A new Smashing Conference: 2 conf days, 2 workshop days, one track, 18 brilliant speakers, and hands-on, practical and useful talks.</p>
+    <p class="event__desc">Front-end London is a free evening meetup hosted by Made by Many that&#39;s dedicated to all aspects of front-end development.</p>
     
     <div class="event__users">
         
         <a href="https://twitter.com/patrickhamann">
             <img src="http://www.gravatar.com/avatar/6596bebe9a3e7e634b2dba25d53f9779" alt="Patrick Hamann" class="event__user-gravatar" width="56" height="56">
+        </a>
+        
+    </div>
+</li>
+                                
+                                    <li class="event trailing-margin">
+    <h3 class="event__title alt-h3">
+        <a href="http://lanyrd.com/2014/funjsldn-july/" title="Check out FunctionalJS London - Bodil Stokke, Reactive Game Dev - July 2014 on Lanyrd">
+            FunctionalJS London - Bodil Stokke, Reactive Game Dev - July 2014
+        </a>
+    </h3>
+    <time class="event__timestamp">July 2014</time>
+    
+    <div class="event__users">
+        
+        <a href="https://twitter.com/oliverjash">
+            <img src="http://www.gravatar.com/avatar/5ad681360d1a5185bbcc15d1ae40f09a" alt="Oliver Joseph Ash" class="event__user-gravatar" width="56" height="56">
+        </a>
+        
+    </div>
+</li>
+                                
+                                    <li class="event trailing-margin">
+    <h3 class="event__title alt-h3">
+        <a href="http://lanyrd.com/2014/loncon3/" title="Check out Loncon 3 on Lanyrd">
+            Loncon 3
+        </a>
+    </h3>
+    <time class="event__timestamp">August 2014</time>
+    
+    <p class="event__desc">The 72nd World Science Fiction Convention</p>
+    
+    <div class="event__users">
+        
+        <a href="https://twitter.com/theefer">
+            <img src="http://www.gravatar.com/avatar/beea6c2e011b426ce59b6a0910f4354f" alt="Sébastien Cevey" class="event__user-gravatar" width="56" height="56">
+        </a>
+        
+    </div>
+</li>
+                                
+                                    <li class="event trailing-margin">
+    <h3 class="event__title alt-h3">
+        <a href="http://lanyrd.com/2014/funjsldn-august/" title="Check out FunctionalJS London - August 2014 on Lanyrd">
+            FunctionalJS London - August 2014
+        </a>
+    </h3>
+    <time class="event__timestamp">August 2014</time>
+    
+    <p class="event__desc">Functional programming, Javascript flavoured</p>
+    
+    <div class="event__users">
+        
+        <a href="https://twitter.com/oliverjash">
+            <img src="http://www.gravatar.com/avatar/5ad681360d1a5185bbcc15d1ae40f09a" alt="Oliver Joseph Ash" class="event__user-gravatar" width="56" height="56">
+        </a>
+        
+    </div>
+</li>
+                                
+                                    <li class="event trailing-margin">
+    <h3 class="event__title alt-h3">
+        <a href="http://lanyrd.com/2014/dotcss/" title="Check out dotCSS 2014 on Lanyrd">
+            dotCSS 2014
+        </a>
+    </h3>
+    <time class="event__timestamp">November 2014</time>
+    
+    <p class="event__desc">The largest CSS conference in Europe</p>
+    
+    <div class="event__users">
+        
+        <a href="https://twitter.com/kaelig">
+            <img src="http://www.gravatar.com/avatar/f7e7b837bd06d6193f4ac70f17e6f44b" alt="Kaelig Deloumeau-Prigent" class="event__user-gravatar" width="56" height="56">
         </a>
         
     </div>
