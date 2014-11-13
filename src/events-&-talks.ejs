@@ -102,6 +102,7 @@
                     </ul>
                 </section>
             </div>
+           <% if(scope.upcomingEvents && 'speaking' in scope.upcomingEvents) {  %>
             <div class="island">
                 <section class="dotted-top">
                     <h2>Upcoming Events We Are Speaking At</h2>
@@ -119,6 +120,8 @@
                     </div>
                 </section>
             </div>
+            <% } %>
+            <% if(scope.upcomingEvents && 'attending' in scope.upcomingEvents) {  %>
             <div class="island">
                 <section class="dotted-top">
                     <h2>Upcoming Events We Are Attending</h2>
@@ -138,6 +141,7 @@
                     </div>
                 </section>
             </div>
+            <% } %>
         </div>
     </section>
 </main>
