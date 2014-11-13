@@ -470,11 +470,13 @@ ul, .l-grid, .header-row, .main-image, .developer-blog-section article time, .me
 .talk__image-container__image {
   border: 1px solid #bfbfbf; }
 
-.talk__image-container__author-gravatar {
-  border-radius: 100%;
+.talk__image-container__authors {
   position: absolute;
   bottom: 0;
   right: -0.625rem; }
+
+.talk__image-container__author-gravatar {
+  border-radius: 100%; }
 
 .event {
   position: relative; }
