@@ -60,7 +60,9 @@
                         <% scope.talks.sort(function(a, b) {
                                 return a.date > b.date ? -1: 1;
                         }).forEach(function (talk) {
-                            var author = scope.findAuthorByName(talk.authorName);
+                            var authors = talk.authorNames.map(function (authorName) {
+                                return scope.findAuthorByName(authorName);
+                            });
                             var talkLinkTitle = {
                                 'slides': 'View slides',
                                 'video': 'View video',
@@ -74,8 +76,9 @@
                                              alt="<%= talk.title %>"
                                              class="talk__image-container__image">
                                     </a>
-                                    <a href="<%= author.link %>">
-                                        <img src="<%= scope.getGravatarUrl(author.emailAddress) %>" alt="<%= author.name %>" class="talk__image-container__author-gravatar" width="56" height="56">
+                                    <!-- TODO: Multiple author images -->
+                                    <a href="<%= authors[0].link %>">
+                                        <img src="<%= scope.getGravatarUrl(authors[0].emailAddress) %>" alt="<%= authors[0].name %>" class="talk__image-container__author-gravatar" width="56" height="56">
                                     </a>
                                 </div>
                                 <h3 class="alt-h3">
@@ -83,7 +86,10 @@
                                         <%= talk.title %>
                                     </a>
                                 </h3>
-                                <span><a href="<%= author.link %>"><%= talk.authorName %></a></span>
+                                <% authors.forEach(function (author, index) { %>
+                                    <span><a href="<%= author.link %>"><%= author.name %></a></span><!--
+                                    --><% if (authors[index + 1]) { %>, <% } %>
+                                <% }); %>
                                 <br>
                                 <span><%= talk.location %></span>,
                                 <time><%= scope.momentFilter(talk.date, 'MMMM YYYY') %></time>

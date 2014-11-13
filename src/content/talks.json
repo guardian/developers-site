@@ -1,7 +1,16 @@
 [
     {
+        "title": "Building a CMS for the Responsive Web",
+        "authorNames": ["Oliver Joseph Ash", "Sébastien Cevey"],
+        "location": "Front-end London",
+        "date": "2014-08-28",
+        "imageFileBasename": "2014-08-28-building-a-cms-for-the-responsive-web.png",
+        "link": "https://www.youtube.com/watch?v=31EpyxcmBeU",
+        "type": "video"
+    },
+    {
         "title": "Server-less apps powered by Web Components",
-        "authorName": "Sébastien Cevey",
+        "authorNames": ["Sébastien Cevey"],
         "location": "JSConf EU - Berlin",
         "date": "2014-09-14",
         "imageFileBasename": "2014-09-14-serverless-apps.png",
@@ -10,7 +19,7 @@
     },
     {
         "title": "Git Going Faster... with Scala",
-        "authorName": "Roberto Tyley",
+        "authorNames": ["Roberto Tyley"],
         "location": "ScalaDays Berlin",
         "date": "2014-06-18",
         "imageFileBasename": "2014-06-18-git-going-faster-with-scala.png",
@@ -19,7 +28,7 @@
     },
     {
         "title": "Introducing Wraith-Donk",
-        "authorName": "Gideon Goldberg",
+        "authorNames": ["Gideon Goldberg"],
         "location": "London Developers in Test Meetup",
         "date": "2014-05-01",
         "imageFileBasename": "2014-05-01-introducing-wraith-donk.jpg",
@@ -28,7 +37,7 @@
     },
     {
         "title": "Reactive Programming in JavaScript",
-        "authorName": "Sébastien Cevey",
+        "authorNames": ["Sébastien Cevey"],
         "location": "FunctionalJS London",
         "date": "2014-04-28",
         "imageFileBasename": "2014-04-28-funjs-reactive.png",
@@ -37,7 +46,7 @@
     },
     {
         "title": "Delivering Continuous Delivery Continuously",
-        "authorName": "Simon Hildrew",
+        "authorNames": ["Simon Hildrew"],
         "location": "Craft Conference",
         "date": "2014-04-25",
         "imageFileBasename": "2014-04-delivering-continuous-delivery-continuously.jpg",
@@ -46,7 +55,7 @@
     },
     {
         "title": "The Symbiotic Web",
-        "authorName": "Sébastien Cevey",
+        "authorNames": ["Sébastien Cevey"],
         "location": "Front-end London",
         "date": "2013-11-28",
         "imageFileBasename": "2013-11-28-symbiotic-web.png",
@@ -55,7 +64,7 @@
     },
     {
         "title": "Responsive Design at the Guardian",
-        "authorName": "Matt Andrews",
+        "authorNames": ["Matt Andrews"],
         "location": "IET Austin Court, Birmingham",
         "date": "2013-10-10",
         "imageFileBasename": "2013-10-10-responsive-design-at-the-guardian.png",
@@ -64,7 +73,7 @@
     },
     {
         "title": "Democratising Attention Data at guardian.co.uk",
-        "authorName": "Graham Tackley",
+        "authorNames": ["Graham Tackley"],
         "location": "Aarhus International Software Development Conference",
         "date": "2013-10-01",
         "imageFileBasename": "2013-10-01-democratising-attention-data-at-guardian-co-uk.jpg",
@@ -73,7 +82,7 @@
     },
     {
         "title": "CSS and the Critical Path",
-        "authorName": "Patrick Hamann",
+        "authorNames": ["Patrick Hamann"],
         "location": "Over the Air",
         "date": "2013-09-27",
         "imageFileBasename": "2013-09-27-css-and-the-critical-path.jpg",
@@ -82,7 +91,7 @@
     },
     {
         "title": "Why APIs are Essential in Web Development",
-        "authorName": "Jenny Sivapalan",
+        "authorNames": ["Jenny Sivapalan"],
         "location": "Kings Place, London",
         "date": "2013-09-11",
         "imageFileBasename": "2013-09-11-why-apis-are-essential-in-web-development.jpg",
@@ -91,7 +100,7 @@
     },
     {
         "title": "CSS and the Critical Path",
-        "authorName": "Patrick Hamann",
+        "authorNames": ["Patrick Hamann"],
         "location": "CSSConf US - Jacksonville, Florida",
         "date": "2014-05-27",
         "imageFileBasename": "2014-05-27-css-and-the-critical-path.jpg",
@@ -100,7 +109,7 @@
     },
     {
         "title": "Breaking News at 1000ms",
-        "authorName": "Patrick Hamann",
+        "authorNames": ["Patrick Hamann"],
         "location": "FrontTrends - Warsaw, Poland",
         "date": "2014-05-08",
         "imageFileBasename": "2014-05-08-breaking-news-at-1000ms.jpg",
@@ -109,7 +118,7 @@
     },
     {
         "title": "Planting the Responsive Seed",
-        "authorName": "Patrick Hamann",
+        "authorNames": ["Patrick Hamann"],
         "location": "Breaking Borders - Reading",
         "date": "2013-06-25",
         "imageFileBasename": "2013-06-25-planting-the-responsive-seed.jpg",
@@ -118,7 +127,7 @@
     },
     {
         "title": "Measuring Your Websites Performance",
-        "authorName": "Patrick Hamann",
+        "authorNames": ["Patrick Hamann"],
         "location": "FrontEnd London - London",
         "date": "2013-04-24",
         "imageFileBasename": "2013-04-24-measuring-your-websites-performance.jpg",
@@ -127,7 +136,7 @@
     },
     {
         "title": "Building the Next Generation of the Guardian with Play!",
-        "authorName": "Grant Klopper",
+        "authorNames": ["Grant Klopper"],
         "location": "PingConf - Budapest, Hungary",
         "date": "2014-01-17",
         "imageFileBasename": "2014-01-17-building-guardian-with-play.jpg",
