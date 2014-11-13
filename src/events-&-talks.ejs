@@ -77,9 +77,13 @@
                                              class="talk__image-container__image">
                                     </a>
                                     <!-- TODO: Multiple author images -->
-                                    <a href="<%= authors[0].link %>">
-                                        <img src="<%= scope.getGravatarUrl(authors[0].emailAddress) %>" alt="<%= authors[0].name %>" class="talk__image-container__author-gravatar" width="56" height="56">
-                                    </a>
+                                    <div class="talk__image-container__authors">
+                                        <% authors.forEach(function (author, index) { %>
+                                            <a href="<%= author.link %>">
+                                                <img src="<%= scope.getGravatarUrl(author.emailAddress) %>" alt="<%= author.name %>" class="talk__image-container__author-gravatar" width="56" height="56">
+                                            </a>
+                                        <% }); %>
+                                    </div>
                                 </div>
                                 <h3 class="alt-h3">
                                     <a href="<%= talk.link %>" title="<%= talkLinkTitle %>">
