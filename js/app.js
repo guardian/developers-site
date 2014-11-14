@@ -23,7 +23,6 @@ var urlParameters = constructURLQueryParameters({
     'tag': 'info/developer-blog',
     'page-size': 3,
     'show-fields': 'trailText',
-    'api-key': '85nszu4nbfdzh2zrakh74k2w',
     'callback': '?'
 });
 var url = 'http://content.guardianapis.com/search?' + urlParameters;
