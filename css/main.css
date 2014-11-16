@@ -192,6 +192,11 @@ time {
   line-height: 1;
   font-weight: bold; }
 
+.h4, h4 {
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: bold; }
+
 .alt-h3, .developer-blog-section article h3 {
   margin-bottom: 0; }
 
@@ -465,11 +470,13 @@ ul, .l-grid, .header-row, .main-image, .developer-blog-section article time, .me
 .talk__image-container__image {
   border: 1px solid #bfbfbf; }
 
-.talk__image-container__author-gravatar {
-  border-radius: 100%;
+.talk__image-container__authors {
   position: absolute;
   bottom: 0;
   right: -0.625rem; }
+
+.talk__image-container__author-gravatar {
+  border-radius: 100%; }
 
 .event {
   position: relative; }
