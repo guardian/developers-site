@@ -169,5 +169,14 @@
         "imageFileBasename": "2014-01-17-building-guardian-with-play.jpg",
         "link": "http://www.ustream.tv/recorded/42805704",
         "type": "video"
+    },
+    {
+        "title": "Effective API design with Scala types",
+        "authorNames": ["Adam Fisher"],
+        "location": "Scala eXchange - London",
+        "date": "2014-12-08",
+        "imageFileBasename": "2014-12-08-effective-api-design-with-scala-types.png",
+        "link": "https://skillsmatter.com/skillscasts/5834-effective-api-design-with-scala-types",
+        "type": "video"
     }
 ]
