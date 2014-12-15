@@ -498,3 +498,6 @@ ul, .l-grid, .header-row, .main-image, .developer-blog-section article time, .me
     .event__user-gravatar {
       float: right;
       margin-left: 4px; } }
+
+.event__img {
+  max-width: 85px; }
