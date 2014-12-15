@@ -1,5 +1,32 @@
 [
     {
+        "title": "Building theguardian.com",
+        "authorNames": ["Patrick Hamann"],
+        "location": "Smashing Conf - Whistler, Canada",
+        "date": "2014-12-22",
+        "imageFileBasename": "2014-12-11-building-the-guardian-dot-com.jpg",
+        "link": "https://speakerdeck.com/patrickhamann/building-theguardian-dot-com",
+        "type": "slides"
+    },
+    {
+        "title": "Breaking News at 1000ms",
+        "authorNames": ["Patrick Hamann"],
+        "location": "Velocity EU - Barcelona, Spain",
+        "date": "2014-11-18",
+        "imageFileBasename": "2014-11-18-breaking-news-at-1000ms.jpg",
+        "link": "https://speakerdeck.com/patrickhamann/breaking-news-at-1000ms-velocity-eu-2014",
+        "type": "slides"
+    },
+    {
+        "title": "Ship it!",
+        "authorNames": ["Patrick Hamann"],
+        "location": "re:develop - Bournemouth",
+        "date": "2014-08-22",
+        "imageFileBasename": "2014-08-22-ship-it.jpg",
+        "link": "https://speakerdeck.com/patrickhamann/ship-it-re-develop-conference-august-2014",
+        "type": "slides"
+    },
+    {
         "title": "Building a CMS for the Responsive Web",
         "authorNames": ["Oliver Joseph Ash", "Sébastien Cevey"],
         "location": "Front-end London",
