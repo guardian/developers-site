@@ -1,5 +1,14 @@
 [
     {
+        "title": "Building a CMS for the responsive web",
+        "authorNames": ["Sébastien Cevey", "Simon Hildrew"],
+        "location": "Bristol Digital Festival - Bristol",
+        "date": "2014-10-28",
+        "imageFileBasename": "2014-10-28-building-cms-responsive-web.png",
+        "link": "https://docs.google.com/presentation/d/1e5UY96aUKvImKXJVN8q1mGM79e2JNpAnYjOaQYZ0A68/edit?usp=sharing",
+        "type": "slides"
+    },
+    {
         "title": "Building theguardian.com",
         "authorNames": ["Patrick Hamann"],
         "location": "Smashing Conf - Whistler, Canada",
