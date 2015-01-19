@@ -6,7 +6,7 @@
     },
     {
         "title": "Senior software engineer",
-        "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00006Q",
+        "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00006Q&src=DevelopersSite",
         "description": "<p>Senior engineers are experienced developers with a variety of experience across domains and technologies. They have established their own areas of knowledge and expertise but are willing to share what they know and are always eager to learn new things.</p><p>They are humble and moderate in their views. Happy to mentor a junior developer, capable of leading a team or supporting one of their peers to deliver a shared technical vision. They see the world in terms of potential solutions, not problems. They support their opinions with data and metrics rather than rhetoric. They find out how to delight our journalists and readers and deliver the things that really matter to our organisation.</p>"
     },
     {
@@ -28,5 +28,10 @@
       "title": "Quality Assurance analyst (mobile)",
       "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN0000B6&src=DevelopersSite",
       "description": "<p>We are seeking a technical, motivated and open minded colleague to join as a QA analyst for our mobile team.  As a QA you will be leading the functional, non-functional and regression test effort on our mobile products, either our Android or our iOS products. You’ll be concerned with the quality of our mobile products - right from the beginning of the product lifecycle through to when our apps are in users’ hands.  And you’ll be pivotal in helping shape the culture of the team, and embedding quality throughout the whole process of software development.</p>"
+    },
+    {
+      "title": "Graduate software engineer",
+      "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN0000CO&src=DevelopersSite",
+      "description": "<p>Do you have a higher-education qualification? Do you have the ability to think laterally and creatively, coupled with a genuine passion for media, digital, business and technology? Are you looking to pursue a career in software development?</p><p>Our graduate scheme allows us to develop our own people through the employment of outstanding and passionate graduates who want to work with other great developers, on great products that deliver a great mission, in a great working environment.</p><p>You will be pairing with others to allow you to contribute immediately and learn from their experience. You will develop, manage and maintain live applications as a full and equal member of the development team.</p>"
     }
 ]
