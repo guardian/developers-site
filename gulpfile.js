@@ -142,6 +142,7 @@ function getUpcomingEvents() {
         return futureEvents(user.lanyrd).spread(function(resp, events) {
             return events.map(function(event) {
                 event.users = [user];
+                event.date = moment(event.month, 'MMM YYYY');
                 return event;
             });
         });
@@ -157,7 +158,7 @@ function sortEvents(events) {
     Object.keys(groups).forEach(function(type) {
         //First sort events by date
         groups[type] = groups[type].sort(function(a, b){
-            return moment(a.month).unix() > moment(b.month).unix() ? 1 : -1;
+            return a.date.unix() - b.date.unix();
 
         //Dedupe events whilst maintaining users attending
         }).reduce(function(newEvents, event) {

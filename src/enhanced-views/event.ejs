@@ -4,7 +4,7 @@
             <%= event.title %>
         </a>
     </h3>
-    <time class="event__timestamp"><%= scope.momentFilter(event.month, 'MMMM YYYY') %></time>
+    <time class="event__timestamp"><%= scope.momentFilter(event.date, 'MMMM YYYY') %></time>
     <% if(event.tagline) { %>
     <p class="event__desc"><%= event.tagline %></p>
     <% } %>
