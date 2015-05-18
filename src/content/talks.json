@@ -9,6 +9,15 @@
         "type": "slides"
     },
     {
+        "title": "Hypermedia: APIs of the Web",
+        "authorNames": ["Sébastien Cevey"],
+        "location": "APIDays/APIStrat - Berlin, Germany",
+        "date": "2015-04-24",
+        "imageFileBasename": "2015-04-24-hypermedia.png",
+        "link": "https://slides.com/theefer/hypermedia-apidays",
+        "type": "slides"
+    },
+    {
         "title": "Building theguardian.com",
         "authorNames": ["Patrick Hamann"],
         "location": "Smashing Conf - Whistler, Canada",
