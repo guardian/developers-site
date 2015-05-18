@@ -1,1 +1,1 @@
-export * from "github:systemjs/plugin-css@0.1.0/css";
+module.exports = require("github:systemjs/plugin-css@0.1.0/css");

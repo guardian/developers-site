@@ -13,7 +13,7 @@ module.exports = typeof global != 'undefined' ? (global.Promise = PromiseConstru
 	           : typeof self   != 'undefined' ? (self.Promise   = PromiseConstructor)
 	           : PromiseConstructor;
 
-},{"../lib/Promise":2,"../lib/decorators/unhandledRejection":6}],2:[function(require,module,exports){
+},{"../lib/Promise":2,"../lib/decorators/unhandledRejection":4}],2:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -23,7 +23,7 @@ define(function (require) {
 
 	var makePromise = require('./makePromise');
 	var Scheduler = require('./Scheduler');
-	var async = require('./async');
+	var async = require('./env').asap;
 
 	return makePromise({
 		scheduler: new Scheduler(async)
@@ -32,87 +32,13 @@ define(function (require) {
 });
 })(typeof define === 'function' && define.amd ? define : function (factory) { module.exports = factory(require); });
 
-},{"./Scheduler":4,"./async":5,"./makePromise":7}],3:[function(require,module,exports){
+},{"./Scheduler":3,"./env":5,"./makePromise":7}],3:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
 
 (function(define) { 'use strict';
 define(function() {
-	/**
-	 * Circular queue
-	 * @param {number} capacityPow2 power of 2 to which this queue's capacity
-	 *  will be set initially. eg when capacityPow2 == 3, queue capacity
-	 *  will be 8.
-	 * @constructor
-	 */
-	function Queue(capacityPow2) {
-		this.head = this.tail = this.length = 0;
-		this.buffer = new Array(1 << capacityPow2);
-	}
-
-	Queue.prototype.push = function(x) {
-		if(this.length === this.buffer.length) {
-			this._ensureCapacity(this.length * 2);
-		}
-
-		this.buffer[this.tail] = x;
-		this.tail = (this.tail + 1) & (this.buffer.length - 1);
-		++this.length;
-		return this.length;
-	};
-
-	Queue.prototype.shift = function() {
-		var x = this.buffer[this.head];
-		this.buffer[this.head] = void 0;
-		this.head = (this.head + 1) & (this.buffer.length - 1);
-		--this.length;
-		return x;
-	};
-
-	Queue.prototype._ensureCapacity = function(capacity) {
-		var head = this.head;
-		var buffer = this.buffer;
-		var newBuffer = new Array(capacity);
-		var i = 0;
-		var len;
-
-		if(head === 0) {
-			len = this.length;
-			for(; i<len; ++i) {
-				newBuffer[i] = buffer[i];
-			}
-		} else {
-			capacity = buffer.length;
-			len = this.tail;
-			for(; head<capacity; ++i, ++head) {
-				newBuffer[i] = buffer[head];
-			}
-
-			for(head=0; head<len; ++i, ++head) {
-				newBuffer[i] = buffer[head];
-			}
-		}
-
-		this.buffer = newBuffer;
-		this.head = 0;
-		this.tail = this.length;
-	};
-
-	return Queue;
-
-});
-}(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
-
-},{}],4:[function(require,module,exports){
-/** @license MIT License (c) copyright 2010-2014 original author or authors */
-/** @author Brian Cavalier */
-/** @author John Hann */
-
-(function(define) { 'use strict';
-define(function(require) {
-
-	var Queue = require('./Queue');
 
 	// Credit to Twisol (https://github.com/Twisol) for suggesting
 	// this type of extensible queue + trampoline approach for next-tick conflation.
@@ -124,9 +50,12 @@ define(function(require) {
 	 */
 	function Scheduler(async) {
 		this._async = async;
-		this._queue = new Queue(15);
-		this._afterQueue = new Queue(5);
 		this._running = false;
+
+		this._queue = this;
+		this._queueLen = 0;
+		this._afterQueue = {};
+		this._afterQueueLen = 0;
 
 		var self = this;
 		this.drain = function() {
@@ -139,7 +68,8 @@ define(function(require) {
 	 * @param {{ run:function }} task
 	 */
 	Scheduler.prototype.enqueue = function(task) {
-		this._add(this._queue, task);
+		this._queue[this._queueLen++] = task;
+		this.run();
 	};
 
 	/**
@@ -147,48 +77,44 @@ define(function(require) {
 	 * @param {{ run:function }} task
 	 */
 	Scheduler.prototype.afterQueue = function(task) {
-		this._add(this._afterQueue, task);
+		this._afterQueue[this._afterQueueLen++] = task;
+		this.run();
 	};
 
-	/**
-	 * Drain the handler queue entirely, and then the after queue
-	 */
-	Scheduler.prototype._drain = function() {
-		runQueue(this._queue);
-		this._running = false;
-		runQueue(this._afterQueue);
-	};
-
-	/**
-	 * Add a task to the q, and schedule drain if not already scheduled
-	 * @param {Queue} queue
-	 * @param {{run:function}} task
-	 * @private
-	 */
-	Scheduler.prototype._add = function(queue, task) {
-		queue.push(task);
-		if(!this._running) {
+	Scheduler.prototype.run = function() {
+		if (!this._running) {
 			this._running = true;
 			this._async(this.drain);
 		}
 	};
 
 	/**
-	 * Run all the tasks in the q
-	 * @param queue
+	 * Drain the handler queue entirely, and then the after queue
 	 */
-	function runQueue(queue) {
-		while(queue.length > 0) {
-			queue.shift().run();
+	Scheduler.prototype._drain = function() {
+		var i = 0;
+		for (; i < this._queueLen; ++i) {
+			this._queue[i].run();
+			this._queue[i] = void 0;
 		}
-	}
+
+		this._queueLen = 0;
+		this._running = false;
+
+		for (i = 0; i < this._afterQueueLen; ++i) {
+			this._afterQueue[i].run();
+			this._afterQueue[i] = void 0;
+		}
+
+		this._afterQueueLen = 0;
+	};
 
 	return Scheduler;
 
 });
-}(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(require); }));
+}(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
 
-},{"./Queue":3}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -196,93 +122,27 @@ define(function(require) {
 (function(define) { 'use strict';
 define(function(require) {
 
-	// Sniff "best" async scheduling option
-	// Prefer process.nextTick or MutationObserver, then check for
-	// vertx and finally fall back to setTimeout
-
-	/*jshint maxcomplexity:6*/
-	/*global process,document,setTimeout,MutationObserver,WebKitMutationObserver*/
-	var nextTick, MutationObs;
-
-	if (typeof process !== 'undefined' && process !== null &&
-		typeof process.nextTick === 'function') {
-		nextTick = function(f) {
-			process.nextTick(f);
-		};
-
-	} else if (MutationObs =
-		(typeof MutationObserver === 'function' && MutationObserver) ||
-		(typeof WebKitMutationObserver === 'function' && WebKitMutationObserver)) {
-		nextTick = (function (document, MutationObserver) {
-			var scheduled;
-			var el = document.createElement('div');
-			var o = new MutationObserver(run);
-			o.observe(el, { attributes: true });
-
-			function run() {
-				var f = scheduled;
-				scheduled = void 0;
-				f();
-			}
-
-			return function (f) {
-				scheduled = f;
-				el.setAttribute('class', 'x');
-			};
-		}(document, MutationObs));
-
-	} else {
-		nextTick = (function(cjsRequire) {
-			var vertx;
-			try {
-				// vert.x 1.x || 2.x
-				vertx = cjsRequire('vertx');
-			} catch (ignore) {}
-
-			if (vertx) {
-				if (typeof vertx.runOnLoop === 'function') {
-					return vertx.runOnLoop;
-				}
-				if (typeof vertx.runOnContext === 'function') {
-					return vertx.runOnContext;
-				}
-			}
-
-			// capture setTimeout to avoid being caught by fake timers
-			// used in time based tests
-			var capturedSetTimeout = setTimeout;
-			return function (t) {
-				capturedSetTimeout(t, 0);
-			};
-		}(require));
-	}
-
-	return nextTick;
-});
-}(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(require); }));
-
-},{}],6:[function(require,module,exports){
-/** @license MIT License (c) copyright 2010-2014 original author or authors */
-/** @author Brian Cavalier */
-/** @author John Hann */
-
-(function(define) { 'use strict';
-define(function(require) {
-
-	var timer = require('../timer');
+	var setTimer = require('../env').setTimer;
+	var format = require('../format');
 
 	return function unhandledRejection(Promise) {
+
 		var logError = noop;
 		var logInfo = noop;
+		var localConsole;
 
 		if(typeof console !== 'undefined') {
-			logError = typeof console.error !== 'undefined'
-				? function (e) { console.error(e); }
-				: function (e) { console.log(e); };
+			// Alias console to prevent things like uglify's drop_console option from
+			// removing console.log/error. Unhandled rejections fall into the same
+			// category as uncaught exceptions, and build tools shouldn't silence them.
+			localConsole = console;
+			logError = typeof localConsole.error !== 'undefined'
+				? function (e) { localConsole.error(e); }
+				: function (e) { localConsole.log(e); };
 
-			logInfo = typeof console.info !== 'undefined'
-				? function (e) { console.info(e); }
-				: function (e) { console.log(e); };
+			logInfo = typeof localConsole.info !== 'undefined'
+				? function (e) { localConsole.info(e); }
+				: function (e) { localConsole.log(e); };
 		}
 
 		Promise.onPotentiallyUnhandledRejection = function(rejection) {
@@ -299,12 +159,12 @@ define(function(require) {
 
 		var tasks = [];
 		var reported = [];
-		var running = false;
+		var running = null;
 
 		function report(r) {
 			if(!r.handled) {
 				reported.push(r);
-				logError('Potentially unhandled rejection [' + r.id + '] ' + formatError(r.value));
+				logError('Potentially unhandled rejection [' + r.id + '] ' + format.formatError(r.value));
 			}
 		}
 
@@ -312,20 +172,19 @@ define(function(require) {
 			var i = reported.indexOf(r);
 			if(i >= 0) {
 				reported.splice(i, 1);
-				logInfo('Handled previous rejection [' + r.id + '] ' + formatObject(r.value));
+				logInfo('Handled previous rejection [' + r.id + '] ' + format.formatObject(r.value));
 			}
 		}
 
 		function enqueue(f, x) {
 			tasks.push(f, x);
-			if(!running) {
-				running = true;
-				running = timer.set(flush, 0);
+			if(running === null) {
+				running = setTimer(flush, 0);
 			}
 		}
 
 		function flush() {
-			running = false;
+			running = null;
 			while(tasks.length > 0) {
 				tasks.shift()(tasks.shift());
 			}
@@ -333,28 +192,6 @@ define(function(require) {
 
 		return Promise;
 	};
-
-	function formatError(e) {
-		var s = typeof e === 'object' && e.stack ? e.stack : formatObject(e);
-		return e instanceof Error ? s : s + ' (WARNING: non-Error used)';
-	}
-
-	function formatObject(o) {
-		var s = String(o);
-		if(s === '[object Object]' && typeof JSON !== 'undefined') {
-			s = tryStringify(o, s);
-		}
-		return s;
-	}
-
-	function tryStringify(e, defaultValue) {
-		try {
-			return JSON.stringify(e);
-		} catch(e) {
-			// Ignore. Cannot JSON.stringify e, stick with String(e)
-			return defaultValue;
-		}
-	}
 
 	function throwit(e) {
 		throw e;
@@ -365,7 +202,140 @@ define(function(require) {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(require); }));
 
-},{"../timer":8}],7:[function(require,module,exports){
+},{"../env":5,"../format":6}],5:[function(require,module,exports){
+/** @license MIT License (c) copyright 2010-2014 original author or authors */
+/** @author Brian Cavalier */
+/** @author John Hann */
+
+/*global process,document,setTimeout,clearTimeout,MutationObserver,WebKitMutationObserver*/
+(function(define) { 'use strict';
+define(function(require) {
+	/*jshint maxcomplexity:6*/
+
+	// Sniff "best" async scheduling option
+	// Prefer process.nextTick or MutationObserver, then check for
+	// setTimeout, and finally vertx, since its the only env that doesn't
+	// have setTimeout
+
+	var MutationObs;
+	var capturedSetTimeout = typeof setTimeout !== 'undefined' && setTimeout;
+
+	// Default env
+	var setTimer = function(f, ms) { return setTimeout(f, ms); };
+	var clearTimer = function(t) { return clearTimeout(t); };
+	var asap = function (f) { return capturedSetTimeout(f, 0); };
+
+	// Detect specific env
+	if (isNode()) { // Node
+		asap = function (f) { return process.nextTick(f); };
+
+	} else if (MutationObs = hasMutationObserver()) { // Modern browser
+		asap = initMutationObserver(MutationObs);
+
+	} else if (!capturedSetTimeout) { // vert.x
+		var vertxRequire = require;
+		var vertx = vertxRequire('vertx');
+		setTimer = function (f, ms) { return vertx.setTimer(ms, f); };
+		clearTimer = vertx.cancelTimer;
+		asap = vertx.runOnLoop || vertx.runOnContext;
+	}
+
+	return {
+		setTimer: setTimer,
+		clearTimer: clearTimer,
+		asap: asap
+	};
+
+	function isNode () {
+		return typeof process !== 'undefined' && process !== null &&
+			typeof process.nextTick === 'function';
+	}
+
+	function hasMutationObserver () {
+		return (typeof MutationObserver === 'function' && MutationObserver) ||
+			(typeof WebKitMutationObserver === 'function' && WebKitMutationObserver);
+	}
+
+	function initMutationObserver(MutationObserver) {
+		var scheduled;
+		var node = document.createTextNode('');
+		var o = new MutationObserver(run);
+		o.observe(node, { characterData: true });
+
+		function run() {
+			var f = scheduled;
+			scheduled = void 0;
+			f();
+		}
+
+		var i = 0;
+		return function (f) {
+			scheduled = f;
+			node.data = (i ^= 1);
+		};
+	}
+});
+}(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(require); }));
+
+},{}],6:[function(require,module,exports){
+/** @license MIT License (c) copyright 2010-2014 original author or authors */
+/** @author Brian Cavalier */
+/** @author John Hann */
+
+(function(define) { 'use strict';
+define(function() {
+
+	return {
+		formatError: formatError,
+		formatObject: formatObject,
+		tryStringify: tryStringify
+	};
+
+	/**
+	 * Format an error into a string.  If e is an Error and has a stack property,
+	 * it's returned.  Otherwise, e is formatted using formatObject, with a
+	 * warning added about e not being a proper Error.
+	 * @param {*} e
+	 * @returns {String} formatted string, suitable for output to developers
+	 */
+	function formatError(e) {
+		var s = typeof e === 'object' && e !== null && e.stack ? e.stack : formatObject(e);
+		return e instanceof Error ? s : s + ' (WARNING: non-Error used)';
+	}
+
+	/**
+	 * Format an object, detecting "plain" objects and running them through
+	 * JSON.stringify if possible.
+	 * @param {Object} o
+	 * @returns {string}
+	 */
+	function formatObject(o) {
+		var s = String(o);
+		if(s === '[object Object]' && typeof JSON !== 'undefined') {
+			s = tryStringify(o, s);
+		}
+		return s;
+	}
+
+	/**
+	 * Try to return the result of JSON.stringify(x).  If that fails, return
+	 * defaultValue
+	 * @param {*} x
+	 * @param {*} defaultValue
+	 * @returns {String|*} JSON.stringify(x) or defaultValue
+	 */
+	function tryStringify(x, defaultValue) {
+		try {
+			return JSON.stringify(x);
+		} catch(e) {
+			return defaultValue;
+		}
+	}
+
+});
+}(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
+
+},{}],7:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -376,6 +346,7 @@ define(function() {
 	return function makePromise(environment) {
 
 		var tasks = environment.scheduler;
+		var emitRejection = initEmitRejection();
 
 		var objectCreate = Object.create ||
 			function(proto) {
@@ -492,10 +463,10 @@ define(function() {
 		 * this promise's fulfillment.
 		 * @param {function=} onFulfilled fulfillment handler
 		 * @param {function=} onRejected rejection handler
-		 * @deprecated @param {function=} onProgress progress handler
+		 * @param {function=} onProgress @deprecated progress handler
 		 * @return {Promise} new promise
 		 */
-		Promise.prototype.then = function(onFulfilled, onRejected) {
+		Promise.prototype.then = function(onFulfilled, onRejected, onProgress) {
 			var parent = this._handler;
 			var state = parent.join().state();
 
@@ -508,8 +479,7 @@ define(function() {
 			var p = this._beget();
 			var child = p._handler;
 
-			parent.chain(child, parent.receiver, onFulfilled, onRejected,
-					arguments.length > 2 ? arguments[2] : void 0);
+			parent.chain(child, parent.receiver, onFulfilled, onRejected, onProgress);
 
 			return p;
 		};
@@ -530,15 +500,19 @@ define(function() {
 		 * @returns {Promise}
 		 */
 		Promise.prototype._beget = function() {
-			var parent = this._handler;
-			var child = new Pending(parent.receiver, parent.join().context);
-			return new this.constructor(Handler, child);
+			return begetFrom(this._handler, this.constructor);
 		};
+
+		function begetFrom(parent, Promise) {
+			var child = new Pending(parent.receiver, parent.join().context);
+			return new Promise(Handler, child);
+		}
 
 		// Array combinators
 
 		Promise.all = all;
 		Promise.race = race;
+		Promise._traverse = traverse;
 
 		/**
 		 * Return a promise that will fulfill when all promises in the
@@ -548,13 +522,28 @@ define(function() {
 		 * @returns {Promise} promise for array of fulfillment values
 		 */
 		function all(promises) {
-			/*jshint maxcomplexity:8*/
+			return traverseWith(snd, null, promises);
+		}
+
+		/**
+		 * Array<Promise<X>> -> Promise<Array<f(X)>>
+		 * @private
+		 * @param {function} f function to apply to each promise's value
+		 * @param {Array} promises array of promises
+		 * @returns {Promise} promise for transformed values
+		 */
+		function traverse(f, promises) {
+			return traverseWith(tryCatch2, f, promises);
+		}
+
+		function traverseWith(tryMap, f, promises) {
+			var handler = typeof f === 'function' ? mapAt : settleAt;
+
 			var resolver = new Pending();
 			var pending = promises.length >>> 0;
 			var results = new Array(pending);
 
-			var i, h, x, s;
-			for (i = 0; i < promises.length; ++i) {
+			for (var i = 0, x; i < promises.length && !resolver.resolved; ++i) {
 				x = promises[i];
 
 				if (x === void 0 && !(i in promises)) {
@@ -562,24 +551,7 @@ define(function() {
 					continue;
 				}
 
-				if (maybeThenable(x)) {
-					h = getHandlerMaybeThenable(x);
-
-					s = h.state();
-					if (s === 0) {
-						h.fold(settleAt, i, results, resolver);
-					} else if (s > 0) {
-						results[i] = h.value;
-						--pending;
-					} else {
-						resolveAndObserveRemaining(promises, i+1, h, resolver);
-						break;
-					}
-
-				} else {
-					results[i] = x;
-					--pending;
-				}
+				traverseAt(promises, handler, i, x, resolver);
 			}
 
 			if(pending === 0) {
@@ -588,27 +560,55 @@ define(function() {
 
 			return new Promise(Handler, resolver);
 
+			function mapAt(i, x, resolver) {
+				if(!resolver.resolved) {
+					traverseAt(promises, settleAt, i, tryMap(f, x, i), resolver);
+				}
+			}
+
 			function settleAt(i, x, resolver) {
-				/*jshint validthis:true*/
-				this[i] = x;
+				results[i] = x;
 				if(--pending === 0) {
-					resolver.become(new Fulfilled(this));
+					resolver.become(new Fulfilled(results));
 				}
 			}
 		}
 
-		function resolveAndObserveRemaining(promises, start, handler, resolver) {
-			resolver.become(handler);
+		function traverseAt(promises, handler, i, x, resolver) {
+			if (maybeThenable(x)) {
+				var h = getHandlerMaybeThenable(x);
+				var s = h.state();
 
-			var i, h, x;
-			for(i=start; i<promises.length; ++i) {
-				x = promises[i];
-				if(maybeThenable(x)) {
-					h = getHandlerMaybeThenable(x);
-					if(h !== handler) {
-						h.visit(h, void 0, h._unreport);
-					}
+				if (s === 0) {
+					h.fold(handler, i, void 0, resolver);
+				} else if (s > 0) {
+					handler(i, h.value, resolver);
+				} else {
+					resolver.become(h);
+					visitRemaining(promises, i+1, h);
 				}
+			} else {
+				handler(i, x, resolver);
+			}
+		}
+
+		Promise._visitRemaining = visitRemaining;
+		function visitRemaining(promises, start, handler) {
+			for(var i=start; i<promises.length; ++i) {
+				markAsHandled(getHandler(promises[i]), handler);
+			}
+		}
+
+		function markAsHandled(h, handler) {
+			if(h === handler) {
+				return;
+			}
+
+			var s = h.state();
+			if(s === 0) {
+				h.visit(h, void 0, h._unreport);
+			} else if(s < 0) {
+				h._unreport();
 			}
 		}
 
@@ -627,12 +627,18 @@ define(function() {
 		 * is empty, returns a promise that will never settle.
 		 */
 		function race(promises) {
-			// Sigh, race([]) is untestable unless we return *something*
-			// that is recognizable without calling .then() on it.
-			if(Object(promises) === promises && promises.length === 0) {
-				return never();
+			if(typeof promises !== 'object' || promises === null) {
+				return reject(new TypeError('non-iterable passed to race()'));
 			}
 
+			// Sigh, race([]) is untestable unless we return *something*
+			// that is recognizable without calling .then() on it.
+			return promises.length === 0 ? never()
+				 : promises.length === 1 ? resolve(promises[0])
+				 : runRace(promises);
+		}
+
+		function runRace(promises) {
 			var resolver = new Pending();
 			var i, x, h;
 			for(i=0; i<promises.length; ++i) {
@@ -643,11 +649,12 @@ define(function() {
 
 				h = getHandler(x);
 				if(h.state() !== 0) {
-					resolveAndObserveRemaining(promises, i+1, h, resolver);
+					resolver.become(h);
+					visitRemaining(promises, i+1, h);
 					break;
+				} else {
+					h.visit(resolver, resolver.resolve, resolver.reject);
 				}
-
-				h.visit(resolver, resolver.resolve, resolver.reject);
 			}
 			return new Promise(Handler, resolver);
 		}
@@ -741,9 +748,7 @@ define(function() {
 		};
 
 		Handler.prototype.fold = function(f, z, c, to) {
-			this.visit(to, function(x) {
-				f.call(c, z, x, this);
-			}, to.reject, to.notify);
+			this.when(new Fold(f, z, c, to));
 		};
 
 		/**
@@ -808,7 +813,8 @@ define(function() {
 
 		Pending.prototype.run = function() {
 			var q = this.consumers;
-			var handler = this.join();
+			var handler = this.handler;
+			this.handler = this.handler.join();
 			this.consumers = void 0;
 
 			for (var i = 0; i < q.length; ++i) {
@@ -962,11 +968,16 @@ define(function() {
 		};
 
 		Rejected.prototype._unreport = function() {
+			if(this.handled) {
+				return;
+			}
 			this.handled = true;
 			tasks.afterQueue(new UnreportTask(this));
 		};
 
 		Rejected.prototype.fail = function(context) {
+			this.reported = true;
+			emitRejection('unhandledRejection', this);
 			Promise.onFatalRejection(this, context === void 0 ? this.context : context);
 		};
 
@@ -976,9 +987,10 @@ define(function() {
 		}
 
 		ReportTask.prototype.run = function() {
-			if(!this.rejection.handled) {
+			if(!this.rejection.handled && !this.rejection.reported) {
 				this.rejection.reported = true;
-				Promise.onPotentiallyUnhandledRejection(this.rejection, this.context);
+				emitRejection('unhandledRejection', this.rejection) ||
+					Promise.onPotentiallyUnhandledRejection(this.rejection, this.context);
 			}
 		};
 
@@ -988,14 +1000,14 @@ define(function() {
 
 		UnreportTask.prototype.run = function() {
 			if(this.rejection.reported) {
-				Promise.onPotentiallyUnhandledRejectionHandled(this.rejection);
+				emitRejection('rejectionHandled', this.rejection) ||
+					Promise.onPotentiallyUnhandledRejectionHandled(this.rejection);
 			}
 		};
 
 		// Unhandled rejection hooks
 		// By default, everything is a noop
 
-		// TODO: Better names: "annotate"?
 		Promise.createContext
 			= Promise.enterContext
 			= Promise.exitContext
@@ -1079,6 +1091,28 @@ define(function() {
 			}
 		}
 
+		/**
+		 * Fold a handler value with z
+		 * @constructor
+		 */
+		function Fold(f, z, c, to) {
+			this.f = f; this.z = z; this.c = c; this.to = to;
+			this.resolver = failIfRejected;
+			this.receiver = this;
+		}
+
+		Fold.prototype.fulfilled = function(x) {
+			this.f.call(this.c, this.z, x, this.to);
+		};
+
+		Fold.prototype.rejected = function(x) {
+			this.to.reject(x);
+		};
+
+		Fold.prototype.progress = function(x) {
+			this.to.notify(x);
+		};
+
 		// Other helpers
 
 		/**
@@ -1132,6 +1166,14 @@ define(function() {
 			Promise.exitContext();
 		}
 
+		function tryCatch2(f, a, b) {
+			try {
+				return f(a, b);
+			} catch(e) {
+				return reject(e);
+			}
+		}
+
 		/**
 		 * Return f.call(thisArg, x), or if it throws return a rejected promise for
 		 * the thrown exception
@@ -1172,51 +1214,55 @@ define(function() {
 			Child.prototype.constructor = Child;
 		}
 
+		function snd(x, y) {
+			return y;
+		}
+
 		function noop() {}
+
+		function initEmitRejection() {
+			/*global process, self, CustomEvent*/
+			if(typeof process !== 'undefined' && process !== null
+				&& typeof process.emit === 'function') {
+				// Returning falsy here means to call the default
+				// onPotentiallyUnhandledRejection API.  This is safe even in
+				// browserify since process.emit always returns falsy in browserify:
+				// https://github.com/defunctzombie/node-process/blob/master/browser.js#L40-L46
+				return function(type, rejection) {
+					return type === 'unhandledRejection'
+						? process.emit(type, rejection.value, rejection)
+						: process.emit(type, rejection);
+				};
+			} else if(typeof self !== 'undefined' && typeof CustomEvent === 'function') {
+				return (function(noop, self, CustomEvent) {
+					var hasCustomEvent = false;
+					try {
+						var ev = new CustomEvent('unhandledRejection');
+						hasCustomEvent = ev instanceof CustomEvent;
+					} catch (e) {}
+
+					return !hasCustomEvent ? noop : function(type, rejection) {
+						var ev = new CustomEvent(type, {
+							detail: {
+								reason: rejection.value,
+								key: rejection
+							},
+							bubbles: false,
+							cancelable: true
+						});
+
+						return !self.dispatchEvent(ev);
+					};
+				}(noop, self, CustomEvent));
+			}
+
+			return noop;
+		}
 
 		return Promise;
 	};
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
-
-},{}],8:[function(require,module,exports){
-/** @license MIT License (c) copyright 2010-2014 original author or authors */
-/** @author Brian Cavalier */
-/** @author John Hann */
-
-(function(define) { 'use strict';
-define(function(require) {
-	/*global setTimeout,clearTimeout*/
-	var cjsRequire, vertx, setTimer, clearTimer;
-
-	// Check for vertx environment by attempting to load vertx module.
-	// Doing the check in two steps ensures compatibility with RaveJS,
-	// which will return an empty module when browser: { vertx: false }
-	// is set in package.json
-	cjsRequire = require;
-
-	try {
-		vertx = cjsRequire('vertx');
-	} catch (ignored) {}
-
-	// If vertx loaded and has the timer features we expect, try to support it
-	if (vertx && typeof vertx.setTimer === 'function') {
-		setTimer = function (f, ms) { return vertx.setTimer(ms, f); };
-		clearTimer = vertx.cancelTimer;
-	} else {
-		// NOTE: Truncate decimals to workaround node 0.10.30 bug:
-		// https://github.com/joyent/node/issues/8167
-		setTimer = function(f, ms) { return setTimeout(f, ms|0); };
-		clearTimer = function(t) { return clearTimeout(t); };
-	}
-
-	return {
-		set: setTimer,
-		clear: clearTimer
-	};
-
-});
-}(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(require); }));
 
 },{}]},{},[1])
 (1)
@@ -1261,9 +1307,10 @@ $__Object$create = Object.create || function(o, props) {
 /*
 *********************************************************************************************
 
-  Loader Polyfill
+  Dynamic Module Loader Polyfill
 
-    - Implemented exactly to the 2014-07-18 Specification Draft.
+    - Implemented exactly to the former 2014-08-24 ES6 Specification Draft Rev 27, Section 15
+      http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts#august_24_2014_draft_rev_27
 
     - Functions are commented with their spec numbers, with spec differences commented.
 
@@ -1273,8 +1320,6 @@ $__Object$create = Object.create || function(o, props) {
       commented.
 
     - Realm implementation is entirely omitted.
-
-    - Loader module table iteration currently not yet implemented.
 
 *********************************************************************************************
 */
@@ -1365,7 +1410,8 @@ function logloads(loads) {
 
 (function() {
   var Promise = __global.Promise || require('when/es6-shim/Promise');
-  console.assert = console.assert || function() {};
+  if (__global.console)
+    console.assert = console.assert || function() {};
 
   // IE8 support
   var indexOf = Array.prototype.indexOf || function(item) {
@@ -1433,7 +1479,7 @@ function logloads(loads) {
         load = createLoad(name);
         load.status = 'linked';
         // https://bugs.ecmascript.org/show_bug.cgi?id=2795
-        // load.module = loader.modules[name];
+        load.module = loader.modules[name];
         return load;
       }
 
@@ -1490,99 +1536,107 @@ function logloads(loads) {
     .then(function(source) {
       if (load.status != 'loading')
         return;
-      return loader.loaderObj.translate({ name: load.name, metadata: load.metadata, address: load.address, source: source });
-    })
 
-    // 15.2.4.5.2 CallInstantiate
-    .then(function(source) {
-      if (load.status != 'loading')
-        return;
-      load.source = source;
-      return loader.loaderObj.instantiate({ name: load.name, metadata: load.metadata, address: load.address, source: source });
-    })
+      return Promise.resolve(loader.loaderObj.translate({ name: load.name, metadata: load.metadata, address: load.address, source: source }))
 
-    // 15.2.4.5.3 InstantiateSucceeded
-    .then(function(instantiateResult) {
-      if (load.status != 'loading')
-        return;
+      // 15.2.4.5.2 CallInstantiate
+      .then(function(source) {
+        load.source = source;
+        return loader.loaderObj.instantiate({ name: load.name, metadata: load.metadata, address: load.address, source: source });
+      })
 
-      if (instantiateResult === undefined) {
-        load.address = load.address || 'anon' + ++anonCnt;
+      // 15.2.4.5.3 InstantiateSucceeded
+      .then(function(instantiateResult) {
+        if (instantiateResult === undefined) {
+          load.address = load.address || '<Anonymous Module ' + ++anonCnt + '>';
 
-        // NB instead of load.kind, use load.isDeclarative
-        load.isDeclarative = true;
-        // parse sets load.declare, load.depsList
-        loader.loaderObj.parse(load);
-      }
-      else if (typeof instantiateResult == 'object') {
-        load.depsList = instantiateResult.deps || [];
-        load.execute = instantiateResult.execute;
-        load.isDeclarative = false;
-      }
-      else
-        throw TypeError('Invalid instantiate return value');
-
-      // 15.2.4.6 ProcessLoadDependencies
-      load.dependencies = [];
-      var depsList = load.depsList;
-
-      var loadPromises = [];
-      for (var i = 0, l = depsList.length; i < l; i++) (function(request, index) {
-        loadPromises.push(
-          requestLoad(loader, request, load.name, load.address)
-
-          // 15.2.4.6.1 AddDependencyLoad (load is parentLoad)
-          .then(function(depLoad) {
-
-            console.assert(!load.dependencies.some(function(dep) {
-              return dep.key == request;
-            }), 'not already a dependency');
-
-            // adjusted from spec to maintain dependency order
-            // this is due to the System.register internal implementation needs
-            load.dependencies[index] = {
-              key: request,
-              value: depLoad.name
-            };
-
-            if (depLoad.status != 'linked') {
-              var linkSets = load.linkSets.concat([]);
-              for (var i = 0, l = linkSets.length; i < l; i++)
-                addLoadToLinkSet(linkSets[i], depLoad);
+          // instead of load.kind, use load.isDeclarative
+          load.isDeclarative = true;
+          return loader.loaderObj.transpile(load)
+          .then(function(transpiled) {
+            // Hijack System.register to set declare function
+            var curSystem = __global.System;
+            var curRegister = curSystem.register;
+            curSystem.register = function(name, deps, declare) {
+              if (typeof name != 'string') {
+                declare = deps;
+                deps = name;
+              }
+              // store the registered declaration as load.declare
+              // store the deps as load.deps
+              load.declare = declare;
+              load.depsList = deps;
             }
+            __eval(transpiled, __global, load);
+            curSystem.register = curRegister;
+          });
+        }
+        else if (typeof instantiateResult == 'object') {
+          load.depsList = instantiateResult.deps || [];
+          load.execute = instantiateResult.execute;
+          load.isDeclarative = false;
+        }
+        else
+          throw TypeError('Invalid instantiate return value');
+      })
+      // 15.2.4.6 ProcessLoadDependencies
+      .then(function() {
+        load.dependencies = [];
+        var depsList = load.depsList;
 
-            // console.log('AddDependencyLoad ' + depLoad.name + ' for ' + load.name);
-            // snapshot(loader);
-          })
-        );
-      })(depsList[i], i);
+        var loadPromises = [];
+        for (var i = 0, l = depsList.length; i < l; i++) (function(request, index) {
+          loadPromises.push(
+            requestLoad(loader, request, load.name, load.address)
 
-      return Promise.all(loadPromises);
+            // 15.2.4.6.1 AddDependencyLoad (load is parentLoad)
+            .then(function(depLoad) {
+
+              // adjusted from spec to maintain dependency order
+              // this is due to the System.register internal implementation needs
+              load.dependencies[index] = {
+                key: request,
+                value: depLoad.name
+              };
+
+              if (depLoad.status != 'linked') {
+                var linkSets = load.linkSets.concat([]);
+                for (var i = 0, l = linkSets.length; i < l; i++)
+                  addLoadToLinkSet(linkSets[i], depLoad);
+              }
+
+              // console.log('AddDependencyLoad ' + depLoad.name + ' for ' + load.name);
+              // snapshot(loader);
+            })
+          );
+        })(depsList[i], i);
+
+        return Promise.all(loadPromises);
+      })
+
+      // 15.2.4.6.2 LoadSucceeded
+      .then(function() {
+        // console.log('LoadSucceeded ' + load.name);
+        // snapshot(loader);
+
+        console.assert(load.status == 'loading', 'is loading');
+
+        load.status = 'loaded';
+
+        var linkSets = load.linkSets.concat([]);
+        for (var i = 0, l = linkSets.length; i < l; i++)
+          updateLinkSetOnLoad(linkSets[i], load);
+      });
     })
-
-    // 15.2.4.6.2 LoadSucceeded
-    .then(function() {
-      // console.log('LoadSucceeded ' + load.name);
-      // snapshot(loader);
-
-      console.assert(load.status == 'loading', 'is loading');
-
-      load.status = 'loaded';
-
-      var linkSets = load.linkSets.concat([]);
-      for (var i = 0, l = linkSets.length; i < l; i++)
-        updateLinkSetOnLoad(linkSets[i], load);
-    })
-
     // 15.2.4.5.4 LoadFailed
     ['catch'](function(exc) {
-      console.assert(load.status == 'loading', 'is loading on fail');
       load.status = 'failed';
       load.exception = exc;
 
       var linkSets = load.linkSets.concat([]);
-      for (var i = 0, l = linkSets.length; i < l; i++)
-        linkSetFailed(linkSets[i], exc);
+      for (var i = 0, l = linkSets.length; i < l; i++) {
+        linkSetFailed(linkSets[i], load, exc);
+      }
 
       console.assert(load.linkSets.length == 0, 'linkSets not removed');
     });
@@ -1600,12 +1654,22 @@ function logloads(loads) {
       if (loader.modules[name])
         throw new TypeError('"' + name + '" already exists in the module table');
 
-      // NB this still seems wrong for LoadModule as we may load a dependency
-      // of another module directly before it has finished loading.
-      // see https://bugs.ecmascript.org/show_bug.cgi?id=2994
-      for (var i = 0, l = loader.loads.length; i < l; i++)
-        if (loader.loads[i].name == name)
-          throw new TypeError('"' + name + '" already loading');
+      // adjusted to pick up existing loads
+      var existingLoad;
+      for (var i = 0, l = loader.loads.length; i < l; i++) {
+        if (loader.loads[i].name == name) {
+          existingLoad = loader.loads[i];
+
+          if(step == 'translate' && !existingLoad.source) {
+            existingLoad.address = stepState.moduleAddress;
+            proceedToTranslate(loader, existingLoad, Promise.resolve(stepState.moduleSource));
+          }
+
+          return existingLoad.linkSets[0].done.then(function() {
+            resolve(existingLoad);
+          });
+        }
+      }
 
       var load = createLoad(name);
 
@@ -1687,14 +1751,21 @@ function logloads(loads) {
     // snapshot(linkSet.loader);
   }
 
+  // linking errors can be generic or load-specific
+  // this is necessary for debugging info
   function doLink(linkSet) {
+    var error = false;
     try {
-      link(linkSet);
+      link(linkSet, function(load, exc) {
+        linkSetFailed(linkSet, load, exc);
+        error = true;
+      });
     }
-    catch(exc) {
-      linkSetFailed(linkSet, exc);
-      return true;
+    catch(e) {
+      linkSetFailed(linkSet, null, e);
+      error = true;
     }
+    return error;
   }
 
   // 15.2.5.2.3
@@ -1744,8 +1815,15 @@ function logloads(loads) {
   }
 
   // 15.2.5.2.4
-  function linkSetFailed(linkSet, exc) {
+  function linkSetFailed(linkSet, load, exc) {
     var loader = linkSet.loader;
+
+    if (load && linkSet.loads[0].name != load.name)
+      exc = addToError(exc, 'Error loading "' + load.name + '" from "' + linkSet.loads[0].name + '" at ' + (linkSet.loads[0].address || '<unknown>') + '\n');
+
+    if (load)
+      exc = addToError(exc, 'Error loading "' + load.name + '" at ' + (load.address || '<unknown>') + '\n');
+
     var loads = linkSet.loads.concat([]);
     for (var i = 0, l = loads.length; i < l; i++) {
       var load = loads[i];
@@ -1810,7 +1888,7 @@ function logloads(loads) {
   // 1. groups is an already-interleaved array of group kinds
   // 2. load.groupIndex is set when this function runs
   // 3. load.groupIndex is the interleaved index ie 0 declarative, 1 dynamic, 2 declarative, ... (or starting with dynamic)
-  function buildLinkageGroups(load, loads, groups, loader) {
+  function buildLinkageGroups(load, loads, groups) {
     groups[load.groupIndex] = groups[load.groupIndex] || [];
 
     // if the load already has a group index and its in its group, its already been done
@@ -1838,7 +1916,7 @@ function logloads(loads) {
           if (loadDep.groupIndex === undefined || loadDep.groupIndex < loadDepGroupIndex) {
 
             // if already in a group, remove from the old group
-            if (loadDep.groupIndex) {
+            if (loadDep.groupIndex !== undefined) {
               groups[loadDep.groupIndex].splice(indexOf.call(groups[loadDep.groupIndex], loadDep), 1);
 
               // if the old group is empty, then we have a mixed depndency cycle
@@ -1849,14 +1927,28 @@ function logloads(loads) {
             loadDep.groupIndex = loadDepGroupIndex;
           }
 
-          buildLinkageGroups(loadDep, loads, groups, loader);
+          buildLinkageGroups(loadDep, loads, groups);
         }
       }
     }
   }
 
+  function doDynamicExecute(linkSet, load, linkError) {
+    try {
+      var module = load.execute();
+    }
+    catch(e) {
+      linkError(load, e);
+      return;
+    }
+    if (!module || !(module instanceof Module))
+      linkError(load, new TypeError('Execution must define a Module instance'));
+    else
+      return module;
+  }
+
   // 15.2.5.4
-  function link(linkSet) {
+  function link(linkSet, linkError) {
 
     var loader = linkSet.loader;
 
@@ -1874,7 +1966,7 @@ function logloads(loads) {
     var groups = [];
     var startingLoad = linkSet.loads[0];
     startingLoad.groupIndex = 0;
-    buildLinkageGroups(startingLoad, linkSet.loads, groups, loader);
+    buildLinkageGroups(startingLoad, linkSet.loads, groups);
 
     // determine the kind of the bottom group
     var curGroupDeclarative = startingLoad.isDeclarative == groups.length % 2;
@@ -1891,9 +1983,9 @@ function logloads(loads) {
         }
         // 15.2.5.6 LinkDynamicModules adjusted
         else {
-          var module = load.execute();
-          if (!module || !(module instanceof Module))
-            throw new TypeError('Execution must define a Module instance');
+          var module = doDynamicExecute(linkSet, load, linkError);
+          if (!module)
+            return;
           load.module = {
             name: load.name,
             module: module
@@ -2056,8 +2148,10 @@ function logloads(loads) {
       if (indexOf.call(seen, dep) == -1) {
         err = ensureEvaluated(dep, seen, loader);
         // stop on error, see https://bugs.ecmascript.org/show_bug.cgi?id=2996
-        if (err)
-          return err + '\n  in module ' + dep.name;
+        if (err) {
+          err = addToError(err, 'Error evaluating ' + dep.name + '\n');
+          return err;
+        }
       }
     }
 
@@ -2071,7 +2165,8 @@ function logloads(loads) {
     err = doExecute(module);
     if (err) {
       module.failed = true;
-    } else if (Object.preventExtensions) {
+    }
+    else if (Object.preventExtensions) {
       // spec variation
       // we don't create a new module here because it was created and ammended
       // we just disable further extensions instead
@@ -2079,6 +2174,14 @@ function logloads(loads) {
     }
 
     module.execute = undefined;
+    return err;
+  }
+
+  function addToError(err, msg) {
+    if (err instanceof Error)
+      err.message = msg + err.message;
+    else
+      err = msg + err;
     return err;
   }
 
@@ -2151,7 +2254,10 @@ function logloads(loads) {
     },
     // 26.3.3.3
     'delete': function(name) {
-      return this._loader.modules[name] ? delete this._loader.modules[name] : false;
+      var loader = this._loader;
+      delete loader.importPromises[name];
+      delete loader.moduleRecords[name];
+      return loader.modules[name] ? delete loader.modules[name] : false;
     },
     // 26.3.3.4 entries not implemented
     // 26.3.3.5
@@ -2219,17 +2325,25 @@ function logloads(loads) {
       // by doing m instanceof Module
       var m = new Module();
 
-      for (var key in obj) {
-        (function (key) {
-          defineProperty(m, key, {
-            configurable: false,
-            enumerable: true,
-            get: function () {
-              return obj[key];
-            }
-          });
-        })(key);
+      var pNames;
+      if (Object.getOwnPropertyNames && obj != null) {
+        pNames = Object.getOwnPropertyNames(obj);
       }
+      else {
+        pNames = [];
+        for (var key in obj)
+          pNames.push(key);
+      }
+
+      for (var i = 0; i < pNames.length; i++) (function(key) {
+        defineProperty(m, key, {
+          configurable: false,
+          enumerable: true,
+          get: function () {
+            return obj[key];
+          }
+        });
+      })(pNames[i]);
 
       if (Object.preventExtensions)
         Object.preventExtensions(m);
@@ -2264,57 +2378,12 @@ function logloads(loads) {
     translate: function(load) {
       return load.source;
     },
-    parse: function(load) {
-      throw new TypeError('Loader.parse is not implemented');
-    },
     // 26.3.3.18.5
     instantiate: function(load) {
     }
   };
 
   var _newModule = Loader.prototype.newModule;
-
-
-  /*
-   * Traceur-specific Parsing Code for Loader
-   */
-  (function() {
-    // parse function is used to parse a load record
-    // Returns an array of ModuleSpecifiers
-    var traceur;
-    Loader.prototype.parse = function(load) {
-      if (!traceur) {
-        if (typeof window == 'undefined' &&
-           typeof WorkerGlobalScope == 'undefined')
-          traceur = require('traceur');
-        else if (__global.traceur)
-          traceur = __global.traceur;
-        else
-          throw new TypeError('Include Traceur for module syntax support');
-      }
-
-      console.assert(load.source, 'Non-empty source');
-
-      var depsList;
-
-      load.isDeclarative = true;
-
-      var options = traceur.options || {};
-      options.modules = 'instantiate';
-      options.script = false;
-      options.sourceMaps = true;
-      options.filename = load.address;
-
-      var compiler = new traceur.Compiler(options);
-      var source = compiler.compile(load.source, options.filename);
-      var sourceMap = compiler.getSourceMap();
-
-      if (__global.btoa && sourceMap)
-        source += '\n//# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(sourceMap))) + '\n';
-
-      __eval(source, __global, load);
-    }
-  })();
 
   if (typeof exports === 'object')
     module.exports = Loader;
@@ -2326,6 +2395,106 @@ function logloads(loads) {
 
 })();
 
+/*
+ * Traceur and Babel transpile hook for Loader
+ */
+(function(Loader) {
+  var g = __global;
+
+  function getTranspilerModule(loader, globalName) {
+    return loader.newModule({ 'default': g[globalName], __useDefault: true });
+  }
+
+  // use Traceur by default
+  Loader.prototype.transpiler = 'traceur';
+
+  Loader.prototype.transpile = function(load) {
+    var self = this;
+
+    // pick up Transpiler modules from existing globals on first run if set
+    if (!self.transpilerHasRun) {
+      if (g.traceur && !self.has('traceur'))
+        self.set('traceur', getTranspilerModule(self, 'traceur'));
+      if (g.babel && !self.has('babel'))
+        self.set('babel', getTranspilerModule(self, 'babel'));
+      self.transpilerHasRun = true;
+    }
+    
+    return self['import'](self.transpiler).then(function(transpiler) {
+      if (transpiler.__useDefault)
+        transpiler = transpiler['default'];
+      return 'var __moduleAddress = "' + load.address + '";' + (transpiler.Compiler ? traceurTranspile : babelTranspile).call(self, load, transpiler);
+    });
+  };
+
+  Loader.prototype.instantiate = function(load) {
+    var self = this;
+    return Promise.resolve(self.normalize(self.transpiler))
+    .then(function(transpilerNormalized) {
+      // load transpiler as a global (avoiding System clobbering)
+      if (load.name === transpilerNormalized) {
+        return {
+          deps: [],
+          execute: function() {
+            var curSystem = g.System;
+            var curLoader = g.Reflect.Loader;
+            // ensure not detected as CommonJS
+            __eval('(function(require,exports,module){' + load.source + '})();', g, load);
+            g.System = curSystem;
+            g.Reflect.Loader = curLoader;
+            return getTranspilerModule(self, load.name);
+          }
+        };
+      }
+    });
+  };
+
+  function traceurTranspile(load, traceur) {
+    var options = this.traceurOptions || {};
+    options.modules = 'instantiate';
+    options.script = false;
+    options.sourceMaps = 'inline';
+    options.filename = load.address;
+    options.inputSourceMap = load.metadata.sourceMap;
+    options.moduleName = false;
+
+    var compiler = new traceur.Compiler(options);
+    var source = doTraceurCompile(load.source, compiler, options.filename);
+
+    // add "!eval" to end of Traceur sourceURL
+    // I believe this does something?
+    return source + '\n//# sourceURL=' + load.address + '!eval';
+  }
+  function doTraceurCompile(source, compiler, filename) {
+    try {
+      return compiler.compile(source, filename);
+    }
+    catch(e) {
+      // traceur throws an error array
+      throw e[0];
+    }
+  }
+
+  function babelTranspile(load, babel) {
+    var options = this.babelOptions || {};
+    options.modules = 'system';
+    options.sourceMap = 'inline';
+    options.filename = load.address;
+    options.code = true;
+    options.ast = false;
+    
+    if (!options.blacklist)
+      options.blacklist = ['react'];
+
+    var source = babel.transform(load.source, options).code;
+
+    // add "!eval" to end of Babel sourceURL
+    // I believe this does something?
+    return source + '\n//# sourceURL=' + load.address + '!eval';
+  }
+
+
+})(__global.LoaderPolyfill);
 /*
 *********************************************************************************************
 
@@ -2341,14 +2510,14 @@ function logloads(loads) {
 
 
 (function() {
-  var isWorker = typeof self !== 'undefined' && typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
-  var isBrowser = typeof window != 'undefined' && !isWorker;
+  var isBrowser = typeof window != 'undefined' && typeof document != 'undefined';
+  var isWindows = typeof process != 'undefined' && !!process.platform.match(/^win/);
   var Promise = __global.Promise || require('when/es6-shim/Promise');
 
   // Helpers
   // Absolute URL parsing, from https://gist.github.com/Yaffle/1088850
   function parseURI(url) {
-    var m = String(url).replace(/^\s+|\s+$/g, '').match(/^([^:\/?#]+:)?(\/\/(?:[^:@]*(?::[^:@]*)?@)?(([^:\/?#]*)(?::(\d*))?))?([^?#]*)(\?[^#]*)?(#[\s\S]*)?/);
+    var m = String(url).replace(/^\s+|\s+$/g, '').match(/^([^:\/?#]+:)?(\/\/(?:[^:@\/?#]*(?::[^:@\/?#]*)?@)?(([^:\/?#]*)(?::(\d*))?))?([^?#]*)(\?[^#]*)?(#[\s\S]*)?/);
     // authority = '//' + user + ':' + pass '@' + hostname + ':' port
     return (m ? {
       href     : m[0] || '',
@@ -2379,6 +2548,9 @@ function logloads(loads) {
 
   function toAbsoluteURL(base, href) {
 
+    if (isWindows)
+      href = href.replace(/\\/g, '/');
+
     href = parseURI(href || '');
     base = parseURI(base || '');
 
@@ -2395,6 +2567,7 @@ function logloads(loads) {
     fetchTextFromURL = function(url, fulfill, reject) {
       var xhr = new XMLHttpRequest();
       var sameDomain = true;
+      var doTimeout = false;
       if (!('withCredentials' in xhr)) {
         // check if same domain
         var domainCheck = /^(\w+:)?\/\/([^\/]+)/.exec(url);
@@ -2409,10 +2582,9 @@ function logloads(loads) {
         xhr.onload = load;
         xhr.onerror = error;
         xhr.ontimeout = error;
-        // IE8/IE9 bug may hang requests unless all properties are defined. 
-        // See: http://stackoverflow.com/a/9928073/3949247
         xhr.onprogress = function() {};
         xhr.timeout = 0;
+        doTimeout = true;
       }
       function load() {
         fulfill(xhr.responseText);
@@ -2431,13 +2603,24 @@ function logloads(loads) {
         }
       };
       xhr.open("GET", url, true);
+
+      if (doTimeout)
+        setTimeout(function() {
+          xhr.send();
+        }, 0);
+
       xhr.send(null);
     }
   }
   else if (typeof require != 'undefined') {
     var fs;
     fetchTextFromURL = function(url, fulfill, reject) {
+      if (url.substr(0, 5) != 'file:')
+        throw 'Only file URLs of the form file: allowed running in Node.';
       fs = fs || require('fs');
+      url = url.substr(5);
+      if (isWindows)
+        url = url.replace(/\//g, '\\');
       return fs.readFile(url, function(err, data) {
         if (err)
           return reject(err);
@@ -2452,7 +2635,7 @@ function logloads(loads) {
 
   var SystemLoader = function($__super) {
     function SystemLoader(options) {
-      $__Object$getPrototypeOf(SystemLoader.prototype).constructor.call(this, options || {});
+      $__super.call(this, options || {});
 
       // Set default baseURL and paths
       if (typeof location != 'undefined' && location.href) {
@@ -2460,7 +2643,9 @@ function logloads(loads) {
         this.baseURL = href.substring(0, href.lastIndexOf('/') + 1);
       }
       else if (typeof process != 'undefined' && process.cwd) {
-        this.baseURL = process.cwd() + '/';
+        this.baseURL = 'file:' + process.cwd() + '/';
+        if (isWindows)
+          this.baseURL = this.baseURL.replace(/\\/g, '/');
       }
       else {
         throw new TypeError('No environment baseURL');
@@ -2477,7 +2662,7 @@ function logloads(loads) {
 
     $__Object$defineProperty(SystemLoader.prototype, "global", {
       get: function() {
-        return isBrowser ? window : (isWorker ? self : __global);
+        return __global;
       },
 
       enumerable: false
@@ -2622,7 +2807,7 @@ function logloads(loads) {
 
   // <script type="module"> support
   // allow a data-init function callback once loaded
-  if (isBrowser && typeof document.getElementsByTagName != 'undefined') {
+  if (isBrowser && document.getElementsByTagName) {
     var curScript = document.getElementsByTagName('script');
     curScript = curScript[curScript.length - 1];
 
@@ -2634,12 +2819,14 @@ function logloads(loads) {
 
     function ready() {
       var scripts = document.getElementsByTagName('script');
-
       for (var i = 0; i < scripts.length; i++) {
         var script = scripts[i];
         if (script.type == 'module') {
-          var source = script.innerHTML;
-          System.module(source)['catch'](function(err) { setTimeout(function() { throw err; }); });
+          var source = script.innerHTML.substr(1);
+          // It is important to reference the global System, rather than the one
+          // in our closure. We want to ensure that downstream users/libraries
+          // can override System w/ custom behavior.
+          __global.System.module(source)['catch'](function(err) { setTimeout(function() { throw err; }); });
         }
       }
     }
@@ -2662,30 +2849,15 @@ function logloads(loads) {
 
 // Define our eval outside of the scope of any other reference defined in this
 // file to avoid adding those references to the evaluation scope.
-function __eval(__source, __global, load) {
-  // Hijack System.register to set declare function
-  var __curRegister = System.register;
-  System.register = function(name, deps, declare) {
-    if (typeof name != 'string') {
-      declare = deps;
-      deps = name;
-    }
-    // store the registered declaration as load.declare
-    // store the deps as load.deps
-    load.declare = declare;
-    load.depsList = deps;
-  }
+function __eval(__source, __global, __load) {
   try {
-    eval('(function() { var __moduleName = "' + (load.name || '').replace('"', '\"') + '"; ' + __source + ' \n }).call(__global);');
+    eval('(function() { var __moduleName = "' + (__load.name || '').replace('"', '\"') + '"; ' + __source + ' \n }).call(__global);');
   }
   catch(e) {
     if (e.name == 'SyntaxError' || e.name == 'TypeError')
-      e.message = 'Evaluating ' + (load.name || load.address) + '\n\t' + e.message;
+      e.message = 'Evaluating ' + (__load.name || load.address) + '\n\t' + e.message;
     throw e;
   }
-
-  System.register = __curRegister;
 }
 
-})(typeof window != 'undefined' ? window : (typeof WorkerGlobalScope != 'undefined' ?
-                                           self : global));
+})(typeof window != 'undefined' ? window : (typeof global != 'undefined' ? global : self));
