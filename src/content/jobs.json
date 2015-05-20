@@ -13,25 +13,5 @@
         "title": "Client-side Developer",
         "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002D&src=DevelopersSite",
         "description": "<p>You’ll be an expert with CSS3 and modern JavaScript, comfortable writing OOCSS and using technologies such as AMD and CommonJS, and thinking and working in a responsive, progressively-enhanced manner. We’re looking for creative Client-side Developers with good knowledge of scalability and performance. Knowledge of HTML5 and CSS3 is a must, and an eye for design and/or UX would be a bonus. Knowledge and experience of automated or multi-platform testing is desirable, too.</p>"
-    },
-    {
-      "title": "Interactive Developer",
-      "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00009Q&src=DevelopersSite",
-      "description": "<p>The Guardian is seeking a talented Interactive Developer with a passion for interactive storytelling and data visualisation to join its award-winning newsroom interactive graphics team.</p><p>In this role, you will be expected to conceive of, design and develop ambitious pieces of visual journalism. You will work closely with reporters and editors on a range of editorial projects, from breaking news to investigations.</p><p>Your work will expand the reach and resonance of our reporting, helping readers better understand complex issues and furthering the Guardian's goal to be the world’s most trusted source for high-quality, independent journalism.</p><p>To succeed, you must have a track record of producing innovative pieces of interactive storytelling. You also must have expert-level front-end coding skills: HTML, CSS and JavaScript. Also critical is attention to detail, a pride in the quality of one's work and the ability to meet news deadlines. Experience with data-visualisation libraries like D3 or Raphaël is strongly preferred.</p><p>Although journalism experience is not a requirement, you must have a good understanding of the Guardian, an interest in current affairs and a strong desire to work in news.</p>"
-    },
-	{
-      "title": "SET (mobile)",
-      "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN0000B3&src=DevelopersSite",
-      "description": "<p>We are seeking a technical, motivated and open minded colleague to join our highly respected, but relaxed Digital Development team as a Software Engineer in Test (SET) for our mobile team. As an experienced SET you’ll play a crucial role in making sure our millions of users get the service they expect.  As well as leading the development of automation frameworks and creating tests, you’ll be finding and researching new techniques and tools and leading discussion with the team about how and where we can use them.  You’ll be pivotal in helping shape the culture of the team, and embedding quality throughout the whole process of software development.</p>"
-    },
-    {
-      "title": "Quality Assurance analyst (mobile)",
-      "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN0000B6&src=DevelopersSite",
-      "description": "<p>We are seeking a technical, motivated and open minded colleague to join as a QA analyst for our mobile team.  As a QA you will be leading the functional, non-functional and regression test effort on our mobile products, either our Android or our iOS products. You’ll be concerned with the quality of our mobile products - right from the beginning of the product lifecycle through to when our apps are in users’ hands.  And you’ll be pivotal in helping shape the culture of the team, and embedding quality throughout the whole process of software development.</p>"
-    },
-    {
-      "title": "Graduate software engineer",
-      "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN0000CO&src=DevelopersSite",
-      "description": "<p>Do you have a higher-education qualification? Do you have the ability to think laterally and creatively, coupled with a genuine passion for media, digital, business and technology? Are you looking to pursue a career in software development?</p><p>Our graduate scheme allows us to develop our own people through the employment of outstanding and passionate graduates who want to work with other great developers, on great products that deliver a great mission, in a great working environment.</p><p>You will be pairing with others to allow you to contribute immediately and learn from their experience. You will develop, manage and maintain live applications as a full and equal member of the development team.</p>"
     }
 ]
