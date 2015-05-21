@@ -2,7 +2,7 @@
     {
         "title": "Software Engineer",
         "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002J&src=DevelopersSite",
-        "description": "<p>We are seeking excellent and passionate engineers to work on projects across our business. Our main news website <a href=\"http://www.theguardian.com\">theguardian.com</a>, which serves millions of readers each day, has traffic peaks of up to 1200 pages per second and close to 100% uptime. Our Open Platform makes our content available not just to our internal websites and mobile applications but also many other partners and developers.</p><p>We have many projects in progress simultaneously and our teams are given the autonomy to choose the right technologies to solve their problems. Our core platforms are Scala, JavaScript, <a href=\"http://www.playframework.com/\">Play</a> and Amazon Web Services.</p><p>Our developers are continually developing their skills and are eager to learn new things, displaying the aptitude to change and respond to a changing news situation. They are at the forefront of our work to create a Guardian for the new century.</p>"
+        "description": "<p>We are seeking passionate engineers to work on projects across the Guardian. Our main news website <a href=\"http://www.theguardian.com\">theguardian.com</a>, which serves millions of readers each day, has traffic peaks of up to 1200 pages per second and close to 100% uptime. Our Open Platform makes our content available not just to our internal websites and mobile applications but also many other partners and developers.</p><p>We have many projects in progress simultaneously and our teams are given the autonomy to choose the right technologies to solve their problems. Our core platforms are Scala, JavaScript, <a href=\"http://www.playframework.com/\">Play</a> and Amazon Web Services.</p><p>Our developers are continually developing their skills and are eager to learn new things, displaying the aptitude to change and respond to a changing news situation. They are at the forefront of our work to create a Guardian for the new century.</p>"
     },
     {
         "title": "Senior software engineer",
@@ -12,7 +12,7 @@
     {
         "title": "Client-side Developer",
         "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002D&src=DevelopersSite",
-        "description": "<p>You’ll be an expert with CSS3 and modern JavaScript, comfortable writing OOCSS and using technologies such as AMD and CommonJS, and thinking and working in a responsive, progressively-enhanced manner. We’re looking for creative Client-side Developers with good knowledge of scalability and performance. Knowledge of HTML5 and CSS3 is a must, and an eye for design and/or UX would be a bonus. Knowledge and experience of automated or multi-platform testing is desirable, too.</p>"
+        "description": "<p>You’ll be proficient in CSS3 and modern JavaScript, comfortable writing OOCSS and using technologies such as AMD and CommonJS, and thinking and working in a responsive, progressively-enhanced manner. We’re looking for creative Client-side Developers with knowledge of scalability and performance. Knowledge of HTML5 and CSS3 is required, and an eye for design and/or UX would be a bonus. Knowledge and experience of automated or multi-platform testing is desirable, too.</p>"
     },
     {
       "title": "Editorial Tools developer",
@@ -22,11 +22,11 @@
     {
       "title": "Membership developer",
       "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002J&src=DevelopersSite",
-      "description": "<p></p>"
+      "description": "<p>Our Membership team are developing new features to support the promotion and booking of Guardian Events. Discussions, debates, interviews, keynote speeches and festivals organised exclusively for Guardian Members. You will be involved in promoting events and making it easy for our Members to find and book the events they are interested in.</p><p>Guardian Members are some of our most loyal readers and as part of the team you will be part of a new model of supporting the creation of great original news content.</p>"
     },
     {
       "title": "Subscriptions developer",
       "link": "https://gnm.taleo.net/careersection/ex/jobdetail.ftl?job=KIN00002J&src=DevelopersSite",
-      "description": "<p></p>"
+      "description": "<p>Our Subscriptions team are migrating away from our current subscription providers towards a new in-house solution that will integrate Salesforce and payment system Zuora via Amazon Simple Workflow. We want to make sure that our subscribers get what they paid for on Kindle, iOS and in print.</p><p>You have a customer service and subscription background and will understand how to provide a platform for  great customer service. You are comfortable with creating and maintaining your own services. You will ensure that the other product teams in the Guardian can rely on accurate and up to date customer information.</p><p>Our teams work independently and with significant autonomy. We will trust you to do the right thing for our subscribers and make sure we provide them with a great service that reflects the quality of the Guardian brand.</p>"
     }
 ]
