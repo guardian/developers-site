@@ -24,17 +24,10 @@
         <% if(scope.description) { %>
         <meta name="twitter:description" content="<%= scope.description %>">
         <meta name="og:description" content="<%= scope.description %>">
-        <% } %>        
+        <% } %>
 
-        <!-- TODO: Concatenate -->
-        <script src="./jspm_packages/system.js"></script>
-        <script src="./js/config.js"></script>
-        <script>
-            /* global System */
-            // Must be loaded before the body is parsed?
-            System.import('js/modernizr');
-        </script>
-        <script src="./js/picturefill.min.js" async></script>
+        <script src="./js/lib/modernizr.js" async></script>
+        <script src="./js/lib/picturefill.min.js" async></script>
     </head>
     <body>
         <header class="header">
