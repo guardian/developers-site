@@ -9,12 +9,10 @@ System.config({
 
 System.config({
   "map": {
-    "github:anselmh/object-fit": "github:anselmh/object-fit@0.3.7",
-    "github:ded/reqwest": "github:ded/reqwest@1.1.5",
-    "github:systemjs/plugin-css": "github:systemjs/plugin-css@0.1.13",
-    "github:systemjs/plugin-text": "github:systemjs/plugin-text@master",
+    "ejs": "npm:ejs@2.3.2",
     "moment": "github:moment/moment@2.10.3",
-    "npm:ejs": "npm:ejs@1.0.0",
+    "reqwest": "github:ded/reqwest@1.1.6",
+    "text": "github:systemjs/plugin-text@0.0.2",
     "traceur": "github:jmcriffey/bower-traceur@0.0.88",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88",
     "github:jspm/nodelibs-path@0.1.0": {
@@ -23,9 +21,11 @@ System.config({
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"
     },
-    "npm:ejs@1.0.0": {
+    "npm:ejs@2.3.2": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "path": "github:jspm/nodelibs-path@0.1.0"
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.1"
