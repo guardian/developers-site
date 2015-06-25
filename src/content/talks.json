@@ -9,6 +9,15 @@
         "type": "slides"
     },
     {
+        "title": "The Reactive Loop",
+        "authorNames": ["Sébastien Cevey"],
+        "location": "JSCamp - Bucharest, Romania",
+        "date": "2015-06-02",
+        "imageFileBasename": "2015-06-02-reactive-loop.png",
+        "link": "http://slides.com/theefer/reactive-loop-jscamp",
+        "type": "slides"
+    },
+    {
         "title": "Hypermedia: APIs of the Web",
         "authorNames": ["Sébastien Cevey"],
         "location": "APIDays/APIStrat - Berlin, Germany",
