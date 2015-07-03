@@ -15,7 +15,7 @@ bundle install --gemfile $BASE/Gemfile-sass
 npm install
 
 # Update jspm dl-loader
-jspm dl-loader
+./node_modules/.bin/jspm dl-loader
 
 # Initial build
 ./node_modules/.bin/gulp
