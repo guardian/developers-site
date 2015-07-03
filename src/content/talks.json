@@ -9,6 +9,15 @@
         "type": "slides"
     },
     {
+        "title": "Infinite Scrolling with Angular & RxJS",
+        "authorNames": ["Sébastien Cevey"],
+        "location": "AngularJS Meetup - London",
+        "date": "2015-06-30",
+        "imageFileBasename": "2015-06-30-infinite-scrolling.png",
+        "link": "http://slides.com/theefer/infinite-scroll-ngrxjs",
+        "type": "slides"
+    },
+    {
         "title": "The Reactive Loop",
         "authorNames": ["Sébastien Cevey"],
         "location": "JSCamp - Bucharest, Romania",
