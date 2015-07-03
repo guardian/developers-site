@@ -3,6 +3,7 @@ var sass = require('gulp-ruby-sass');
 var livereload = require('gulp-livereload');
 var autoprefixCss = require('gulp-autoprefixer');
 
+var jspm = require('jspm');
 var ejs = require('ejs');
 var fs = require('fs');
 var path = require('path');
@@ -30,23 +31,23 @@ gulp.task('css', function () {
         .pipe(gulp.dest('./target/css'));
 });
 
+gulp.task('js', function(done) {
+    jspm.bundleSFX('src/js/app', './target/js/bundle.js', {
+        minify: true,
+        sourceMaps: true
+    }).then(function() {
+        done();
+    })
+});
+
 gulp.task('copy', function () {
     gulp.src('./src/images/**')
         .pipe(gulp.dest('./target/images'));
-    // TODO: jspm bundle
-    // https://github.com/jspm/jspm-cli/issues/43
-    // TODO: Concatenate with polyfills
-    gulp.src('./src/jspm_packages/**')
-        .pipe(gulp.dest('./target/jspm_packages'));
-    // SystemJS config
-    gulp.src('./src/config.js')
-        .pipe(gulp.dest('./target'));
-    gulp.src('./src/js/**/*.js')
-        .pipe(gulp.dest('./target/js'));
+    gulp.src('./src/js/lib/**/*.js')
+        .pipe(gulp.dest('./target/js/lib'));
     gulp.src('./src/enhanced-views/**/*.ejs')
         .pipe(gulp.dest('./target/enhanced-views'));
 });
-
 
 gulp.task('generate', ['lanyrd'], function () {
     generatePages();
@@ -66,7 +67,7 @@ gulp.task('watch', function () {
     });
 });
 
-gulp.task('default', ['css', 'copy', 'lanyrd', 'generate']);
+gulp.task('default', ['css', 'js', 'copy', 'lanyrd', 'generate']);
 
 var talks = require('./src/content/talks.json');
 var authors = require('./src/content/authors.json');

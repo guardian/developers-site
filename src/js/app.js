@@ -1,11 +1,10 @@
 import moment from 'moment';
-import reqwest from 'github:ded/reqwest';
-import ejs from 'npm:ejs';
+import reqwest from 'reqwest';
+import ejs from 'ejs';
 // FIXME: Must be last. Why?
-import template from '../enhanced-views/developer-blog-section.ejs!github:systemjs/plugin-text';
+import template from '../enhanced-views/developer-blog-section.ejs!text';
 
 // Render the Developer Blog
-
 function renderTemplate(template, options) {
     var renderedString = ejs.render(template, options);
     // EJS has a client-side mode (which I assume outputs a DOM element), but
