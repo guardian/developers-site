@@ -1,5 +1,14 @@
 [
     {
+        "title": "Lessons from Clojure",
+        "authorNames": ["Nic Long"],
+        "location": "Scala eXchange - London",
+        "date": "2015-12-10",
+        "imageFileBasename": "2015-12-10-lessons-from-clojure.png",
+        "link": "https://docs.google.com/presentation/d/1awihDX7z3A-22G9PiDqABa5xLvdc-HfhILibZ7XDhzM/pub?start=false&loop=false&delayms=3000",
+        "type": "slides"
+    },
+    {
         "title": "A deep dive into scalac",
         "authorNames": ["Chris Birchall"],
         "location": "Scala eXchange - London",
