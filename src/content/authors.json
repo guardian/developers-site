@@ -61,5 +61,11 @@
         "name": "Adam Fisher",
         "link": "https://twitter.com/adamnfish",
         "emailAddress": "adam.fisher@guardian.co.uk"
+    },
+		{
+        "name": "Phil Wills",
+        "link": "https://twitter.com/philwills",
+        "emailAddress": "philip.wills@guardian.co.uk",
+				"lanyrd": "philwills"
     }
 ]

@@ -214,5 +214,14 @@
         "imageFileBasename": "2014-12-08-effective-api-design-with-scala-types.png",
         "link": "https://skillsmatter.com/skillscasts/5834-effective-api-design-with-scala-types",
         "type": "video"
+    },
+    {
+        "title": "What are typeclasses and why you should cares",
+        "authorNames": ["Phil Wills"],
+        "location": "Scala eXchange - London",
+        "date": "2015-12-10",
+        "imageFileBasename": "2015-12-10-what-are-typeclasses-and-why-you-should-care.png",
+        "link": "https://skillsmatter.com/skillscasts/6832-what-are-typeclasses-and-why-you-should-care#video",
+        "type": "video"
     }
 ]
