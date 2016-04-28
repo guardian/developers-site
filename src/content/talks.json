@@ -225,7 +225,7 @@
         "type": "video"
     },
     {
-        "title": "What are typeclasses and why you should cares",
+        "title": "What are typeclasses and why you should care",
         "authorNames": ["Phil Wills"],
         "location": "Scala eXchange - London",
         "date": "2015-12-10",
