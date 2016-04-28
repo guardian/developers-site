@@ -66,6 +66,12 @@
         "name": "Phil Wills",
         "link": "https://twitter.com/philwills",
         "emailAddress": "philip.wills@guardian.co.uk",
-				"lanyrd": "philwills"
+        "lanyrd": "philwills"
+    },
+    {
+        "name": "Chris Birchall",
+        "link": "https://twitter.com/cbirchall",
+        "emailAddress": "chris.birchall@guardian.co.uk",
+        "lanyrd": "cbirchall"
     }
 ]

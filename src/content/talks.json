@@ -1,5 +1,14 @@
 [
     {
+        "title": "A deep dive into scalac",
+        "authorNames": ["Chris Birchall"],
+        "location": "Scala eXchange - London",
+        "date": "2015-12-10",
+        "imageFileBasename": "2015-12-10-deep-dive-into-scalac.png",
+        "link": "http://slides.com/cb372/scalac-scalaexchange-2015",
+        "type": "slides"
+    },
+    {
         "title": "Building a CMS for the responsive web",
         "authorNames": ["Sébastien Cevey", "Simon Hildrew"],
         "location": "Bristol Digital Festival - Bristol",
