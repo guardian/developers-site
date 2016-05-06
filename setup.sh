@@ -6,12 +6,6 @@ if [ $? != "0" ]; then
     exit 1
 fi
 
-test $(which jspm)
-if [ $? != "0" ]; then
-    echo -e "jspm not found: please run 'sudo npm install -g jspm'"
-    exit 1
-fi
-
 BASE="`dirname \"$0\"`"
 
 set -o errexit
@@ -20,7 +14,7 @@ bundle install --gemfile $BASE/Gemfile-sass
 
 npm install
 
-jspm dl-loader
+./node_modules/.bin/jspm install
 
 # Initial build
 ./node_modules/.bin/gulp
