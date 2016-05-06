@@ -1,1 +1,1 @@
-export * from "github:systemjs/plugin-text@master/text";
+module.exports = require("github:systemjs/plugin-text@master/text");

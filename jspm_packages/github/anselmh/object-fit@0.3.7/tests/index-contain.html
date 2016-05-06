@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="../dist/polyfill.object-fit.css">
+	<style>
+		img {
+			width: 100%;
+			height: 35em;
+
+			margin: 10px 0;
+			border: 5px solid red;
+
+			object-fit: contain;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<h1><code>object-fit: contain;</code></h1>
+	<img src="image.jpg">
+
+	<script src="../dist/polyfill.object-fit.js"></script>
+	<script>
+		// Call polyfill to fit in images
+		(function () {
+			objectFit.polyfill({
+				selector: 'img',
+				fittype: 'contain'
+			});
+		}());
+	</script>
+</body>
+</html>
