@@ -214,5 +214,14 @@
         "imageFileBasename": "2014-12-08-effective-api-design-with-scala-types.png",
         "link": "https://skillsmatter.com/skillscasts/5834-effective-api-design-with-scala-types",
         "type": "video"
+    },
+    {
+        "title": "Deep Impact – Agile and Analytics at the Guardian",
+        "authorNames": ["Dominic Kendrick"],
+        "location": "NorDevCon - Norwich",
+        "date": "2016-02-27",
+        "imageFileBasename": "2016-02-20-analytics-at-the-guardian.jpg",
+        "link": "https://www.youtube.com/watch?v=KK8Wqm9heks",
+        "type": "video"
     }
 ]
