@@ -1,5 +1,23 @@
 [
     {
+        "title": "Lessons from Clojure",
+        "authorNames": ["Nic Long"],
+        "location": "Scala eXchange - London",
+        "date": "2015-12-10",
+        "imageFileBasename": "2015-12-10-lessons-from-clojure.png",
+        "link": "https://docs.google.com/presentation/d/1awihDX7z3A-22G9PiDqABa5xLvdc-HfhILibZ7XDhzM/pub?start=false&loop=false&delayms=3000",
+        "type": "slides"
+    },
+    {
+        "title": "A deep dive into scalac",
+        "authorNames": ["Chris Birchall"],
+        "location": "Scala eXchange - London",
+        "date": "2015-12-10",
+        "imageFileBasename": "2015-12-10-deep-dive-into-scalac.png",
+        "link": "http://slides.com/cb372/scalac-scalaexchange-2015",
+        "type": "slides"
+    },
+    {
         "title": "Building a CMS for the responsive web",
         "authorNames": ["Sébastien Cevey", "Simon Hildrew"],
         "location": "Bristol Digital Festival - Bristol",
@@ -222,6 +240,14 @@
         "date": "2016-02-27",
         "imageFileBasename": "2016-02-20-analytics-at-the-guardian.jpg",
         "link": "https://www.youtube.com/watch?v=KK8Wqm9heks",
+    },
+    {
+        "title": "What are typeclasses and why you should care",
+        "authorNames": ["Phil Wills"],
+        "location": "Scala eXchange - London",
+        "date": "2015-12-10",
+        "imageFileBasename": "2015-12-10-what-are-typeclasses-and-why-you-should-care.png",
+        "link": "https://skillsmatter.com/skillscasts/6832-what-are-typeclasses-and-why-you-should-care#video",
         "type": "video"
     }
 ]

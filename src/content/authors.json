@@ -66,5 +66,22 @@
         "name": "Dominic Kendrick",
         "link": "https://twitter.com/dominickendrick",
         "emailAddress": "dominic.kendrick@theguardian.com"
+    },
+	{
+        "name": "Phil Wills",
+        "link": "https://twitter.com/philwills",
+        "emailAddress": "philip.wills@guardian.co.uk",
+        "lanyrd": "philwills"
+    },
+    {
+        "name": "Chris Birchall",
+        "link": "https://twitter.com/cbirchall",
+        "emailAddress": "chris.birchall@guardian.co.uk",
+        "lanyrd": "cbirchall"
+    },
+    {
+        "name": "Nic Long",
+        "link": "https://twitter.com/room271",
+        "emailAddress": "nicolas.long@guardian.co.uk"
     }
 ]
