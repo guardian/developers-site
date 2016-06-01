@@ -249,5 +249,30 @@
         "imageFileBasename": "2015-12-10-what-are-typeclasses-and-why-you-should-care.png",
         "link": "https://skillsmatter.com/skillscasts/6832-what-are-typeclasses-and-why-you-should-care#video",
         "type": "video"
+    },
+        {
+        "title": "What do you do if you don't do testing?",
+        "authorNames": ["Sally Goble"],
+        "location": "Pipeline Conf - London",
+        "date": "2016-03-23",
+        "imageFileBasename": "2016-03-23-so-what-do-you-do-if-you-dont-do-testing",
+        "link": "https://vimeo.com/channels/pipelineconf/162635477",
+        "type": "video"
+    },
+    {
+        "title": "What really happens when you deliver software quickly?",
+        "authorNames": ["Sally Goble"],
+        "location": "Delivery of Things World - Berlin",
+        "date": "2016-04-25",
+        "imageFileBasename": "2016-04-25-what-really-happens-when-you-deliver-software-quickly",
+        "link": "https://speakerdeck.com/sallygoble/what-really-happens-when-you-deliver-software-quickly"
+    },
+	{
+        "title": "What do you do if you don't do testing?",
+        "authorNames": ["Sally Goble"],
+        "location": "Test Automation Day - Rotterdam",
+        "date": "2016-06-23",
+        "imageFileBasename": "2016-06-23-so-what-do-you-do-if-you-dont-do-testing",
+        "link": "http://www.testautomationday.com/"
     }
 ]
