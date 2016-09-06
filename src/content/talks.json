@@ -249,5 +249,14 @@
         "imageFileBasename": "2015-12-10-what-are-typeclasses-and-why-you-should-care.png",
         "link": "https://skillsmatter.com/skillscasts/6832-what-are-typeclasses-and-why-you-should-care#video",
         "type": "video"
+    },
+    {
+        "title": "Progressive Web Apps: Are they the future?",
+        "authorNames": ["Natalia Baltazar"],
+        "location": "Ladies of Code - London",
+        "date": "2016-06-07",
+        "imageFileBasename": "2016-06-07-pwa-are-they-the-future.png",
+        "link": "https://speakerdeck.com/natalialkb/progressive-web-apps-are-they-the-future",
+        "type": "slides"
     }
 ]
