@@ -26,7 +26,7 @@ var urlParameters = constructURLQueryParameters({
     'api-key': '85nszu4nbfdzh2zrakh74k2w',
     'callback': '?'
 });
-var url = 'http://content.guardianapis.com/search?' + urlParameters;
+var url = 'https://content.guardianapis.com/search?' + urlParameters;
 
 function transcludeDeveloperBlog() {
     reqwest({
