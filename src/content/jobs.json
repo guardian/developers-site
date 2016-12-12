@@ -18,5 +18,10 @@
         "title": "Senior software engineer",
         "link": "https://workforus.theguardian.com/jobs/kin00006q?src=DevelopersSite",
         "description": "<p>Senior engineers are experienced developers with a variety of experience across domains and technologies. They have established their own areas of knowledge and expertise but are willing to share what they know and are always eager to learn new things.</p><p>They are humble and moderate in their views. Happy to mentor a junior developer, capable of leading a team or supporting one of their peers to deliver a shared technical vision. They see the world in terms of potential solutions, not problems. They support their opinions with data and metrics rather than rhetoric. They find out how to delight our journalists and readers and deliver the things that really matter to our organisation.</p>"
+    },
+    {
+        "title": "iOS Software Engineer",
+        "link": "https://workforus.theguardian.com/jobs/kin0000si?src=DevelopersSite",
+        "description": "<p>We are looking for a passionate and talented software engineer to join the iOS team and work on the Guardian app, used by over 1 million users each month.</p><p>We like to innovate and use new iOS APIs very early and write code in both Objective C and Swift. The ideal candidate will have excellent debugging skills using Xcode and Instruments and have a solid understanding of object-oriented programming. You should also be comfortable working in a collaborative environment and will have a lot of input into the shape of product.</p>"
     }
 ]
