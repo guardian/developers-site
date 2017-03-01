@@ -258,5 +258,14 @@
         "imageFileBasename": "2016-06-07-pwa-are-they-the-future.png",
         "link": "https://speakerdeck.com/natalialkb/progressive-web-apps-are-they-the-future",
         "type": "slides"
+    },
+    {
+        "title": "Progressive Webapps at the Guardian",
+        "authorNames": ["Alex Sanders"],
+        "location": "Web Progressions - London",
+        "date": "2016-05-09",
+        "imageFileBasename": "2016-05-09-pwas-at-the-guardian.png",
+        "link": "https://www.youtube.com/watch?v=-r1kH7s6tMg",
+        "type": "video"
     }
 ]
