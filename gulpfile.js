@@ -76,7 +76,7 @@ var pages = [
     {
         title: 'Home',
         fileBasename: 'index.ejs',
-        description: "The innovation of a startup combined with the authority of our journalism. The developers of the Guardian are shaping the future of news, join us",
+        description: "The innovation of a startup combined with the authority of our journalism. The developers of the Guardian are shaping the future of news",
         jobs: jobs
     },
     {
@@ -87,13 +87,6 @@ var pages = [
         title: 'Events & Talks',
         fileBasename: 'events-&-talks.ejs',
         talks: talks
-    },
-    {
-        title: "Join the Guardian’s Development Team",
-        menuTitle: "Join the Team",
-        fileBasename: 'join-the-team.ejs',
-        description: "The Guardian is the world’s leading liberal voice, come join the team of developers behind the Pulitzer Prize-winning site theguardian.com",
-        jobs: jobs
     }
 ];
 
