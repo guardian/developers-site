@@ -133,6 +133,7 @@ function getUpcomingEvents() {
     var events = users.map(function(user) {
         var futureEvents = Q.nbind(Lanyrd.futureEvents, Lanyrd);
         return futureEvents(user.lanyrd).spread(function(resp, events) {
+            if (!events) return [];
             return events.map(function(event) {
                 event.users = [user];
                 event.date = moment(event.month, 'MMM YYYY');
