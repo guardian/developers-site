@@ -199,6 +199,10 @@ $trailing-margin-height: 1.5rem;
 .footer {
     font-size: 0.875rem;
     color: hsl(0, 0%, 50%);
+    img {
+        height: 3em;
+        margin-top: -.4em;
+    }
 }
 
 .developer-blog-section {
@@ -243,6 +247,7 @@ $trailing-margin-height: 1.5rem;
     @extend .l-grid;
     @extend .l-tablet-grid;
     @include breakpoint($tablet) {
+        flex-direction: row-reverse;
         align-items: center;
     }
 }
@@ -254,9 +259,12 @@ $trailing-margin-height: 1.5rem;
 
     @at-root .header-column--links-nav {
         @extend .header-column;
-        @include unset(flex-grow);
-        @include unset(flex-basis);
+        flex: 1 1 auto;
         display: flex;
+    }
+
+    .title {
+        flex: 0 0 auto;
     }
 }
 
