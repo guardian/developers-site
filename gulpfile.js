@@ -80,6 +80,14 @@ var pages = [
         jobs: jobs
     },
     {
+        title: 'Engineering',
+        fileBasename: 'engineering.ejs'
+    },
+    {
+        title: 'Diversity & Inclusion',
+        fileBasename: 'diversity-&-inclusion.ejs'
+    },
+    {
         title: 'Open Source',
         fileBasename: 'open-source.ejs'
     },
