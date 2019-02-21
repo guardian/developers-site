@@ -1,6 +1,7 @@
 # Developers Site
 
 ## Installation
+Bundle is required - if you get an error such as `./setup.sh: line 13: bundle: command not found` you probably have to [install bundler](https://bundler.io/)
 
 ```
 ./setup.sh
