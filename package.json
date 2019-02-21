@@ -1,7 +1,7 @@
 {
   "name": "developers-site",
   "dependencies": {
-    "ejs": "^1.0.0",
+    "ejs": "^2.6.1",
     "gulp": "^3.6.2",
     "gulp-autoprefixer": "0.0.8",
     "gulp-livereload": "^1.5.0",
@@ -9,7 +9,7 @@
     "http-server": "^0.11.1",
     "lodash-node": "^2.4.1",
     "moment": "^2.7.0",
-    "lanyrd": "^0.2.1",
+    "lanyrd": "^0.3.0",
     "q": "^1.0.1"
   },
   "jspm": {
@@ -37,6 +37,6 @@
     }
   },
   "devDependencies": {
-    "jspm": "0.16.34"
+    "jspm": "0.16.53"
   }
 }
