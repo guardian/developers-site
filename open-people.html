@@ -90,7 +90,8 @@
             <div class="page-intro">
                 <h1>Open people</h1>
                 <p>Our culture of openness around people and processes gives us a common understanding of what we value.
-                    It enables us to challenge and improve everything we do.</p>
+                    It enables us to challenge and improve everything we do.  Although these don't change as often as
+                    our source code, they do need to change as the team does.</p>
             </div>
         </div>
         <div class="inset">
@@ -99,24 +100,21 @@
                     <h2>Career Progression</h2>
                     <div class="l-grid l-desktop-grid">
                         <div class="l-desktop-grid-cell l-grid-cell l-desktop-1of3">
-                            <p>We aim to make everyone feel valued and give them a clear path to develop themselves at
+                            <p>We recognise people and give them a clear path to develop themselves at
                                 every stage of their career.  We publish our career progression information both internally
                                 and externally so that people can advance their career regardless of their background.</p>
                         </div>
                         <div class="l-desktop-grid-cell l-grid-cell">
                             <ul class="base-list">
-                                <!--li class="trailing-margin">
-                                    <h3 class="alt-h3"><a href="#">
-                                            Career progression process and grading guidelines (TODO - awaiting link)
-                                        </a></h3>
-                                    <p>This is how we decide promotions and pay rises for everyone.</p>
-                                </li-->
                                 <li class="trailing-margin">
                                     <h3 class="alt-h3"><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRqPMDtzJTvV1V42JyM4R_koBqnsoM9CY-yA2lGJF6c5tIpYVPVZwOnlGgQz2m7inar3_eSjiKlcww3/pubhtml">
                                             Career progression framework
                                         </a></h3>
                                     <p>These tables help you to understand where you are now, and what
                                     areas you would like to develop in to get to the role you want.</p>
+                                    <p>In the spirit of keeping our process up to date with the needs of the team, we are
+                                        making our career progression work better for everyone.  Expect some changes here in the coming
+                                        months.</p>
                                 </li>
                             </ul>
                         </div>
@@ -147,13 +145,18 @@
             });
         </script>
         <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            // if we want tracking, look at https://github.com/guardian/support-frontend/pull/1672
+            // if we want a banner, look at https://github.com/guardian/support-frontend/pull/1677
+            const consented = false;
+            if (consented) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-            ga('create', 'UA-52876985-1', 'auto');
-            ga('send', 'pageview');
+                ga('create', 'UA-52876985-1', 'auto');
+                ga('send', 'pageview');
+            }
 
         </script>
     </body>
