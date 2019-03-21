@@ -80,6 +80,10 @@ var pages = [
         jobs: jobs
     },
     {
+        title: 'Open People',
+        fileBasename: 'open-people.ejs'
+    },
+    {
         title: 'Open Source',
         fileBasename: 'open-source.ejs'
     },
