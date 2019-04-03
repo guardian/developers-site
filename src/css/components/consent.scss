@@ -11,6 +11,10 @@
     }
 }
 
+.consent--hidden {
+    display: none;
+}
+
 .consent__intro {
     @include breakpoint($desktop) {
         max-width: 66%;
