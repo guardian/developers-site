@@ -149,6 +149,19 @@
                 © Guardian News and Media Limited or its affiliated companies. All rights reserved.
             </div>
         </footer>
+        <div class="consent js-consent consent--hidden">
+            <div class="inset"><div class="island">
+                <h2>Your privacy</h2>
+                <div class="consent__intro">
+                    <p>We use cookies to improve your experience on our site and to show you personalised advertising.</p>
+                    <p>To find out more, read our <a class="u-underline" data-link-name="first-pv-consent : to-privacy" href="https://www.theguardian.com/help/privacy-policy">privacy policy</a> and <a class="u-underline" data-link-name="first-pv-consent : to-cookies" href="https://www.theguardian.com/info/cookies">cookie policy</a>.</p>
+                </div>
+                <div class="consent__actions">
+                    <button class="js-consent-button consent__button"><span class="inline-tick inline-icon"><svg width="10.79" height="8.608" viewBox="0 0 10.79 8.608"><path fill="#fff" d="M2.987 6.575L10.244 0l.546.532-7.803 8.076h-.26L0 4.788l.545-.546 2.442 2.333z"></path></svg></span><span>I'm OK with that</span></button>
+                    <a href="https://profile.theguardian.com/privacy-settings">My options</a>
+                </div>
+            </div></div>
+        </div>
         <script async>
             /* global System */
             System.import('js/app').catch(function(e) {
@@ -158,18 +171,71 @@
             });
         </script>
         <script>
-            // if we want tracking, look at https://github.com/guardian/support-frontend/pull/1672
-            // if we want a banner, look at https://github.com/guardian/support-frontend/pull/1677
-            const consented = false;
-            if (consented) {
+            function getCookieDateString(now) {
+                const days = 30 * 18;
+                const millisPerDay = 24 * 60 * 60 * 1000;
+                const date = new Date(now + (days * millisPerDay));
+                return date.toGMTString();
+            }
+
+            function askForConsent() {
+                return new Promise((accept, reject) => {
+                    const $consentBanner = document.querySelector('.js-consent');
+                    const $consentButton = document.querySelector('.js-consent-button');
+                    if ($consentBanner && $consentButton) {
+                        $consentBanner.classList.remove('consent--hidden');
+                        $consentButton.addEventListener('click', () => {
+                            const cookieValue = '1.' + Date.now();
+                            const expiry = getCookieDateString(Date.now())
+                            document.cookie = [
+                                `GU_TK=${cookieValue}`,
+                                `domain=theguardian.com`,
+                                `expires=${expiry}`,
+                                `path=/`
+                            ].join(`; `);
+                            $consentBanner.classList.add('consent--hidden');
+                            accept();
+                        });
+                    } else {
+                        reject();
+                    }
+                });
+
+            }
+
+            function startTracking() {
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
                 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
                 ga('create', 'UA-52876985-1', 'auto');
                 ga('send', 'pageview');
             }
+
+            function hasConsentedFromCookie() {
+                let consented = 'NO_CHOICE';
+                const consentCookieMaybe = document.cookie.split(';').find(c => c.includes('GU_TK'));
+                if(consentCookieMaybe) {
+                    consented = consentCookieMaybe.split('=').pop().split('.')[0] === '1' ? 'CONSENTED' : 'REJECTED'
+                }
+                return consented;
+            }
+
+            function hasConsented() {
+                const consented = hasConsentedFromCookie();
+                if(consented === 'CONSENTED') {
+                    return Promise.resolve()
+                }
+                else if (consented === 'NO_CHOICE') {
+                    return askForConsent();
+                }
+                return Promise.reject(consented);
+            }
+
+            hasConsented().then(() => {startTracking()}).catch((err) => {
+                console.error(err, 'The consent banner did not work!');
+            });
 
         </script>
     </body>
