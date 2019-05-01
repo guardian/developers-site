@@ -79,10 +79,10 @@ var pages = [
         description: "The innovation of a startup combined with the authority of our journalism. The developers of the Guardian are shaping the future of news",
         jobs: jobs
     },
-    {
-        title: 'Engineering',
-        fileBasename: 'engineering.ejs'
-    },
+    // {
+    //     title: 'Engineering',
+    //     fileBasename: 'engineering.ejs'
+    // },
     {
         title: 'Diversity & Inclusion',
         fileBasename: 'diversity-&-inclusion.ejs'
