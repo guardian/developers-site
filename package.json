@@ -1,15 +1,15 @@
 {
   "name": "developers-site",
   "dependencies": {
-    "ejs": "^1.0.0",
+    "ejs": "^2.6.1",
     "gulp": "^3.6.2",
     "gulp-autoprefixer": "0.0.8",
     "gulp-livereload": "^1.5.0",
     "gulp-ruby-sass": "^0.5.0",
-    "http-server": "^0.6.1",
+    "http-server": "^0.11.1",
     "lodash-node": "^2.4.1",
     "moment": "^2.7.0",
-    "lanyrd": "^0.2.1",
+    "lanyrd": "^0.3.0",
     "q": "^1.0.1"
   },
   "jspm": {
@@ -26,10 +26,10 @@
       "github:systemjs/plugin-css": "github:systemjs/plugin-css@^0.1.0",
       "github:systemjs/plugin-text": "github:systemjs/plugin-text@master",
       "moment": "npm:moment@^2.7.0",
-      "npm:ejs": "npm:ejs@^1.0.0"
+      "npm:ejs": "npm:ejs@^2.6.1"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
+      "babel": "npm:babel-core@^6.26.3",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4",
       "traceur": "github:jmcriffey/bower-traceur@0.0.87",
@@ -37,6 +37,6 @@
     }
   },
   "devDependencies": {
-    "jspm": "0.16.34"
+    "jspm": "0.16.53"
   }
 }
