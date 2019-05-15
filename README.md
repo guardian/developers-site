@@ -27,8 +27,7 @@ And then CTRL-C the process
 
 ## Releasing
 
-```
-./release.sh
-```
+1. close intellij/other IDE to avoid it touching the metadata during the process
+1. run `./release.sh` from the root of the project
 
 Note: Our web fonts only work under hosts matching `*.theguardian.com`.
