@@ -290,44 +290,6 @@ img {
   .main-image__overlay__inner {
     width: 28em; } }
 
-.consent {
-  position: fixed;
-  background: #474747;
-  color: #ffffff;
-  bottom: 0;
-  left: 0;
-  right: 0; }
-  .consent a {
-    color: inherit; }
-
-.consent--hidden {
-  display: none; }
-
-@media (min-width: 900px) {
-  .consent__intro {
-    max-width: 66%; } }
-
-.consent__button {
-  font-family: "AgateSans", sans-serif;
-  background: #0cb9d4;
-  font-size: 1.1rem;
-  border: 0;
-  cursor: pointer;
-  color: #ffffff;
-  font-weight: 600;
-  padding: .75rem 1.25rem;
-  border-radius: 100em; }
-  .consent__button svg {
-    height: .8em;
-    width: auto;
-    margin-right: .5rem;
-    margin-left: -.25em; }
-
-.consent__actions {
-  margin-top: 1.5rem; }
-  .consent__actions .consent__button {
-    margin-right: 1rem; }
-
 @media (min-width: 900px) {
   .inset, .header__inner, .page-intro {
     min-width: 900px;
@@ -508,14 +470,6 @@ ul, .l-grid, .header-row, .main-image, .developer-blog-section article time, .me
   margin-left: 0.5rem; }
   .links-nav__item:first-of-type {
     margin-left: 0; }
-.links-nav .jobs__link {
-  font-family: "AgateSans", sans-serif;
-  background: #0cb9d4;
-  font-size: 1.1rem;
-  padding: 0 1.25rem;
-  border-radius: 100em;
-  line-height: 40px;
-  text-decoration: none; }
 
 .talk__image-container {
   position: relative;
