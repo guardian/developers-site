@@ -5,6 +5,7 @@ import ejs from 'npm:ejs';
 import template from '../enhanced-views/developer-blog-section.ejs!github:systemjs/plugin-text';
 
 // Render the Developer Blog
+console.log('hi there');
 
 function renderTemplate(template, options) {
     var renderedString = ejs.render(template, options);
