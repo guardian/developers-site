@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var ghPages = require('gulp-gh-pages');
 var sass = require('gulp-ruby-sass');
 var livereload = require('gulp-livereload');
 var autoprefixCss = require('gulp-autoprefixer');
@@ -64,6 +65,10 @@ gulp.task('watch', function () {
     gulp.watch('./target/**').on('change', function (file) {
         server.changed(file.path);
     });
+});
+
+gulp.task('deploy', ['default'], function () {
+    gulp.src('./target/**/*').pipe(ghPages());
 });
 
 gulp.task('default', ['css', 'copy', 'lanyrd', 'generate']);
