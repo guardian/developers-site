@@ -1,5 +1,32 @@
 [
     {
+        "title": "Beyond Continuous Delivery - can your insights keep up?",
+        "date": "2017-03-22",
+        "type": "video",
+        "location": "Pipeline Conf",
+        "authorNames": ["Amy Hughes"],
+        "link": "https://learn.pipelineconf.info/2017/03/22/amy-hughes-beyond-continuous-delivery-can-your-insights-keep-up-pipeline-conference-2017/",
+        "imageFileBasename": "2017-03-22-beyond-continuous-delivery.jpg"
+    }, 
+    {
+        "title": "Learning and Adopting Scala",
+        "authorNames": ["Dominic Kendrick", "Emmanuelle Poirier"],
+        "location": "Scala eXchange - London",
+        "date": "2016-12-08",
+        "type": "article",
+        "link": "https://skillsmatter.com/skillscasts/9038-learning-and-adopting-scala",
+        "imageFileBasename": "2016-12-08-learning-and-adopting-scala.jpg"
+    },
+    {
+        "title": "Developing data leak investigation tools at The Guardian",
+        "authorNames": ["Michael Barton"],
+        "type": "video",
+        "link": "https://youtu.be/SQVBAPlWAmk",
+        "location": "J On The Beach",
+        "date": "2019-05-15",
+        "imageFileBasename": "2019-05-15-developing-data-leak-tools.png"
+    },
+    {
         "title": "Lessons from Clojure",
         "authorNames": ["Nic Long"],
         "location": "Scala eXchange - London",
@@ -104,7 +131,7 @@
         "location": "ScalaDays Berlin",
         "date": "2014-06-18",
         "imageFileBasename": "2014-06-18-git-going-faster-with-scala.png",
-        "link": "http://www.parleys.com/play/53a7d2d1e4b0543940d9e56b/",
+        "link": "https://www.youtube.com/watch?v=i1P7cj3jTrk",
         "type": "video"
     },
     {
@@ -131,7 +158,7 @@
         "location": "Craft Conference",
         "date": "2014-04-25",
         "imageFileBasename": "2014-04-delivering-continuous-delivery-continuously.jpg",
-        "link": "http://www.ustream.tv/recorded/46668417",
+        "link": "https://www.infoq.com/presentations/guardian-continuous-delivery/",
         "type": "video"
     },
     {
@@ -214,15 +241,6 @@
         "imageFileBasename": "2013-04-24-measuring-your-websites-performance.jpg",
         "link": "https://speakerdeck.com/patrickhamann/why-performance-matters-measuring-your-websites-performance",
         "type": "slides"
-    },
-    {
-        "title": "Building the Next Generation of the Guardian with Play!",
-        "authorNames": ["Grant Klopper"],
-        "location": "PingConf - Budapest, Hungary",
-        "date": "2014-01-17",
-        "imageFileBasename": "2014-01-17-building-guardian-with-play.jpg",
-        "link": "http://www.ustream.tv/recorded/42805704",
-        "type": "video"
     },
     {
         "title": "Effective API design with Scala types",
