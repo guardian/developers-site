@@ -14,6 +14,8 @@ var filter = require('lodash-node/modern/collections/filter');
 var find = require('lodash-node/modern/collections/find');
 var groupBy = require('lodash-node/modern/collections/groupBy');
 var Lanyrd = require('lanyrd');
+var Marked = require('marked');
+var fetch = require('node-fetch')
 
 var basePath = __dirname + '/src';
 
@@ -68,39 +70,56 @@ gulp.task('watch', function () {
 
 gulp.task('default', ['css', 'copy', 'lanyrd', 'generate']);
 
+fetchContentFromUrl = async (url) => {
+    const res = await fetch(url)
+    const body = await res.text()
+    return body
+}
+
 var talks = require('./src/content/talks.json');
 var authors = require('./src/content/authors.json');
 var jobs = require('./src/content/jobs.json');
+var engineeringCultureHtml = Marked(fs.readFileSync('./src/content/engineering-culture.md', { encoding: 'utf8' }));
 
-var pages = [
-    {
-        title: 'Home',
-        fileBasename: 'index.ejs',
-        description: "The innovation of a startup combined with the authority of our journalism. The developers of the Guardian are shaping the future of news",
-        jobs: jobs
-    },
-    // {
-    //     title: 'Engineering',
-    //     fileBasename: 'engineering.ejs'
-    // },
-    {
-        title: 'Diversity & Inclusion',
-        fileBasename: 'diversity-&-inclusion.ejs'
-    },
-    {
-        title: 'Open People',
-        fileBasename: 'open-people.ejs'
-    },
-    {
-        title: 'Open Source',
-        fileBasename: 'open-source.ejs'
-    },
-    {
-        title: 'Events & Talks',
-        fileBasename: 'events-&-talks.ejs',
-        talks: talks
-    }
-];
+var pages = {
+    navPages: [
+        {
+            title: 'Home',
+            fileBasename: 'index.ejs',
+            description: "The innovation of a startup combined with the authority of our journalism. The developers of the Guardian are shaping the future of news",
+            jobs: jobs
+        },
+        // {
+        //     title: 'Engineering',
+        //     fileBasename: 'engineering.ejs'
+        // },
+        {
+            title: 'Diversity & Inclusion',
+            fileBasename: 'diversity-&-inclusion.ejs'
+        },
+        {
+            title: 'Open People',
+            fileBasename: 'open-people.ejs'
+        },
+        {
+            title: 'Open Source',
+            fileBasename: 'open-source.ejs'
+        },
+        {
+            title: 'Events & Talks',
+            fileBasename: 'events-&-talks.ejs',
+            talks: talks
+        },
+    ],
+    contentPages: [
+        {
+            title: 'Engineering Culture',
+            fileBasename: 'engineering-culture.ejs',
+            htmlPageContent: engineeringCultureHtml
+        },
+    ],
+
+};
 
 function createMd5Hash(emailAddress) {
     var crypto = require('crypto');
@@ -108,7 +127,7 @@ function createMd5Hash(emailAddress) {
 }
 
 function generatePages() {
-    pages.forEach(function (page) {
+    pages.navPages.concat(pages.contentPages).forEach(function (page) {
         var rootScope = {
             pages: pages,
             findAuthorByName: function (authorName) {
@@ -187,6 +206,6 @@ function sortEvents(events) {
 
 gulp.task('lanyrd', function() {
     return getUpcomingEvents().then(function(events){
-        find(pages, {title: 'Events & Talks'}).upcomingEvents = sortEvents(events);
+        find(pages.navPages, {title: 'Events & Talks'}).upcomingEvents = sortEvents(events);
     });
 });
