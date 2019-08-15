@@ -91,5 +91,18 @@
         "name": "Alex Sanders",
         "link": "https://twitter.com/asanders",
         "emailAddress": "alex.sanders@guardian.co.uk"
+    },
+    {
+        "name": "Michael Barton",
+        "link": "https://twitter.com/mrb_barton",
+        "emailAddress": "michael.barton@guardian.co.uk"
+    },
+    {
+        "name": "Emmanuelle Poirier",
+        "emailAddress": "emmanuelle.poirier@guardian.co.uk"
+    },
+    {
+        "name": "Amy Hughes",
+        "emailAddress": "amy.hughes@guardian.co.uk"
     }
 ]
