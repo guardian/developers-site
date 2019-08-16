@@ -80,6 +80,7 @@ var talks = require('./src/content/talks.json');
 var authors = require('./src/content/authors.json');
 var jobs = require('./src/content/jobs.json');
 var engineeringCultureHtml = Marked(fs.readFileSync('./src/content/engineering-culture.md', { encoding: 'utf8' }));
+var managingEngineersHtml = Marked(fs.readFileSync('./src/content/managing-engineers.md', { encoding: 'utf8' }));
 
 var pages = {
     navPages: [
@@ -116,6 +117,11 @@ var pages = {
             title: 'Engineering Culture',
             fileBasename: 'engineering-culture.ejs',
             htmlPageContent: engineeringCultureHtml
+        },
+        {
+            title: 'How We Manage Engineers',
+            fileBasename: 'managing-engineers.ejs',
+            htmlPageContent: managingEngineersHtml
         },
     ],
 
