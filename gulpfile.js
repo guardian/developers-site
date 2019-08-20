@@ -13,7 +13,6 @@ var assign = require('lodash-node/modern/objects/assign');
 var filter = require('lodash-node/modern/collections/filter');
 var find = require('lodash-node/modern/collections/find');
 var groupBy = require('lodash-node/modern/collections/groupBy');
-var Lanyrd = require('lanyrd');
 var Marked = require('marked');
 var fetch = require('node-fetch')
 
@@ -50,7 +49,7 @@ gulp.task('copy', function () {
 });
 
 
-gulp.task('generate', ['lanyrd'], function () {
+gulp.task('generate', function () {
     generatePages();
 });
 
@@ -68,7 +67,7 @@ gulp.task('watch', function () {
     });
 });
 
-gulp.task('default', ['css', 'copy', 'lanyrd', 'generate']);
+gulp.task('default', ['css', 'copy', 'generate']);
 
 fetchContentFromUrl = async (url) => {
     const res = await fetch(url)
@@ -165,23 +164,6 @@ function generatePages() {
     });
 }
 
-function getUpcomingEvents() {
-    var users = filter(authors, 'lanyrd');
-    var events = users.map(function(user) {
-        var futureEvents = Q.nbind(Lanyrd.futureEvents, Lanyrd);
-        return futureEvents(user.lanyrd).spread(function(resp, events) {
-            if (!events) return [];
-            return events.map(function(event) {
-                event.users = [user];
-                event.date = moment(event.month, 'MMM YYYY');
-                return event;
-            });
-        });
-    });
-
-    return Q.all(events);
-}
-
 function sortEvents(events) {
     //Group events by activity type 'speaking', 'attending' or 'tracking'
     var groups = groupBy(flatten(events), 'subsubtitle_class');
@@ -209,9 +191,3 @@ function sortEvents(events) {
 
     return groups;
 }
-
-gulp.task('lanyrd', function() {
-    return getUpcomingEvents().then(function(events){
-        find(pages.navPages, {title: 'Events & Talks'}).upcomingEvents = sortEvents(events);
-    });
-});
