@@ -21,7 +21,6 @@ $trailing-margin-height: 1.5rem;
 @import "base";
 
 @import "components/main-image";
-@import "components/consent";
 
 .inset {
     @include breakpoint($desktop) {
