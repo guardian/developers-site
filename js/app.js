@@ -20,7 +20,7 @@ function constructURLQueryParameters(map) {
 }
 
 var urlParameters = constructURLQueryParameters({
-    'tag': 'info/developer-blog',
+    'tag': 'info/series/engineering-blog',
     'page-size': 3,
     'show-fields': 'trailText',
     'api-key': '85nszu4nbfdzh2zrakh74k2w',
