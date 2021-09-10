@@ -1,5 +1,5 @@
 body {
-    font-family: "EgyptianText", "Georgia", serif;
+    font-family: "GuardianTextEgyptian", "Georgia", serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     color: hsl(0, 0%, 13%);
@@ -34,7 +34,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "EgyptianHeadline", "Georgia", serif;
+    font-family: "GH Guardian Headline", "Georgia", serif;
 
     a {
         text-decoration: none;
@@ -68,7 +68,7 @@ h4 {
 }
 
 time {
-    font-family: "AgateSans", sans-serif;
+    font-family: "GuardianTextSans", sans-serif;
     font-size: smaller;
     color: hsl(0, 0%, 50%);
 }
