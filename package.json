@@ -9,7 +9,7 @@
     "http-server": "^0.12.1",
     "lodash-node": "^2.4.1",
     "marked": "^0.7.0",
-    "moment": "^2.7.0",
+    "moment": "^2.29.2",
     "node-fetch": "^2.6.1",
     "q": "^1.0.1"
   },
